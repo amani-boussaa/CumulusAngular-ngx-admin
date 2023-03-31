@@ -8,6 +8,8 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { AuthlayoutamaniComponent } from './authlayoutamani/authlayoutamani.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 export const routes: Routes = [
   {
@@ -15,8 +17,23 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+
+  {path:'auth',component:AuthlayoutamaniComponent,children:[
+    {path:'login',loadChildren:()=>import('./pages/login/login.module').then(m=>m.LoginModule)},
+    {path:'register',loadChildren:()=>import('./pages/register/register.module').then(m=>m.RegisterModule)},
+    {path:'forgot-password',loadChildren:()=>import('./pages/forgot-password/forgot-password.module').then(m=>m.ForgotPasswordModule)},
+    {path:'reset-password/:token',loadChildren:()=>import('./pages/reset-password/reset-password.module').then(m=>m.ResetPasswordModule)},
+    {path:'logout',loadChildren:()=>import('./pages/logout/logout.module').then(m=>m.LogoutModule)},
+  ]},
+
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
+
+  //   // component: LoginComponent,
+  // },
   {
-    path: 'auth',
+    path: 'auth2',
     component: NbAuthComponent,
     children: [
       {

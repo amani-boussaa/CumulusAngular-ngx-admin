@@ -20,6 +20,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { AuthlayoutamaniComponent } from './authlayoutamani/authlayoutamani.component';
+import { AuthlayoutamaniModule } from './authlayoutamani/authlayoutamani.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +41,7 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    AuthlayoutamaniModule
   ],
   bootstrap: [AppComponent],
 })
