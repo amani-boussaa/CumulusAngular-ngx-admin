@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-smart-tablemalikc',
-  templateUrl: './smart-table.componentmalikc.html',
+  templateUrl: './smart-tablemalikc.component.html',
 })
-export class SmartTableComponentmalikc {
+export class SmartTablemalikcComponent {
   private baseUrl = 'http://localhost:8081/CUMULUS/courses';
   settings = {
     add: {

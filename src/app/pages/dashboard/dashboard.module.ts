@@ -14,7 +14,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
-import { DashboardComponentmalik } from './dashboard.componentmalik';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { RoomsComponent } from './rooms/rooms.component';
@@ -31,8 +30,6 @@ import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { FormsModule } from '@angular/forms';
-import { TablesModule } from '../tables/tables.module';
-import { SmartTableComponentmalik } from '../tables/smart-tablemalik/smart-table.componentmalik';
 
 @NgModule({
   imports: [
@@ -49,12 +46,11 @@ import { SmartTableComponentmalik } from '../tables/smart-tablemalik/smart-table
     NbIconModule,
     NbButtonModule,
     NgxEchartsModule,
-    TablesModule
+  
     
   ],
   declarations: [
     DashboardComponent,
-    DashboardComponentmalik,
     StatusCardComponent,
     TemperatureDraggerComponent,
     ContactsComponent,

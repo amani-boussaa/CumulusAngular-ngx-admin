@@ -5,9 +5,9 @@ import { CertifService } from '../../../certif.service';
 
 @Component({
   selector: 'ngx-smart-tablemalik',
-  templateUrl: './smart-table.componentmalik.html',
+  templateUrl: './smart-tablemalik.component.html',
 })
-export class SmartTableComponentmalik {
+export class SmartTablemalikComponent {
 
   settings = {
     add: {

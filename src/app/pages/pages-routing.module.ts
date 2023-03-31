@@ -5,7 +5,6 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import { DashboardComponentmalik } from './dashboard/dashboard.componentmalik';
 
 const routes: Routes = [{
   path: '',
@@ -19,10 +18,7 @@ const routes: Routes = [{
       path: 'iot-dashboard',
       component: DashboardComponent,
     },
-    {
-      path: 'malik',
-      component: DashboardComponentmalik,
-    },
+   
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
