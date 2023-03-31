@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TablesComponent } from './tables.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
+import {SmartTableComponentmalik} from './smart-tablemalik/smart-table.componentmalik';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
+import { SmartTableComponentmalikc } from './smart-tablemalikc/smart-table.componentmalikc';
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +14,14 @@ const routes: Routes = [{
     {
       path: 'smart-table',
       component: SmartTableComponent,
+    },
+    {
+      path: 'smart-tablemalik',
+      component: SmartTableComponentmalik,
+    },
+    {
+      path: 'smart-tablemalikc',
+      component: SmartTableComponentmalikc,
     },
     {
       path: 'tree-grid',
@@ -29,5 +39,7 @@ export class TablesRoutingModule { }
 export const routedComponents = [
   TablesComponent,
   SmartTableComponent,
+  SmartTableComponentmalik,
+  SmartTableComponentmalikc,
   TreeGridComponent,
 ];

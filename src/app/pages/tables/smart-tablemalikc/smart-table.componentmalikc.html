@@ -1,0 +1,36 @@
+<nb-card>
+  <nb-card-header>
+    Course
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="onAddConfirm($event)"  (editConfirm)="onEditConfirm($event)">
+    </ng2-smart-table>
+    <form>
+      <div class="form-group">
+        <input type="file" id="fileUpload" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" style="display: none">
+        <button type="button" onclick="document.getElementById('fileUpload').click()">Upload file</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
+<style>
+ button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #2E8B57; /* Darker green */
+}
+
+</style>

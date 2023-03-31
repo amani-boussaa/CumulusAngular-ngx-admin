@@ -13,6 +13,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
+    title: 'Certification',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalik',
+  },
+  {
+    title: 'Course',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikc',
+  },
+ 
+  {
     title: 'FEATURES',
     group: true,
   },
@@ -202,6 +213,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Tables & Data',
     icon: 'grid-outline',
     children: [
+   
       {
         title: 'Smart Table',
         link: '/pages/tables/smart-table',
