@@ -16,7 +16,6 @@ export class ForgotPasswordComponent  {
 
   submit(f:any){
     let data=f.value
-    console.log(data)
     this.aus.sendPasswordResetEmail(data).subscribe(
       () => {
       Swal.fire({

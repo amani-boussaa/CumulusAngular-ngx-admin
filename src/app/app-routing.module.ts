@@ -25,45 +25,46 @@ export const routes: Routes = [
     {path:'reset-password/:token',loadChildren:()=>import('./pages/reset-password/reset-password.module').then(m=>m.ResetPasswordModule)},
     {path:'logout',loadChildren:()=>import('./pages/logout/logout.module').then(m=>m.LogoutModule)},
   ]},
-
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login' }
   // {
   //   path: 'login',
   //   loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
 
   //   // component: LoginComponent,
   // },
-  {
-    path: 'auth2',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
-  },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  // {
+  //   path: 'auth2',
+  //   component: NbAuthComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: NbLoginComponent,
+  //     },
+  //     {
+  //       path: 'login',
+  //       component: NbLoginComponent,
+  //     },
+  //     {
+  //       path: 'register',
+  //       component: NbRegisterComponent,
+  //     },
+  //     {
+  //       path: 'logout',
+  //       component: NbLogoutComponent,
+  //     },
+  //     {
+  //       path: 'request-password',
+  //       component: NbRequestPasswordComponent,
+  //     },
+  //     {
+  //       path: 'reset-password',
+  //       component: NbResetPasswordComponent,
+  //     },
+  //   ],
+  // },
+  // { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'pages' },
 ];
 
 const config: ExtraOptions = {

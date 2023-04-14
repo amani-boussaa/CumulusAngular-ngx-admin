@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from "@angular/router";
+import { UseramaniService } from "../amani/useramani.service";
 
 @Injectable({
   providedIn: "root",
@@ -11,7 +12,11 @@ export class AuthService {
   helper = new JwtHelperService();
   ACCESS_TOKEN = "accessToken";
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private us: UseramaniService
+  ) {}
 
   register(body: any) {
     return this.http.post(
@@ -32,15 +37,15 @@ export class AuthService {
   }
 
   userLoggedIn() {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem(this.ACCESS_TOKEN)) {
       return false;
     }
-    let token: any = localStorage.getItem("token");
+    let token: any = localStorage.getItem(this.ACCESS_TOKEN);
     let decodeToken = this.helper.decodeToken(token);
 
-    if (decodeToken.role) {
-      return false;
-    }
+    // if (decodeToken.role) {
+    //   return false;
+    // }
 
     if (this.helper.isTokenExpired(token)) {
       return false;
@@ -63,8 +68,25 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem(this.ACCESS_TOKEN);
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(["/auth/login"]);
   }
+  getLoggedInID() {
+    if (this.userLoggedIn()) {
+      let token = localStorage.getItem(this.ACCESS_TOKEN);
+      let decodeToken = this.helper.decodeToken(token);
+      let user_id = decodeToken.id;
+      return user_id;
+    } else {
+      return null;
+    }
+  }
+  // getLoggedUser(id:any){
+  //   if (user_id != null) {
+  //     this.us.getOneuser(user_id).subscribe((response: any) => {
+  //       return response;
+  //     });
+  //   }
+  // }
 
   // //  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   // ACCESS_TOKEN = 'accessToken';

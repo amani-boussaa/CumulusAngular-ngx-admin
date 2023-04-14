@@ -6,6 +6,7 @@ import { FormInputsComponent } from './form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { FormProfileAmaniComponent } from './form-profile-amani/form-profile-amani.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'datepicker',
         component: DatepickerComponent,
+      },
+      {
+        path: 'profile',
+        component: FormProfileAmaniComponent,
       },
     ],
   },

@@ -19,8 +19,11 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormProfileAmaniComponent } from './form-profile-amani/form-profile-amani.component';
+import { RemoveBaseUrlPipe } from '../../services/remove-base-url-pipe-service.service';
 
 @NgModule({
+
   imports: [
     ThemeModule,
     NbInputModule,
@@ -37,11 +40,15 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     ngFormsModule,
   ],
   declarations: [
+    RemoveBaseUrlPipe,
     FormsComponent,
     ButtonsComponent,
     FormInputsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
+    FormProfileAmaniComponent
   ],
+  exports: [RemoveBaseUrlPipe],
+
 })
 export class FormsModule { }

@@ -2,10 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UseramaniService {
+
   imageData: any
   token: any = localStorage.getItem('accessToken')
   httpOptions = {
@@ -61,19 +63,4 @@ export class UserService {
     return this.http.get(url, { responseType: 'blob' });
 
   }
-  // getImageData(id: number) {
-  //   const url = `${environment.urlBackend}api2/v1/users/getblobimage/${id}`;
-  //   this.http.get(url, { responseType: 'blob' }).subscribe(
-  //     (data: Blob) => {
-  //       const reader = new FileReader();
-  //       reader.onload = () => {
-  //         this.imageData = reader.result;
-  //       };
-  //       reader.readAsDataURL(data);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
 }
