@@ -12,9 +12,10 @@ export class ShowDetailsButtonComponentComponent  implements ViewCell {
   rowData: any;
   constructor(private router:Router) { }
   onClick() {
+    let id_user = this.rowData.id
     // Implement your details functionality here
     console.log('Details button clicked for row:', this.rowData);
-    this.router.navigate(['/pages/forms/profile']);
+    this.router.navigate(['/pages/forms/detailuser/'+id_user]);
   }
 
   // onClick() {

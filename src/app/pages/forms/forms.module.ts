@@ -21,6 +21,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { FormProfileAmaniComponent } from './form-profile-amani/form-profile-amani.component';
 import { RemoveBaseUrlPipe } from '../../services/remove-base-url-pipe-service.service';
+import { FormDetailuserAmaniComponent } from './form-detailuser-amani/form-detailuser-amani.component';
 
 @NgModule({
 
@@ -46,7 +47,8 @@ import { RemoveBaseUrlPipe } from '../../services/remove-base-url-pipe-service.s
     FormInputsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
-    FormProfileAmaniComponent
+    FormProfileAmaniComponent,
+    FormDetailuserAmaniComponent
   ],
   exports: [RemoveBaseUrlPipe],
 
