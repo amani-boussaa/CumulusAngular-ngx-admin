@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-tables',
+  selector: 'thread-tables',
   template: `<router-outlet></router-outlet>`,
 })
-export class TablesComponent {
+export class ForumComponent {
 }

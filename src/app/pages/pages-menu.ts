@@ -17,6 +17,33 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Leslie',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: '1',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: '2',
+        link: '/pages/layout/list',
+      },
+      {
+        title: '2 List',
+        link: '/pages/layout/infinite-list',
+      },
+      {
+        title: '3',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Tabs',
+        pathMatch: 'prefix',
+        link: '/pages/layout/tabs',
+      },
+    ],
+  },
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
@@ -63,6 +90,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Datepicker',
         link: '/pages/forms/datepicker',
       },
+    ],
+  },
+  {
+    title: 'Forums',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Threads',
+        link: '/pages/forum/thread',
+      },
+     
     ],
   },
   {
