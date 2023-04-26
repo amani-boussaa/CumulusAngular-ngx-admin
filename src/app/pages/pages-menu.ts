@@ -24,6 +24,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Complaint List',
         link: '/pages/tables/complaints',
+      },
+      {
+        title: 'Statistics',
+        link: '/pages/charts/chartamani',
       }
     ]
 

@@ -55,13 +55,13 @@ export class TableamanicomplaintComponent  {
         title: "description",
         type: "number",
       },
-      details: {
-        title: 'Details',
-        type: 'custom',
-        renderComponent: ShowDetailsButtonComponentComponent,
-        filter: false,
-        sort: false,
-      },
+      // details: {
+      //   title: 'Details',
+      //   type: 'custom',
+      //   renderComponent: ShowDetailsButtonComponentComponent,
+      //   filter: false,
+      //   sort: false,
+      // },
 
     },
   };
@@ -77,7 +77,7 @@ export class TableamanicomplaintComponent  {
       for (let i = 0; i < dataArray[0].length; i++) {
         const data = dataArray[0][i];
         const newData = {
-          categorycomplaint: data.categorycomplaint.name,
+          categorycomplaint: data.categorycomplaint,
           description: data.description,
           id: data.id,
           status: data.status,

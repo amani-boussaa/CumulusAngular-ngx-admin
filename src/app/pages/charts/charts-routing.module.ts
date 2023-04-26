@@ -5,6 +5,7 @@ import { ChartsComponent } from './charts.component';
 import { EchartsComponent } from './echarts/echarts.component';
 import { D3Component } from './d3/d3.component';
 import { ChartjsComponent } from './chartjs/chartjs.component';
+import { ChartamaniComponent } from './chartamani/chartamani.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,6 +19,10 @@ const routes: Routes = [{
   }, {
     path: 'chartjs',
     component: ChartjsComponent,
+  },
+  {
+    path: 'chartamani',
+    component: ChartamaniComponent,
   }],
 }];
 
@@ -32,4 +37,5 @@ export const routedComponents = [
   EchartsComponent,
   D3Component,
   ChartjsComponent,
+  ChartamaniComponent
 ];
