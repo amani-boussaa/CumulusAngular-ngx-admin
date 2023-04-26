@@ -7,6 +7,7 @@ import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { TableAmaniComponent } from './table-amani/table-amani.component';
 import { ShowDetailsButtonComponentComponent } from './show-details-button-component/show-details-button-component.component';
+import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanicomplaint.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ShowDetailsButtonComponentComponent } from './show-details-button-compo
     FsIconComponent,
     TableAmaniComponent,
     ShowDetailsButtonComponentComponent,
+    TableamanicomplaintComponent,
   ],
 })
 export class TablesModule { }

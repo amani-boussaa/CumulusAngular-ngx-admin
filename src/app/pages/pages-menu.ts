@@ -12,7 +12,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Users',
     icon: 'person',
     link: '/pages/tables/users',
+    children: [
+      {
+        title: 'List users',
+        link: '/pages/tables/users',
+      },
+      {
+        title: 'Make Complaint',
+        link: '/pages/layout/complaint',
+      },
+      {
+        title: 'Complaint List',
+        link: '/pages/tables/complaints',
+      }
+    ]
+
   },
+
   {
     title: 'IoT Dashboard',
     icon: 'home-outline',

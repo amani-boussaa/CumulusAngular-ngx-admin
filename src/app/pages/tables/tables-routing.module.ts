@@ -5,6 +5,7 @@ import { TablesComponent } from './tables.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
 import { TableAmaniComponent } from './table-amani/table-amani.component';
+import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanicomplaint.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,6 +22,10 @@ const routes: Routes = [{
     {
       path: 'users',
       component: TableAmaniComponent,
+    },
+    {
+      path: 'complaints',
+      component: TableamanicomplaintComponent,
     }
   ],
 }];

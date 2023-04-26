@@ -29,15 +29,7 @@
         deleteButtonContent: '<i class="nb-trash"></i>',
         confirmDelete: true,
       },
-      // details: {
-      //   // Customize the button label and icon
-      //   detailButtonContent: '<i class="nb-info"></i>',
-      //   // Specify a function to handle the button click event
-      //   detailClick: function(row) {
-      //     // Code to show the details for the selected row
-      //     console.log(row);
-      //   }
-      // },
+
 
       columns: {
         id: {
