@@ -8,6 +8,8 @@ import { Course } from './course';
 })
 export class CourseService {
   private baseUrl = 'http://localhost:8081/CUMULUS/courses';
+  private courseService: CourseService;
+  pdfUrl: string;
 
   constructor(private http: HttpClient) { }
 
@@ -30,10 +32,32 @@ export class CourseService {
   deleteCourse(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
   }
-  uploadFile(file: File): Observable<any> {
+  // uploadFile(file: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  
+  //   return this.http.post<any>(`${this.baseUrl}/uploadFile`, formData);
+  // }
+
+
+   uploadFile(id: number, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-  
-    return this.http.post<any>(`${this.baseUrl}/uploadFile`, formData);
+    return this.http.post<any>(`${this.baseUrl}/${id}/file`, formData);
+  }
+
+
+
+  getFile(id: number): Observable<Blob> {
+    const url = `${this.baseUrl}/getblobfile/${id}`;
+    // console.log(url)
+    // return this.http.get<Blob>(url, { responseType: 'blob' });
+    return this.http.get(url, { responseType: 'blob' });
+
+  }
+  getPdf(id: number): void {
+    this.courseService.getFile(id).subscribe(blob => {
+      this.pdfUrl = URL.createObjectURL(blob);
+    });
   }
 }

@@ -20,13 +20,19 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { ToastrModule } from 'ngx-toastr';
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -39,6 +45,7 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    PdfViewerModule
   ],
   bootstrap: [AppComponent],
 })

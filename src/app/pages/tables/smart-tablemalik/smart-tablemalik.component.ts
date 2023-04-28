@@ -1,13 +1,140 @@
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { CertifService } from '../../../certif.service';
+import { Component , OnInit, Input, Output, EventEmitter, ViewChild, OnChanges} from '@angular/core';
+import { LocalDataSource ,ViewCell } from 'ng2-smart-table';
+
+import { CourseService } from '../../../course.service';
+import { Chart } from 'chart.js';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
+@Component({
+  selector: 'button-view',
+  template: 
+   `<button (click)="openFileExplorer()">Upload certif</button>
+   <input type="file" #fileInput style="display:none" (change)="onFileSelected($event)">
+   
+   
+   <style>
+     /* Button styling */
+     button {
+       background-color: #4CAF50;
+       border: none;
+       color: white;
+       padding: 10px 20px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 16px;
+       margin: 4px 2px;
+       cursor: pointer;
+       border-radius: 4px;
+     }
+   
+     button:hover {
+       background-color: #2E8B57; /* Darker green */
+     }
+   
+     /* Message styling */
+     p.success-message {
+       color: green;
+       margin-top: 10px;
+       display: none;
+     }
+   
+     p.show {
+       display: block;
+     }
+   </style>`
+  ,
+}) class ButtonViewComponent implements ViewCell, OnInit {
+  private baseUrl = 'http://localhost:8081/CUMULUS/certifs';
+  renderValue="asdas";
+  certifId: number;
+  isUploaded = false;
+  @ViewChild('fileInput') fileInput: any;
+  @Input() value: string | number;
+  @Input() rowData: any;
+  file: File;
+  @Output() save: EventEmitter<any> = new EventEmitter();
+  constructor( private http: HttpClient , private certifService: CertifService,private toastr: ToastrService) {
+  }
+  handleFileInput(event: any) {
+    this.file = event.target.files[0];
+  }
+  ngOnInit() {
+    this.renderValue = this.value.toString().toUpperCase();
+  }
+  openFileExplorer() {
+    this.fileInput.nativeElement.click();
+  } onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const url = `${this.baseUrl}/${this.rowData.id}/file`;
+
+    const formData = new FormData();
+    formData.append('file', file);
+      this.certifService.uploadFile(this.rowData.id,file).subscribe(data => {
+         });
+    
+     this.toastr.success('PDF file uploaded successfully');
+
+      
+  }
+ 
+  onClick() {
+    this.save.emit(this.rowData);
+  }
+  
+ 
+}
 
 @Component({
   selector: 'ngx-smart-tablemalik',
   templateUrl: './smart-tablemalik.component.html',
 })
-export class SmartTablemalikComponent {
+export class SmartTablemalikComponent implements OnInit {
+  chart: any;
+  source1: LocalDataSource = new LocalDataSource();
+  blobs: any;
+
+
+  ngOnInit() {
+    // Fetch the certificates data from the CertifService
+    this.certifService.getAllCertifs().subscribe((certifs) => {
+      // Extract the prices of the certificates from the data
+      const prices = certifs.map((certif) => certif.price);
+      const names = certifs.map((certif) => certif.name);
+
+      // Set up the chart with the extracted prices
+      this.chart = new Chart('myChart', {
+        type: 'bar',
+        data: {
+          labels: names,
+          datasets: [
+            {
+              label: 'Prices',
+              data: prices,
+              backgroundColor: '#0196FD',
+              borderColor: '#0196FD',
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    });
+  }
+
+  public numOfCertifs: number;
+  public path: any;
+  certifId: number;
+  file: File;
 
   settings = {
     add: {
@@ -43,7 +170,17 @@ export class SmartTablemalikComponent {
       price: {
         title: 'Price',
         type: 'number',
-      }
+      },
+      button: {
+        title: 'Button',
+        type: 'custom',
+        renderComponent: ButtonViewComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            alert(`${row.id} saved!`)
+          });
+        }}
+      
     },
   };
   
@@ -52,7 +189,14 @@ export class SmartTablemalikComponent {
 
   constructor(private certifService: CertifService) {
     this.certifService.getAllCertifs().subscribe(data => {
+      this.numOfCertifs = data.length;
       this.source.load(data);
+     
+
+      console.log(data);
+
+        
+   
     });
   }
 

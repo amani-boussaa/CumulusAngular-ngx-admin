@@ -13,15 +13,33 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
-    title: 'Certification',
+    title: 'DashCourse',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikc',
+  },
+ 
+
+  {
+    title: 'DashCertification',
     icon: 'edit-2-outline',
     link: '/pages/tables/smart-tablemalik',
   },
   {
-    title: 'Course',
+    title: 'Courses',
     icon: 'edit-2-outline',
-    link: '/pages/tables/smart-tablemalikc',
+    link: '/pages/tables/smart-tablemaliku',
   },
+  {
+    title: 'Certifications',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikui',
+  },
+  {
+    title: 'SendMail',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikmail',
+  },
+  
  
   {
     title: 'FEATURES',
