@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'button-view',
+  selector: 'ngx-button-view',
   template: 
    `<button (click)="openFileExplorer()">Upload course</button>
    <input type="file" #fileInput style="display:none" (change)="onFileSelected($event)">

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'button-view',
+  selector: 'ngx-button-view',
   template: 
    `<button (click)="openFileExplorer()">Upload certif</button>
    <input type="file" #fileInput style="display:none" (change)="onFileSelected($event)">
