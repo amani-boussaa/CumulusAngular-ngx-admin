@@ -18,12 +18,13 @@ export class ComplaintComponent implements OnInit {
   selectedCategory: CategoryComplaint;
   categoryComplaint: any;
   complaint :Complaint ={
-    id:0,
-    description:"",
-    status:"",
-    categorycomplaint:"" ,
-    user:0
-    }
+    id: 0,
+    description: "",
+    status: "",
+    categorycomplaint: "",
+    user: 0,
+    category: ''
+  }
 
 
   // firstForm: UntypedFormGroup;

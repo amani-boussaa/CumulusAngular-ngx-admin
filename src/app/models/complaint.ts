@@ -4,4 +4,5 @@ export class Complaint{
   status:string;
   categorycomplaint:string ;
   user:number;
+  category: string;
   }

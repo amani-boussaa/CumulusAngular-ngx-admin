@@ -28,6 +28,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Statistics',
         link: '/pages/charts/chartamani',
+      },
+      {
+        title: 'video',
+        link: '/pages/layout/video',
       }
     ]
 

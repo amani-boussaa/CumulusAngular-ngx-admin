@@ -22,6 +22,7 @@ import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placehol
 import { AccordionComponent } from './accordion/accordion.component';
 import { NewsService } from './news.service';
 import { ComplaintComponent } from './complaint/complaint.component';
+import { VideoConferencingComponent } from './video-conferencing/video-conferencing.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { ComplaintComponent } from './complaint/complaint.component';
     NewsPostComponent,
     AccordionComponent,
     ComplaintComponent,
+    VideoConferencingComponent,
   ],
   providers: [
     NewsService,
