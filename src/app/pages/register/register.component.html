@@ -16,6 +16,20 @@
           <div class="alert alert-danger" *ngIf="messageError">
             {{ messageError }}
           </div>
+          <div class="form-outline mb-4">
+            <p class="lorem">Role</p>
+                <div class="input-group">
+                  <select
+                  name="role"
+                  required
+                  #role="ngModel"
+                  [(ngModel)]="selectedRole"
+                  class="form-control" >
+                    <option value="ROLE_STUDENT">STUDENT</option>
+                    <option value="ROLE_TEACHER">TEACHER</option>
+                  </select>
+                </div>
+              </div>
           <!-- name input -->
           <div class="form-outline mb-4">
             <input
@@ -77,6 +91,14 @@
             />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
+          <intl-input-phone name="phonenumber"
+          required
+          #phonenumber="ngModel"
+          ngModel
+          [SelectedCountryISOCode]="SelectedCountryISOCode"
+
+
+          ></intl-input-phone>
           <!-- institution input -->
           <div class="form-outline mb-3">
             <input

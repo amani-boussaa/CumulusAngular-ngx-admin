@@ -41,7 +41,7 @@ import { AuthlayoutamaniModule } from './authlayoutamani/authlayoutamani.module'
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    AuthlayoutamaniModule
+    AuthlayoutamaniModule,
   ],
   bootstrap: [AppComponent],
 })
