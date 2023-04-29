@@ -15,9 +15,9 @@ export class ChatService {
   constructor(private httpClient: HttpClient) { }
 
   getChatById(chatId: any) {
-    if (!chatId) {
-      chatId = 1;
-    }
+   // if (!chatId) {
+   //   chatId = 1;
+   // }
     console.log(chatId)
     
     return this.httpClient.get<Chat>(this.baseUrl + "/GetChatById/" + chatId)
@@ -33,9 +33,9 @@ export class ChatService {
   }*/
 
   updateChat(message: Message, chatId: any): Observable<Object> {
-    if (!chatId) {
-      chatId = 1;
-    }
+   // if (!chatId) {
+      //chatId = 1;
+   // }
     return this.httpClient.put(this.baseUrl + "/message/" + `${chatId}`, message);
   }
 
@@ -45,12 +45,12 @@ export class ChatService {
 
   }*/
   getChatByFirstUserNameAndSecondUserName(firstUserName: String, secondUserName: String) {
-    if (!firstUserName) {
-      firstUserName = 'alicesmith';
-    }
-    if (!secondUserName) {
-      secondUserName = 'bobjohnson';
-    }
+   // if (!firstUserName) {
+    //  firstUserName = 'alicesmith';
+   // }
+   // if (!secondUserName) {
+   //   secondUserName = 'bobjohnson';
+   // }
     
     return this.httpClient.get<Chat>(`${this.baseUrl}/getChatByFirstUserNameAndSecondUserName?firstUserName=${firstUserName}&secondUserName=${secondUserName}`)
   }
@@ -60,9 +60,9 @@ export class ChatService {
   }*/
 
   getChatByFirstUserNameOrSecondUserName(userName: any) {
-    if (!userName) {
-      userName = 'alicesmith';
-    }
+  //  if (!userName) {
+   //   userName = 'alicesmith';
+   // }
     return this.httpClient.get(`${this.baseUrl}/GetChatByFirstUserNameOrSecondUserName/${userName}`);
   }
 

@@ -33,8 +33,8 @@ export class ChatComponent implements OnInit {
   timesRun = 0;
   timesRun2 = 0;
 
-  firstUserName =sessionStorage.getItem('username');
-  senderEmail =sessionStorage.getItem('username');
+  firstUserName = sessionStorage.getItem('username');
+  senderEmail =sessionStorage.getItem('email');
   senderCheck = sessionStorage.getItem('username');
 
   constructor(private chatService: ChatService, private router: Router, private userService: UserService, private cdr: ChangeDetectorRef) {
@@ -46,6 +46,21 @@ export class ChatComponent implements OnInit {
   
 
   ngOnInit(): void {
+    sessionStorage.setItem('id', '1');
+    sessionStorage.setItem('username', 'alicesmith');
+    sessionStorage.setItem('email', 'alice@example.com');
+
+    this.chatService.getChatByFirstUserNameOrSecondUserName(this.firstUserName).subscribe(data => {
+      this.chatList = data;
+  
+      // Sort the chats by last message sent
+      this.chatList.sort((a, b) => {
+        const aLastMessage = a.messageList[a.messageList.length - 1];
+        const bLastMessage = b.messageList[b.messageList.length - 1];
+        return bLastMessage.timestamp - aLastMessage.timestamp;
+      });
+    });
+
     setInterval(() => {
       this.chatService.getChatById(sessionStorage.getItem('chatId')).subscribe(data => {
         this.chatData = data;
@@ -75,6 +90,7 @@ export class ChatComponent implements OnInit {
        this.userService.getAll().subscribe((data) => {
           //  console.log(data);
           this.alluser = data;
+          this.filteredUsers = this.alluser.filter(user => user.username !== this.check);
        })
 
 
@@ -216,13 +232,6 @@ export class ChatComponent implements OnInit {
   }
 
   filterUsers(query: string) {
-    if (!query) {
-      // if search query is empty, show all users
-      this.filteredUsers = this.alluser;
-    } else {
-      // filter the users based on the search query
-      this.filteredUsers = this.alluser.filter(user => user.username.toLowerCase().includes(query.toLowerCase()));
-    }
     if (!query) {
       // if search query is empty, show all users
       this.filteredUsers = this.alluser;
