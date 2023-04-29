@@ -8,7 +8,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ChatComponent } from './oubaid/chat/chat.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ChatbotComponent } from './oubaid/chatbot/chatbot.component';
 import {
   NbActionsModule,
@@ -26,7 +26,6 @@ import {
   NbTabsetModule,
 } from '@nebular/theme';
 import { StatsComponent } from './oubaid/stats/stats.component';
-import { VideoComponent } from './oubaid/video/video.component';
 
 
 @NgModule({
@@ -51,6 +50,7 @@ import { VideoComponent } from './oubaid/video/video.component';
     NbSelectModule,
     NbSpinnerModule,
     NbTabsetModule,
+    FormsModule,
     
   ],
   declarations: [
@@ -58,7 +58,6 @@ import { VideoComponent } from './oubaid/video/video.component';
     ChatComponent,
     ChatbotComponent,
     StatsComponent,
-    VideoComponent,
   ],
 })
 export class PagesModule {

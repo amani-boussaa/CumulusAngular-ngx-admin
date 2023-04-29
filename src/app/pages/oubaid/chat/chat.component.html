@@ -50,19 +50,19 @@
 
           <div class="card-header msg_head">
             <div class="d-flex bd-highlight">
-              <div class="img_cont"  *ngIf="secondUserName!=senderCheck">
+              <div class="img_cont"  *ngIf="secondUserName!==senderCheck">
                 <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="rounded-circle user_img" >
                 {{secondUserName.substring(0,1)}}
                 <span class="online_icon"></span>
               </div>
-              <div class="img_cont"  *ngIf="secondUserName==senderCheck">
+              <div class="img_cont"  *ngIf="secondUserName===senderCheck">
                 <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="rounded-circle user_img" >
                 {{firstUserName.substring(0,1)}}
                 <span class="online_icon"></span>
               </div>
               <div class="user_info">
-                <span *ngIf="secondUserName!=senderCheck" >Chat with {{secondUserName}}</span>
-                <span *ngIf="secondUserName==senderCheck">Chat with {{firstUserName}}</span>
+                <span *ngIf="secondUserName!==senderCheck" >Chat with {{secondUserName}}</span>
+                <span *ngIf="secondUserName===senderCheck">Chat with {{firstUserName}}</span>
                 <p>1767 Messages</p>
               </div>
               <div class="video_cam">
@@ -84,7 +84,7 @@
 
             <div *ngFor="let msg of messageList">
 
-              <div class="d-flex justify-content-end mb-4" *ngIf="msg.senderEmail==senderCheck">
+              <div class="d-flex justify-content-end mb-4" *ngIf="msg.senderEmail===senderCheck">
                 <div class="msg_cotainer_send">
                   <!-- {{msg.replymessage | json}} -->
                   {{msg.replymessage}}
@@ -99,7 +99,7 @@
               </div>
 
 
-              <div class="d-flex justify-content-start mb-4" *ngIf="msg.senderEmail!=senderCheck">
+              <div class="d-flex justify-content-start mb-4" *ngIf="msg.senderEmail!==senderCheck">
                 <div class="img_cont_msg">
                   <span
                     class="rounded-circle user_img_msg text_inside_circle3">{{msg.senderEmail.substring(0,1)}}</span>
