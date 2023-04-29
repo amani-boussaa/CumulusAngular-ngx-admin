@@ -17,6 +17,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Forums',
+    icon: 'edit-2-outline',
+    children: [
+      { icon: 'home-outline',
+        title: 'Threads',
+        link: '/pages/tables/smart-tableb',
+      },
+      { icon: 'home-outline',
+      title: 'View All Threads',
+      link: '/pages/tables/smart-tableFront',
+    },
+     
+    ],
+  },
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
