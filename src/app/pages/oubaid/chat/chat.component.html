@@ -8,7 +8,7 @@
         <div class="card mb-sm-3 mb-md-0 contacts_card">
           <div class="card-header">
             <h1 class="chat-list-title">All User</h1>
-            <div class="input-group">
+            <div class="input-group" >
               <input type="text" placeholder="Search..." name="" class="form-control search" (keyup)="filterUsers($event.target.value)">
               <div class="input-group-prepend">
                 <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
@@ -62,12 +62,11 @@
               </div>
               <div class="user_info">
                 <span *ngIf="secondUserName!==senderCheck" >Chat with {{secondUserName}}</span>
-                <span *ngIf="secondUserName===senderCheck">Chat with {{firstUserName}}</span>
+                <span *ngIf="secondUserName===senderCheck">Chat with {{firstUserName}}</span> 
                 <p>1767 Messages</p>
               </div>
-              <div class="video_cam">
+              <div class="video_cam" (click)="openZoom()">
                 <span><i class="fas fa-video"></i></span>
-                <span><i class="fas fa-phone"></i></span>
               </div>
             </div>
             <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>

@@ -232,5 +232,8 @@ export class ChatComponent implements OnInit {
     }
 
   }
-  
+
+   openZoom() {
+      window.open('/pages/meeting', '_blank');
+    }
 }

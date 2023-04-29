@@ -8,6 +8,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { ChatComponent} from './oubaid/chat/chat.component'
 import { ChatbotComponent } from './oubaid/chatbot/chatbot.component';
 import { StatsComponent } from './oubaid/stats/stats.component';
+import { ZoomComponent } from './oubaid/zoom/zoom.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -19,6 +20,10 @@ const routes: Routes = [{
     {
       path: 'message',
       component: ChatComponent,
+    },
+    {
+      path: 'meeting',
+      component: ZoomComponent,
     },
     {
       path: 'chatbot',

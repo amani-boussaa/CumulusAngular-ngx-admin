@@ -26,6 +26,7 @@ import {
   NbTabsetModule,
 } from '@nebular/theme';
 import { StatsComponent } from './oubaid/stats/stats.component';
+import { ZoomComponent } from './oubaid/zoom/zoom.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { StatsComponent } from './oubaid/stats/stats.component';
     ChatComponent,
     ChatbotComponent,
     StatsComponent,
+    ZoomComponent,
   ],
 })
 export class PagesModule {
