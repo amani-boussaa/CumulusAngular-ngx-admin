@@ -13,6 +13,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
+    //console.log('itsme')
     return this.httpClient.get<User[]>(this.baseUrl + "/retrieveAllUsers")
   }
 

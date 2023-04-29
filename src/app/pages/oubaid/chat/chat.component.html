@@ -18,7 +18,7 @@
       
           <div class="card-body contacts_body">
             <ul class="contacts chatList" *ngFor="let presentation of filteredUsers">
-              <li *ngIf="presentation.username != check">
+              <li *ngIf="presentation.username !== check">
                 <div class="d-flex bd-highlight">
                   <div class="img_cont">
                     <div class="rounded-circle user_img text_inside_circle">
@@ -143,10 +143,10 @@
               <li>
                 <div class="d-flex bd-highlight" (click)="loadChatByEmail(chats.secondUserName, chats.firstUserName)">
                   <div class="img_cont">
-                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName!=senderCheck">
+                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName!==senderCheck">
                       {{chats.secondUserName.substring(0,1)}}
                     </div>
-                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName==senderCheck">
+                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName===senderCheck">
                       {{chats.firstUserName.substring(0,1)}}
                     </div>
 
