@@ -152,9 +152,9 @@
 
                   </div>
                   <div class="user_info">
-                    <div *ngIf="chats.secondUserName!=senderCheck" style="margin-top: 1rem;">
+                    <div *ngIf="chats.secondUserName!==senderCheck" style="margin-top: 1rem;">
                       {{chats.secondUserName}}</div>
-                    <div *ngIf="chats.secondUserName==senderCheck" style="margin-top: 1rem;">
+                    <div *ngIf="chats.secondUserName===senderCheck" style="margin-top: 1rem;">
                       {{chats.firstUserName}}</div>
                     <br>
                   </div>
