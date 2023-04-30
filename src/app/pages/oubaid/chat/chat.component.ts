@@ -36,6 +36,8 @@ export class ChatComponent implements OnInit {
   firstUserName = sessionStorage.getItem('username');
   senderEmail =sessionStorage.getItem('email');
   senderCheck = sessionStorage.getItem('username');
+  emojis: string[] = ["😀", "😂", "😍", "👍", "👎"];
+
 
   constructor(private chatService: ChatService, private router: Router, private userService: UserService, private cdr: ChangeDetectorRef) {
     this.chatForm = new FormGroup({
@@ -130,21 +132,29 @@ export class ChatComponent implements OnInit {
     });
 
   }
+
+  addEmoji(emoji: string) {
+    const messageControl = this.chatForm.get('replymessage');
+    messageControl.setValue(`${messageControl.value}${emoji}`);
+  }
   sendMessage() {
     const message = this.chatForm.value.replymessage;
-  
-    // Call endpoint to get bad words
+    
+    // Retrieve list of bad words from backend
     this.chatService.getBadWords().subscribe((badWords) => {
-      const foundBadWords = badWords.filter((word) => message.includes(word));
-      if (foundBadWords.length > 0) {
+      if (this.checkForBadWords(message, badWords)) {
         // Display error to user if bad words are found
         this.errorMessage = 'Your message contains inappropriate language. Please remove it before sending.';
       } else {
         // Proceed with sending the message
         this.errorMessage = '';
-        this.messageObj.replymessage = message;
-        this.messageObj.senderEmail = this.senderEmail;
-        this.chatService.updateChat(this.messageObj, this.chatId).subscribe((data) => {
+        const messageObj = new Message();
+        messageObj.chatId = this.chatId;
+        messageObj.senderCheck = this.senderCheck;
+        messageObj.message = message;
+        messageObj.senderEmail = this.senderEmail;
+        messageObj.replymessage = message;
+        this.chatService.updateChat(messageObj, this.chatId).subscribe((data) => {
           console.log(data);
           this.chatForm.reset();
   
@@ -162,41 +172,24 @@ export class ChatComponent implements OnInit {
       }
     });
   }
-/*
-  sendMessage() {
-    const message = this.chatForm.value.replymessage;
-    const messageObj = new Message();
-    messageObj.chatId = this.chatId;
-    messageObj.senderCheck = 'secondUser';
-    messageObj.message = this.chatForm.value.replymessage;
-    messageObj.senderEmail = this.senderEmail;
   
-    this.chatService.checkMessage(messageObj).subscribe((response) => {
-      if (response.status === 'BAD') {
-        // Display error to user if bad words are found
-        this.errorMessage = 'Your message contains inappropriate language. Please remove it before sending.';
-      } else {
-        // Proceed with sending the message
-        this.errorMessage = '';
-        messageObj.replymessage = message;
-        this.chatService.updateChat(messageObj, this.chatId).subscribe((data) => {
-          console.log(data);
-          this.chatForm.reset();
-  
-          // for displaying the messageList by the chatId
-          this.chatService.getChatById(this.chatId).subscribe((data) => {
-            this.chatData = data;
-            this.secondUserName = this.chatData.secondUserName;
-            this.firstUserName = this.chatData.firstUserName;
-  
-            // sort the message list by timestamp in ascending order
-            this.messageList = this.chatData.messageList.sort((a, b) => a.timestamp - b.timestamp);
-          });
-        });
+  // Helper function to check if message contains any bad words
+  checkForBadWords(message: string, badWords: any[]): boolean {
+    for (let i = 0; i < badWords.length; i++) {
+      if (message.toLowerCase().includes(badWords[i].word.toLowerCase())) {
+        return true;
       }
-    });
+    }
+    return false;
   }
-  */
+  
+  
+
+  handleAttachment(event: any) {
+    const file = event.target.files[0];
+    // do something with the file, such as upload it to a server or display its preview
+  }
+  
   
   
 

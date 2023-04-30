@@ -88,7 +88,6 @@
                   <!-- {{msg.replymessage | json}} -->
                   {{msg.replymessage}}
 
-
                   <span class="msg_time_send">{{msg.time.substring(11,16)}}</span>
                 </div>
                 <div class="img_cont_msg">
@@ -113,20 +112,44 @@
             </div>
           </div>
           <div class="card-footer">
-            <form [formGroup]="chatForm">
+            <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
               <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-smile"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <button type="button" class="dropdown-item" (click)="addEmoji('😀')">
+                      😀
+                    </button>
+                    <button type="button" class="dropdown-item" (click)="addEmoji('😁')">
+                      😁
+                    </button>
+                    <button type="button" class="dropdown-item" (click)="addEmoji('😂')">
+                      😂
+                    </button>
+                    <!-- add more emojis here -->
+                  </div>
                 </div>
                 <textarea name="" class="form-control type_msg" placeholder="Type your message..."
                   formControlName="replymessage" (keyup.enter)="sendMessage()" ></textarea>
                 <div class="input-group-append">
-                  <button mat-raised-button class="input-group-text send_btn" (click)="sendMessage()">
-                    <i class="fa fa-location-arrow"></i> </button>
+                  <div class="btn btn-outline-secondary">
+                    <label>
+                      <i class="fa fa-paperclip"></i>
+                      <input type="file" name="attachment" (change)="handleAttachment($event)" style="display: none;">
+                    </label>
+                  </div>
+                  <button mat-raised-button class="input-group-text send_btn" type="submit">
+                    <i class="fa fa-location-arrow"></i> 
+                  </button>
                 </div>
               </div>
             </form>
           </div>
+          
+          
+          
         </div>
       </div>
 

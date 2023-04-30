@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { Chat } from '../models/chat';
 import { Message } from '../models/message';
 import { Badword } from '../models/badword';
@@ -86,8 +86,14 @@ export class ChatService {
   }
 
   checkMessage(message: Message): Observable<any> {
+    if (!message || !message.message) {
+      return throwError('Message is null or empty');
+    }
+  
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post(this.baseUrl + '/checkMessage', message);
   }
+  
   
   
   

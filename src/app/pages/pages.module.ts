@@ -29,6 +29,7 @@ import { StatsComponent } from './oubaid/stats/stats.component';
 import { ZoomComponent } from './oubaid/zoom/zoom.component';
 
 
+
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -51,7 +52,7 @@ import { ZoomComponent } from './oubaid/zoom/zoom.component';
     NbSelectModule,
     NbSpinnerModule,
     NbTabsetModule,
-    FormsModule,
+    FormsModule,    
     
   ],
   declarations: [
