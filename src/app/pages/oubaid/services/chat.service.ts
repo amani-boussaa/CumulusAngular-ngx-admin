@@ -89,12 +89,23 @@ export class ChatService {
     if (!message || !message.message) {
       return throwError('Message is null or empty');
     }
-  
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post(this.baseUrl + '/checkMessage', message);
   }
+
+
   
+    getAverageMessages(): Observable<Badword[]> {
+    return this.httpClient.get<Badword[]>(this.baseUrl + '/average-messages');
+  }
+
+  getMostCommonKeywords(): Observable<{ [key: string]: number }> {
+    return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}/keywords`);
+  }
   
+
+
+
   
   
 

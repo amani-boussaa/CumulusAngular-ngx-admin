@@ -12,8 +12,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,8974</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Per Hour</h5>
+                      <span class="h2 font-weight-bold mb-0">{{averageMessages?.perHour  | number:'1.3-3'}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -23,7 +23,7 @@
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">Since last Hour </span>
                   </p>
                 </div>
               </div>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Per Week</h5>
+                      <span class="h2 font-weight-bold mb-0">{{averageMessages?.perWeek | number:'1.3-3'}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -54,8 +54,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Per Mounth</h5>
+                      <span class="h2 font-weight-bold mb-0">{{averageMessages?.perMonth | number:'1.3-3'}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -65,27 +65,6 @@
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                    <span class="text-nowrap">Since yesterday</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-percent"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
                     <span class="text-nowrap">Since last month</span>
                   </p>
                 </div>
@@ -96,39 +75,60 @@
       </div>
     </div>
     <!-- Page content -->
-  </div>
+
   <div>
       <div class=" pb-8 pt-5 pt-md-8">
         <div class="container-fluid header bg-gradient-primary pb-8 pt-5 pt-md-8">
-          <h2 class="mb-5 text-white">Stats Card</h2>
-          <table class="table  table-striped table-dark">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+          <h2 class="mb-5 text-white">Most Common Keywords</h2>
+          <table class="table table-striped table-dark">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Keyword</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let keyword of pagedItems; let i=index">
+                <th scope="row">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</th>
+                <td>{{ keyword.keyword }}</td>
+                <td>{{ keyword.count }}</td>
+              </tr>              
+            </tbody>
+            
+            <button class="btn btn-primary" (click)="onNextPage()">Next Page</button>
+            <button class="btn btn-primary mr-2" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
 
+          </table>
+        </div>
+      </div>
+  </div> 
+    <div>
+      <div class=" pb-8 pt-5 pt-md-8">
+        <div class="container-fluid header bg-gradient-primary pb-8 pt-5 pt-md-8">
+          <h2 class="mb-5 text-white">Most Common Keywords</h2>
+          <table class="table table-striped table-dark">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Keyword</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let keyword of pagedItems; let i=index">
+                <th scope="row">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</th>
+                <td>{{ keyword.keyword }}</td>
+                <td>{{ keyword.count }}</td>
+              </tr>              
+            </tbody>
+            
+            <button class="btn btn-primary" (click)="onNextPage()">Next Page</button>
+            <button class="btn btn-primary mr-2" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
+
+          </table>
+        </div>
+      </div>
+  </div>          
+
+  </div>

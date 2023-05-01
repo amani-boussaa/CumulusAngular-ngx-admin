@@ -10,6 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ChatComponent } from './oubaid/chat/chat.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ChatbotComponent } from './oubaid/chatbot/chatbot.component';
+
 import {
   NbActionsModule,
   NbAlertModule,
@@ -27,6 +28,7 @@ import {
 } from '@nebular/theme';
 import { StatsComponent } from './oubaid/stats/stats.component';
 import { ZoomComponent } from './oubaid/zoom/zoom.component';
+
 
 
 
@@ -52,7 +54,8 @@ import { ZoomComponent } from './oubaid/zoom/zoom.component';
     NbSelectModule,
     NbSpinnerModule,
     NbTabsetModule,
-    FormsModule,    
+    FormsModule,
+        
     
   ],
   declarations: [
