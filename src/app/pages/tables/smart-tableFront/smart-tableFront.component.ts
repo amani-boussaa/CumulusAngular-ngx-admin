@@ -3,6 +3,11 @@ import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { ThreadService } from '../../../Service/Thread.Service';
+import { NbTagComponent } from '@nebular/theme';
+import { ThreadEntity } from '../../../Entity/Thread';
+import { ThreadTagEntity } from '../../../Entity/ThreadTag';
+import { NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'ngx-smart-tableFront',
@@ -56,10 +61,11 @@ data :any ;
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData,private th:ThreadService) {
+  constructor(private service: SmartTableData,private th:ThreadService ,private router:Router) {
 
     this.th.getAllthreads().subscribe((data) => { 
       console.log(data);
+
       this.data = data; 
     
       
@@ -67,6 +73,18 @@ data :any ;
 
  
   }
+TagClick(t:ThreadTagEntity){
+
+  const navigationExtras: NavigationExtras= {
+    state: { threadTag: t}
+  };
+
+  this.router.navigate(['/pages/viewThreadTag'],navigationExtras);
+
+
+}
+
+
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {

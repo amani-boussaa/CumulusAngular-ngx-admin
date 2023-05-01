@@ -31,11 +31,15 @@ export class SmartTablebComponent {
         title: 'ID',
         type: 'number',
       },   
+      title: {
+        title: 'title',
+        type: 'string',
+      },   
       content: {
         title: 'content',
         type: 'string',
       },   
-         name: {
+         threadCreator: {
           title: 'Creator',
           type: 'string',}
       // },
