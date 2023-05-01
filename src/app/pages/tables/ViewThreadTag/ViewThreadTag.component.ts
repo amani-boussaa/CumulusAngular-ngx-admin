@@ -18,9 +18,10 @@ threadTag:any;
   constructor(private service: SmartTableData,private route: ActivatedRoute) {
     const data = this.service.getData();
     this.source.load(data);
+    console.log( this.route.snapshot.queryParamMap.get('data'));
   }
   ngOnInit(): void {
- console.log(  this.route.snapshot.state);
+   
   }
 
   onDeleteConfirm(event): void {

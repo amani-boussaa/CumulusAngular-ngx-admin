@@ -27,7 +27,7 @@ const routes: Routes = [{
       path: 'tree-grid',
       component: TreeGridComponent,
     },{
-      path: 'ViewThreadTag',
+      path: 'viewThreadTag',
       component:   ViewThreadTagComponent,
     }
 

@@ -15,6 +15,7 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./smart-tableFront.component.scss'],
 })
 export class SmartTableFrontComponent {
+  public tagid:any;
 data :any ;
   settings = {
     add: {
@@ -75,11 +76,9 @@ data :any ;
   }
 TagClick(t:ThreadTagEntity){
 
-  const navigationExtras: NavigationExtras= {
-    state: { threadTag: t}
-  };
+ 
 
-  this.router.navigate(['/pages/viewThreadTag'],navigationExtras);
+  this.router.navigate(['/pages/viewThreadTag'],{ queryParams: { data: JSON.stringify(t) } });
 
 
 }
