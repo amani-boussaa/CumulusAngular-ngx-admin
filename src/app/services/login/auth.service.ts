@@ -28,6 +28,7 @@ export class AuthService {
   }
 
   login(body: any) {
+    console.log("kkkkkk")
     return this.http.post(
       this.url2+"api/v1/auth/login",
       body

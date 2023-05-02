@@ -8,14 +8,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  {     title: 'Message',     icon: 'message-circle-outline',     link: '/pages/message',     home: true,   }, 
-    {     title: 'ChatBot',     icon: 'message-circle-outline',     link: '/pages/chatbot',     home: true,   },  
+  {     title: 'Message',     icon: 'message-circle-outline',     link: '/pages/message',     home: true,   },
+    {     title: 'ChatBot',     icon: 'message-circle-outline',     link: '/pages/chatbot',     home: true,   },
    {     title: 'Stats',     icon: 'message-circle-outline',     link: '/pages/stats',     home: true,   },
-  {
-    title: 'DashCourse',
-    icon: 'edit-2-outline',
-    link: '/pages/tables/smart-tablemalikc',
-  },{
+ {
     title: 'Users',
     icon: 'person',
     link: '/pages/tables/users',
@@ -43,13 +39,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
 
   },
-
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
+    title: 'DashCourse',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikc',
   },
- 
+
 
   {
     title: 'DashCertification',
@@ -71,8 +66,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     link: '/pages/tables/smart-tablemalikmail',
   },
-  
- 
+
+
   {
     title: 'FEATURES',
     group: true,
@@ -223,7 +218,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Tables & Data',
     icon: 'grid-outline',
     children: [
-   
+
       {
         title: 'Smart Table',
         link: '/pages/tables/smart-table',

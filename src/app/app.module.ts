@@ -50,7 +50,7 @@ import { AuthlayoutamaniModule } from './authlayoutamani/authlayoutamani.module'
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
     AuthlayoutamaniModule,
   ],
   bootstrap: [AppComponent],

@@ -21,7 +21,7 @@ export class ChatService {
    //   chatId = 1;
    // }
     console.log(chatId)
-    
+
     return this.httpClient.get<Chat>(this.baseUrl + "chats/GetChatById/" + chatId)
   }
 
@@ -53,7 +53,7 @@ export class ChatService {
    // if (!secondUserName) {
    //   secondUserName = 'bobjohnson';
    // }
-    
+
     return this.httpClient.get<Chat>(`${this.baseUrl}chats/getChatByFirstUserNameAndSecondUserName?firstUserName=${firstUserName}&secondUserName=${secondUserName}`)
   }
 
@@ -96,7 +96,7 @@ export class ChatService {
   }
 
 
-  
+
     getAverageMessages(): Observable<Badword[]> {
     return this.httpClient.get<Badword[]>(this.baseUrl + 'chats/average-messages');
   }
@@ -104,12 +104,12 @@ export class ChatService {
   getMostCommonKeywords(): Observable<{ [key: string]: number }> {
     return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}chats/keywords`);
   }
-  
 
 
 
-  
-  
+
+
+
 
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
@@ -14,10 +14,15 @@ export class UserService {
   private baseUrl = environment.urlBackend  ;
 
   constructor(private httpClient: HttpClient) { }
-
+  token: any = localStorage.getItem('accessToken')
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    })
+  };
   getAll() {
     //console.log('itsme')
-    return this.httpClient.get<User[]>(this.baseUrl + "user/retrieveAllUsers")
+    return this.httpClient.get<User[]>(this.baseUrl + "user/retrieveAllUsers",this.httpOptions)
   }
 
   adduser(user: User): Observable<Object> {
@@ -25,7 +30,7 @@ export class UserService {
   }
 
   getUserByUsername(username: any) {
-    return this.httpClient.get<User>(this.baseUrl + "user/getbyusername/" + username)
+    return this.httpClient.get<User>(this.baseUrl + "user/getbyusername/" + username,this.httpOptions)
   }
 
 }
