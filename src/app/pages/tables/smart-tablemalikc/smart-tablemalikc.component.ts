@@ -5,17 +5,32 @@ import { CourseService } from '../../../course.service';
 import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ngx-button-view',
   template: 
-   `<button (click)="openFileExplorer()">Upload course</button>
+   `<button (click)="openFileExplorer()" class="upload-btn">Upload course</button>
    <input type="file" #fileInput style="display:none" (change)="onFileSelected($event)">
    
    
    
    <style>
      /* Button styling */
+     .upload-btn {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 5px #2E8B57; /* Add 3D shadow effect */
+    }
      button {
        background-color: #4CAF50;
        border: none;
@@ -47,7 +62,7 @@ import { ToastrService } from 'ngx-toastr';
    </style>`
   ,
 }) class ButtonViewComponent implements ViewCell, OnInit {
-  private baseUrl = 'http://localhost:8081/CUMULUS/courses';
+ 
   renderValue="asdas";
   courseId: number;
   isUploaded = false;
@@ -68,7 +83,7 @@ import { ToastrService } from 'ngx-toastr';
     this.fileInput.nativeElement.click();
   } onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    const url = `${this.baseUrl}/${this.rowData.id}/file`;
+    const url = `${environment.urlBackend}${this.rowData.id}/file`;
 
     const formData = new FormData();
     formData.append('file', file);
@@ -110,7 +125,7 @@ export class SmartTablemalikcComponent implements OnInit , OnChanges {
   data: any;
 
   ngOnInit() {
-    this.http.get('http://localhost:8081/CUMULUS/courses/getAllCourses').subscribe((data) => {
+    this.http.get(`${environment.urlBackend}`+'api/courses/getAllCourses').subscribe((data) => {
       this.data = data;
 
       this.chart = new Chart('myChart', {
@@ -169,7 +184,6 @@ export class SmartTablemalikcComponent implements OnInit , OnChanges {
   public numOfCourses: number;
   courseId: number;
   file: File;
-  private baseUrl = 'http://localhost:8081/CUMULUS/courses';
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -334,7 +348,7 @@ export class SmartTablemalikcComponent implements OnInit , OnChanges {
   }
  
   uploadFile(id: number, file: File) {
-    const url = `${this.baseUrl}/${id}/file`;
+    const url = `${environment.urlBackend}${id}/file`;
 
     const formData = new FormData();
     formData.append('file', file);

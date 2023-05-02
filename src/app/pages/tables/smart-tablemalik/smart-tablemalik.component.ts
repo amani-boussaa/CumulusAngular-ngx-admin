@@ -2,22 +2,20 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { CertifService } from '../../../certif.service';
 import { Component , OnInit, Input, Output, EventEmitter, ViewChild, OnChanges} from '@angular/core';
 import { LocalDataSource ,ViewCell } from 'ng2-smart-table';
-
-import { CourseService } from '../../../course.service';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ngx-button-view',
   template: 
-   `<button (click)="openFileExplorer()">Upload certif</button>
+   `<button (click)="openFileExplorer()" class="upload-btn">Upload certif</button>
    <input type="file" #fileInput style="display:none" (change)="onFileSelected($event)">
-   
    
    <style>
      /* Button styling */
-     button {
+     .upload-btn {
        background-color: #4CAF50;
        border: none;
        color: white;
@@ -29,9 +27,10 @@ import { ToastrService } from 'ngx-toastr';
        margin: 4px 2px;
        cursor: pointer;
        border-radius: 4px;
+       box-shadow: 0 5px #2E8B57; /* Add 3D shadow effect */
      }
    
-     button:hover {
+     .upload-btn:hover {
        background-color: #2E8B57; /* Darker green */
      }
    
@@ -48,7 +47,6 @@ import { ToastrService } from 'ngx-toastr';
    </style>`
   ,
 }) class ButtonViewComponent implements ViewCell, OnInit {
-  private baseUrl = 'http://localhost:8081/CUMULUS/certifs';
   renderValue="asdas";
   certifId: number;
   isUploaded = false;
@@ -69,7 +67,7 @@ import { ToastrService } from 'ngx-toastr';
     this.fileInput.nativeElement.click();
   } onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    const url = `${this.baseUrl}/${this.rowData.id}/file`;
+    const url = `${environment.urlBackend}`+`${this.rowData.id}/file`;
 
     const formData = new FormData();
     formData.append('file', file);

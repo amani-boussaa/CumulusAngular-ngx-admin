@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Certif } from './certif';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,45 +10,43 @@ import { Certif } from './certif';
 export class CertifService {
   private certifService: CertifService;
   pdfUrl: string;
-  private baseUrl = 'http://localhost:8081/CUMULUS/certifs'; 
+
   certs: any[];
   constructor(private http: HttpClient) { }
 
   getCertifById(id: number): Observable<Certif> {
-    return this.http.get<Certif>(`${this.baseUrl}/${id}`);
+    return this.http.get<Certif>(`${environment.urlBackend}`+`${id}`);
   }
 
   getAllCertifs(): Observable<Certif[]> {
-    return this.http.get<Certif[]>(`${this.baseUrl}/getAllCertifs`);
+    return this.http.get<Certif[]>(`${environment.urlBackend}`+`api/certifs/getAllCertifs`);
   }
 
 
   createCertif(certif: any) {
-    return this.http.post<any>(`${this.baseUrl}/createCertif`, certif);
+    return this.http.post<any>(`${environment.urlBackend}`+`api/certifs/createCertif`, certif);
   }
 
   deleteCertif(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete/${id}`);
+    return this.http.delete(`${environment.urlBackend}`+`api/certifs/delete/${id}`);
   }
 
   updateCertif(id: number, certif: any) {
-    return this.http.put<any>(`${this.baseUrl}/updateCertif/${id}`, certif);
+    return this.http.put<any>(`${environment.urlBackend}`+`api/certifs/updateCertif/${id}`, certif);
   }
 
-  assignCertifToUser(numCertif: string, numUser: string) {
-    return this.http.post<any>(`${this.baseUrl}/assignCertifToUser`, { numCertif, numUser });
-  }
+
 
   uploadFile(id: number, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<any>(`${this.baseUrl}/${id}/file`, formData);
+    return this.http.post<any>(`${environment.urlBackend}`+`api/certifs/${id}/file`, formData);
   }
 
 
 
   getFile(id: number): Observable<Blob> {
-    const url = `${this.baseUrl}/getblobfile/${id}`;
+    const url = `${environment.urlBackend}`+`api/certifs/getblobfile/${id}`;
     // console.log(url)
     // return this.http.get<Blob>(url, { responseType: 'blob' });
     return this.http.get(url, { responseType: 'blob' });
@@ -66,7 +65,7 @@ export class CertifService {
     formData.append('body', body);
     formData.append('subject', subject);
     formData.append('attachment', attachment);
-    return this.http.post<any>('http://localhost:8081/CUMULUS/certifs/sendEmailWithAttachment', formData);
+    return this.http.post<any>(`${environment.urlBackend}`+'api/certifs/sendEmailWithAttachment', formData);
     
 }
 
