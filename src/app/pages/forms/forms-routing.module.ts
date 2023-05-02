@@ -8,6 +8,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormProfileAmaniComponent } from './form-profile-amani/form-profile-amani.component';
 import { FormDetailuserAmaniComponent } from './form-detailuser-amani/form-detailuser-amani.component';
+import { FormdetailcomplaintamaniComponent } from './formdetailcomplaintamani/formdetailcomplaintamani.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'detailuser/:id',
         component: FormDetailuserAmaniComponent,
+      },
+      {
+        path: 'detailcomplaint/:id',
+        component: FormdetailcomplaintamaniComponent,
       },
     ],
   },

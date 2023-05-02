@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from "@angular/router";
 import { UseramaniService } from "../amani/useramani.service";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -11,6 +12,7 @@ import { UseramaniService } from "../amani/useramani.service";
 export class AuthService {
   helper = new JwtHelperService();
   ACCESS_TOKEN = "accessToken";
+  private url2 = `${environment.urlBackend}` ;
 
   constructor(
     private http: HttpClient,
@@ -20,14 +22,14 @@ export class AuthService {
 
   register(body: any) {
     return this.http.post(
-      "http://localhost:8081/CUMULUS/api/v1/auth/register",
+      this.url2+'api/v1/auth/register',
       body
     );
   }
 
   login(body: any) {
     return this.http.post(
-      "http://localhost:8081/CUMULUS/api/v1/auth/login",
+      this.url2+"api/v1/auth/login",
       body
     );
   }
@@ -55,14 +57,14 @@ export class AuthService {
   }
   sendPasswordResetEmail(email: string) {
     return this.http.post(
-      "http://localhost:8081/CUMULUS/api/auth/forgot-password",
+      this.url2+"api/auth/forgot-password",
       email
     );
   }
 
   resetPassword(data) {
     return this.http.post(
-      "http://localhost:8081/CUMULUS/api/auth/reset-password",
+      this.url2+"api/auth/reset-password",
       data
     );
   }

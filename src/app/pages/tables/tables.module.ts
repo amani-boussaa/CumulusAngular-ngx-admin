@@ -8,6 +8,7 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { TableAmaniComponent } from './table-amani/table-amani.component';
 import { ShowDetailsButtonComponentComponent } from './show-details-button-component/show-details-button-component.component';
 import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanicomplaint.component';
+import { ShowdetailsbuttontcomplaintComponent } from './showdetailsbuttontcomplaint/showdetailsbuttontcomplaint.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanico
     TableAmaniComponent,
     ShowDetailsButtonComponentComponent,
     TableamanicomplaintComponent,
+    ShowdetailsbuttontcomplaintComponent,
   ],
 })
 export class TablesModule { }

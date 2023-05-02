@@ -6,8 +6,8 @@ import { Component } from "@angular/core";
   import { Observable } from "rxjs";
   import { toArray } from "rxjs/operators";
   import { Router } from "@angular/router";
-  import { ShowDetailsButtonComponentComponent } from "../show-details-button-component/show-details-button-component.component";
 import { ComplaintService } from "../../../services/amani/complaint.service";
+import { ShowdetailsbuttontcomplaintComponent } from "../showdetailsbuttontcomplaint/showdetailsbuttontcomplaint.component";
 
 @Component({
   selector: 'ngx-tableamanicomplaint',
@@ -55,13 +55,13 @@ export class TableamanicomplaintComponent  {
         title: "description",
         type: "number",
       },
-      // details: {
-      //   title: 'Details',
-      //   type: 'custom',
-      //   renderComponent: ShowDetailsButtonComponentComponent,
-      //   filter: false,
-      //   sort: false,
-      // },
+      details: {
+        title: 'Details',
+        type: 'custom',
+        renderComponent: ShowdetailsbuttontcomplaintComponent,
+        filter: false,
+        sort: false,
+      },
 
     },
   };

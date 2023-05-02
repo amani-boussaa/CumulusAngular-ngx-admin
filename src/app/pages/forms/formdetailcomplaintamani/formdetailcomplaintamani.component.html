@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Complaint</nb-card-header>
+      <nb-card-body>
+        <!-- <form (submit)="onSubmit(f)" #f="ngForm"> -->
+          <form  (ngSubmit)="onSubmit()">
+
+          <ng-container *ngIf="complaint">
+            <div
+              class="form-group"
+
+            >
+              <label for="exampleInputEmail1" class="label">
+                Description</label
+              >
+              <input
+                type="text"
+                nbInput
+                fullWidth
+                [(ngModel)]="complaint.description"
+                name="description"
+                required
+                disabled
+              />
+            </div>
+            <div
+            class="form-group"
+
+          >
+            <label for="exampleInputEmail1" class="label">
+              status</label
+            >
+            <div class="validation-checkboxes">
+              <nb-radio status="success" [checked]="complaint.status==='NEW'" [value]="'NEW'"  name="status" [(ngModel)]="complaint.status" ngDefaultControl>NEW</nb-radio>
+              <nb-radio status="warning" [checked]="complaint.status==='IN_PROGRESS'" [value]="'IN_PROGRESS'" name="status" [(ngModel)]="complaint.status" ngDefaultControl >IN PROGRESS</nb-radio>
+              <nb-radio status="danger" [checked]="complaint.status==='RESOLVED'" [value]="'RESOLVED'" name="status"  [(ngModel)]="complaint.status" ngDefaultControl >RESOLVED</nb-radio>
+            </div>
+
+          </div>
+          <div
+            class="form-group"
+
+          >
+            <label for="exampleInputEmail1" class="label">
+              user</label
+            >
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              [(ngModel)]="complaint.user.name"
+              name="user"
+              required
+              disabled
+            />
+          </div>
+          <div
+            class="form-group"
+
+          >
+            <label for="exampleInputEmail1" class="label">
+              category</label
+            >
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              [(ngModel)]="complaint.categorycomplaint"
+              name="categorycomplaint"
+              required
+              disabled
+            />
+          </div>
+          </ng-container>
+          <button type="submit" nbButton status="danger">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
