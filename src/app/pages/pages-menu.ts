@@ -1,6 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+
   {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
@@ -14,6 +15,39 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'DashCourse',
     icon: 'edit-2-outline',
     link: '/pages/tables/smart-tablemalikc',
+  },{
+    title: 'Users',
+    icon: 'person',
+    link: '/pages/tables/users',
+    children: [
+      {
+        title: 'List users',
+        link: '/pages/tables/users',
+      },
+      {
+        title: 'Make Complaint',
+        link: '/pages/layout/complaint',
+      },
+      {
+        title: 'Complaint List',
+        link: '/pages/tables/complaints',
+      },
+      {
+        title: 'Statistics',
+        link: '/pages/charts/chartamani',
+      },
+      {
+        title: 'video',
+        link: '/pages/layout/video',
+      }
+    ]
+
+  },
+
+  {
+    title: 'IoT Dashboard',
+    icon: 'home-outline',
+    link: '/pages/iot-dashboard',
   },
  
 
@@ -210,26 +244,26 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  {
-    title: 'Auth',
-    icon: 'lock-outline',
-    children: [
-      {
-        title: 'Login',
-        link: '/auth/login',
-      },
-      {
-        title: 'Register',
-        link: '/auth/register',
-      },
-      {
-        title: 'Request Password',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
-      },
-    ],
-  },
+  // {
+  //   title: 'Auth',
+  //   icon: 'lock-outline',
+  //   children: [
+  //     {
+  //       title: 'Login',
+  //       link: 'login',
+  //     },
+  //     {
+  //       title: 'Register',
+  //       link: 'register',
+  //     },
+  //     {
+  //       title: 'Request Password',
+  //       link: 'request-password',
+  //     },
+  //     {
+  //       title: 'Reset Password',
+  //       link: 'reset-password',
+  //     },
+  //   ],
+  // },
 ];

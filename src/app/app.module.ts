@@ -26,6 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 import { FormsModule } from '@angular/forms';
 
+import { AuthlayoutamaniComponent } from './authlayoutamani/authlayoutamani.component';
+import { AuthlayoutamaniModule } from './authlayoutamani/authlayoutamani.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     ThemeModule.forRoot(),
     ReactiveFormsModule,
     PdfViewerModule
+    AuthlayoutamaniModule,
   ],
   bootstrap: [AppComponent],
 })

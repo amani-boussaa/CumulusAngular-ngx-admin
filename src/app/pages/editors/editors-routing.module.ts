@@ -14,7 +14,8 @@ const routes: Routes = [{
   }, {
     path: 'ckeditor',
     component: CKEditorComponent,
-  }],
+  },
+   ],
 }];
 
 @NgModule({

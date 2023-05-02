@@ -9,6 +9,9 @@ import { SmartTablemalikcComponent } from './smart-tablemalikc/smart-tablemalikc
 import {SmartTablemalikuComponent} from './smart-tablemaliku/smart-tablemaliku.component';
 import {SmartTablemalikuiComponent} from './smart-tablemalikui/smart-tablemalikui.component';
 import {SmartTablemalikmailComponent} from './smart-tablemalikmail/smart-tablemalikmail.component';
+import { TableAmaniComponent } from './table-amani/table-amani.component';
+import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanicomplaint.component';
+
 const routes: Routes = [{
   path: '',
   component: TablesComponent,
@@ -41,6 +44,14 @@ const routes: Routes = [{
       path: 'tree-grid',
       component: TreeGridComponent,
     },
+    {
+      path: 'users',
+      component: TableAmaniComponent,
+    },
+    {
+      path: 'complaints',
+      component: TableamanicomplaintComponent,
+    }
   ],
 }];
 

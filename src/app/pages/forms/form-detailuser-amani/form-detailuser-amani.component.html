@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Profile</nb-card-header>
+      <nb-card-body>
+        <form (submit)="onSubmit()">
+          <ng-container *ngIf="entity">
+            <div
+              class="form-group"
+              *ngFor="let attribute of attributes"
+            >
+              <label for="exampleInputEmail1" class="label">
+                {{ attribute.label }}</label
+              >
+              <input
+                type="text"
+                nbInput
+                fullWidth
+                [(ngModel)]="entity[attribute.name]"
+                name="{{ attribute.name }}"
+                [required]="attribute.required"
+                [disabled]="attribute.disabled"
+              />
+            </div>
+          </ng-container>
+          <button type="submit" nbButton status="danger">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Image</nb-card-header>
+      <nb-card-body>
+        <form (submit)="onSubmit2()">
+            <div
+              class="form-group"
+            >
+              <label for="exampleInputEmail1" class="label">
+                Image</label
+              >
+              <input
+                type="file"
+                nbInput
+                fullWidth
+                name="file"
+                (change)="onFileSelected($event)"
+              />
+            </div>
+          <button type="submit" nbButton status="danger">Upload</button>
+        </form>
+        <div class="relative">
+          <img
+            alt="..."
+            [src]="imageData"
+            class="picture"
+          />
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+

@@ -1,0 +1,51 @@
+
+
+<div class="steppers-container row">
+  <div class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card>
+      <nb-card-body>
+        <nb-stepper #stepper>
+          <nb-step [stepControl]="firstForm" label="First step">
+            <form [formGroup]="firstForm"  class="step-container">
+              <p class="lorem">Category</p>
+              <div class="input-group">
+                <select id="category" [(ngModel)]="selectedCategory" class="form-control" formControlName="firstCtrl">
+                  <option [ngValue]="categoryComplaint.Technical">Technical</option>
+                  <option [ngValue]="categoryComplaint.Billing">Billing</option>
+                  <option [ngValue]="categoryComplaint.Instructor">Instructor</option>
+                  <option [ngValue]="categoryComplaint.Accessibility">Accessibility</option>
+                </select>
+                <!-- <input type="number" placeholder="Enter Category" class="form-control" formControlName="firstCtrl"
+                       [ngClass]="{'form-control-danger': firstForm.invalid && (firstForm.dirty || firstForm.touched)}"
+                       [(ngModel)]="complaint.categorycomplaint" name="categorycomplaint" > -->
+              </div>
+              <button (click)="onFirstSubmit()" nbButton nbStepperNext>next</button>
+            </form>
+          </nb-step>
+
+          <nb-step [stepControl]="thirdForm" label="Third step">
+            <form [formGroup]="thirdForm" (ngSubmit)="onThirdSubmit()" class="step-container">
+              <p class="lorem">Description</p>
+              <div class="input-group">
+                <input type="text" placeholder="Enter Description" class="form-control" formControlName="thirdCtrl"
+                       [ngClass]="{'form-control-danger': thirdForm.invalid && (thirdForm.dirty || thirdForm.touched)}">
+              </div>
+              <button nbButton nbStepperPrevious>prev</button>
+              <button (click)="onThirdSubmit()" nbButton nbStepperNext>Confirm</button>
+            </form>
+          </nb-step>
+          <nb-step [stepControl]="thirdForm" [hidden]="true" label="Third step">
+            <div class="step-container">
+              <h3>Complaint completed!</h3>
+              <button nbButton (click)="stepper.reset()">Make another complaint</button>
+            </div>
+          </nb-step>
+        </nb-stepper>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+
+
+

@@ -32,6 +32,7 @@ import { ZoomComponent } from './oubaid/zoom/zoom.component';
 
 
 
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
