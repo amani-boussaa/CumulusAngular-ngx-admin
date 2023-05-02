@@ -9,5 +9,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
+    production: false,
+    secret:'amani',
+    client:'123456789',
+    urlBackend:'http://localhost:8081/CUMULUS/'
+
+  
 };

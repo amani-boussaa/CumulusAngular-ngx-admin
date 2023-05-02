@@ -81,7 +81,7 @@
           </div>
           <div class="card-body msg_card_body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 
-            <div *ngFor="let msg of messageList">
+            <div *ngFor="let msg of messageList"> 
 
               <div class="d-flex justify-content-end mb-4" *ngIf="msg.firstUserName===senderCheck">
                 <div class="msg_cotainer_send">

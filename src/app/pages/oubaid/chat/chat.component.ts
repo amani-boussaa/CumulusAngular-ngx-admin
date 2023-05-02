@@ -34,7 +34,7 @@ export class ChatComponent implements OnInit {
   timesRun2 = 0;
 
   firstUserName = sessionStorage.getItem('username');
-  senderEmail =sessionStorage.getItem('email');
+  senderEmail = sessionStorage.getItem('email');
   senderCheck = sessionStorage.getItem('username');
   emojis: string[] = ["😀", "😂", "😍", "👍", "👎"];
 
@@ -151,6 +151,7 @@ export class ChatComponent implements OnInit {
         const messageObj = new Message();
         messageObj.chatId = this.chatId;
         messageObj.senderCheck = this.senderCheck;
+        //console.log('this is the sendercheck',this.senderCheck)
         messageObj.message = message;
         messageObj.senderEmail = this.senderEmail;
         messageObj.replymessage = message;

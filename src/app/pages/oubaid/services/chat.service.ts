@@ -4,13 +4,15 @@ import { Observable, throwError } from 'rxjs';
 import { Chat } from '../models/chat';
 import { Message } from '../models/message';
 import { Badword } from '../models/badword';
+import { environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private baseUrl = 'http://localhost:8081/CUMULUS/chats';
+  private baseUrl = environment.urlBackend ;
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,7 +22,7 @@ export class ChatService {
    // }
     console.log(chatId)
     
-    return this.httpClient.get<Chat>(this.baseUrl + "/GetChatById/" + chatId)
+    return this.httpClient.get<Chat>(this.baseUrl + "chats/GetChatById/" + chatId)
   }
 
 /*  getChatById(chatId: any): Observable<any> {
@@ -36,7 +38,7 @@ export class ChatService {
    // if (!chatId) {
       //chatId = 1;
    // }
-    return this.httpClient.put(this.baseUrl + "/message/" + `${chatId}`, message);
+    return this.httpClient.put(this.baseUrl + "chats/message/" + `${chatId}`, message);
   }
 
 
@@ -52,7 +54,7 @@ export class ChatService {
    //   secondUserName = 'bobjohnson';
    // }
     
-    return this.httpClient.get<Chat>(`${this.baseUrl}/getChatByFirstUserNameAndSecondUserName?firstUserName=${firstUserName}&secondUserName=${secondUserName}`)
+    return this.httpClient.get<Chat>(`${this.baseUrl}chats/getChatByFirstUserNameAndSecondUserName?firstUserName=${firstUserName}&secondUserName=${secondUserName}`)
   }
 
   /*getChatByFirstUserNameOrSecondUserName(userName: any): Observable<any> {
@@ -63,7 +65,7 @@ export class ChatService {
   //  if (!userName) {
    //   userName = 'alicesmith';
    // }
-    return this.httpClient.get(`${this.baseUrl}/GetChatByFirstUserNameOrSecondUserName/${userName}`);
+    return this.httpClient.get(`${this.baseUrl}chats/GetChatByFirstUserNameOrSecondUserName/${userName}`);
   }
 
  /* createChatRoom(chat: Chat): Observable<any> {
@@ -71,7 +73,7 @@ export class ChatService {
   }*/
 
   createChatRoom(chat: Chat): Observable<Object> {
-    return this.httpClient.post(this.baseUrl + "/addChat", chat);
+    return this.httpClient.post(this.baseUrl + "chats/addChat", chat);
   }
 
 
@@ -82,7 +84,7 @@ export class ChatService {
 
 
   getBadWords(): Observable<Badword[]> {
-    return this.httpClient.get<Badword[]>(this.baseUrl + '/GetAllBadWords');
+    return this.httpClient.get<Badword[]>(this.baseUrl + 'chats/GetAllBadWords');
   }
 
   checkMessage(message: Message): Observable<any> {
@@ -90,17 +92,17 @@ export class ChatService {
       return throwError('Message is null or empty');
     }
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post(this.baseUrl + '/checkMessage', message);
+    return this.httpClient.post(this.baseUrl + 'chats/checkMessage', message);
   }
 
 
   
     getAverageMessages(): Observable<Badword[]> {
-    return this.httpClient.get<Badword[]>(this.baseUrl + '/average-messages');
+    return this.httpClient.get<Badword[]>(this.baseUrl + 'chats/average-messages');
   }
 
   getMostCommonKeywords(): Observable<{ [key: string]: number }> {
-    return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}/keywords`);
+    return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}chats/keywords`);
   }
   
 
