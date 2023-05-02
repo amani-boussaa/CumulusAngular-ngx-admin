@@ -1,0 +1,81 @@
+<form class="email-form" (submit)="sendEmail()">
+  <div class="form-group">
+    <label for="toEmail">To:</label>
+    <input type="email" id="toEmail" name="toEmail" [(ngModel)]="toEmail" required>
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" [(ngModel)]="subject" required>
+  </div>
+  <div class="form-group">
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" [(ngModel)]="body" required></textarea>
+  </div>
+  
+  <button class="btn btn-primary btn-3d" type="submit">Send Certification</button>
+</form>
+
+<style>
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  textarea {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #f2f2f2;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  input[type="file"] {
+    padding: 0.5rem;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .btn-3d {
+    box-shadow: 0px 4px 0px #0069d9;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .btn-3d:hover {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px #0069d9;
+  }
+</style>

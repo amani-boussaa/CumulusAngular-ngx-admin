@@ -1,0 +1,74 @@
+<div class="card-container">
+<nb-card class="my-card one">
+  <nb-card-header>
+    Number of available courses 
+  </nb-card-header>
+  <nb-card-body>
+    {{ numOfCourses }}
+  </nb-card-body>
+</nb-card>
+<nb-card class="my-card two">
+
+  <nb-card-body >
+   
+      <canvas id="myChart" width="350" height="310" ></canvas>
+    
+  </nb-card-body>
+</nb-card>
+</div>
+
+
+
+<div class="container">
+<nb-card>
+  <nb-card-header>
+    Course
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="onAddConfirm($event)"  (editConfirm)="onEditConfirm($event)"  (userRowSelect)="onCourseSelect($event)">
+    </ng2-smart-table>
+   
+    
+  </nb-card-body>
+</nb-card>
+</div>
+
+
+
+<style>
+  .card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.one {
+  width: 28%;
+  height: 150px; /* Change the height to your desired value */
+}
+.two {
+  width: 68%;
+  height: 350px;
+}
+.my-card {
+  
+  
+  background-color: #f3ffff; /* Change the background color to your desired value */
+  border-radius: 10px; /* Add border radius to make it look cooler */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow to make it look like a card */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-card nb-card-header {
+  font-size: 18px; /* Change the font size to your desired value */
+  font-weight: bold; /* Change the font weight to your desired value */
+}
+
+.my-card nb-card-body {
+  font-size: 40px; /* Change the font size to your desired value */
+  color: #007bff; /* Change the font color to your desired value */
+}
+</style>

@@ -46,6 +46,8 @@ import { FormsModule } from '@angular/forms';
     NbIconModule,
     NbButtonModule,
     NgxEchartsModule,
+  
+    
   ],
   declarations: [
     DashboardComponent,
@@ -64,6 +66,8 @@ import { FormsModule } from '@angular/forms';
     SolarComponent,
     TrafficComponent,
     TrafficChartComponent,
+    
+    
   ],
 })
 export class DashboardModule { }

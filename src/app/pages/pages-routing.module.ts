@@ -21,6 +21,7 @@ const routes: Routes = [{
       path: 'message',
       component: ChatComponent,
     },
+   
     {
       path: 'meeting',
       component: ZoomComponent,
