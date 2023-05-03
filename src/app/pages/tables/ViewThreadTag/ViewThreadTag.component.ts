@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { ThreadTagEntity } from '../../../Entity/ThreadTag';
-import { ThreadEntity } from '../../../Entity/Thread';
+import { Thread } from '../../../Entity/Thread';
 import { SharedDataService } from '../../../Service/SharedDataService ';
 
 @Component({
@@ -44,7 +44,7 @@ data:any;
     this.router.navigate(['/pages/viewThreadTag'],{ queryParams: { data: JSON.stringify(t) } });
   
   
-  }ReadMore(d:ThreadEntity){
+  }ReadMore(d:Thread){
     this.sharedDataService.setThreadData(d);
     this.router.navigate(['/pages/viewThreadDetail']);
   

@@ -19,13 +19,22 @@
     </nb-card-body>
     <nb-card-footer>By {{ data.threadCreator.nom }}</nb-card-footer>
   </nb-card>
-  <nb-list>
-    <nb-list-item *ngFor="let comment of data.comments">
-      <nb-user
-        size="medium"
-        [name]="dasdas"
-      >
-      </nb-user>
-      <div class="comment-content">{{ comment.content }}</div>
-    </nb-list-item>
-  </nb-list>
+  <ng-container *ngFor="let comment of data.comments">
+    <div class="comment">
+      <div class="comment-header">
+        <div class="comment-user">
+          <nb-user [name]="comment.authorName" [picture]="comment.authorImage"></nb-user>
+        </div>
+        <div class="comment-date">
+          {{ comment.date | date: 'dd/MM/yyyy hh:mm a'}}
+        </div>
+      </div>
+      <div class="comment-content">
+        {{ comment.content }}
+      </div>
+    </div>
+  </ng-container>
+  <div class="comment-container">
+    <textarea rows="5"  [(ngModel)]="input" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
+  <button nbButton (click)="Post(input)" status="primary">Post</button>
+</div>

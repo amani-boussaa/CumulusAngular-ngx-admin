@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { ThreadTagEntity } from '../../../Entity/ThreadTag';
-import { ThreadEntity } from '../../../Entity/Thread';
+import { Thread } from '../../../Entity/Thread';
 import { SharedDataService } from '../../../Service/SharedDataService ';
 import { NbToastrService } from '@nebular/theme';
 

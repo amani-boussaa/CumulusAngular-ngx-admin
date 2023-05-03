@@ -5,8 +5,9 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { ThreadTagEntity } from '../../../Entity/ThreadTag';
-import { ThreadEntity } from '../../../Entity/Thread';
+import { Thread } from '../../../Entity/Thread';
 import { SharedDataService } from '../../../Service/SharedDataService ';
+import { Comment } from '../../../Entity/Comment';
 
 
 
@@ -27,7 +28,9 @@ import { SharedDataService } from '../../../Service/SharedDataService ';
 export class ViewThreadDetailComponent  {
 name:any;
 data:any;
-
+input:string;
+ comment = new Comment();
+ thread = new Thread();
 
   source: LocalDataSource = new LocalDataSource();
 
@@ -41,7 +44,15 @@ console.log((sharedDataService.getThreadData()));
    
   }
 
+Post(input:string){
+ this.comment.content=input;
+this.thread.id=this.data.id;
+ this.comment.setCommentedThread(this.thread);
 
+  console.log(this.comment);
+this.th.postComment(this.data.id,this.comment)
+  
+}
  
 
 }

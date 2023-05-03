@@ -2,7 +2,7 @@
 import { Comment } from "./Comment"
 import { User } from "./User"
 
-export class ThreadEntity{
+export class Thread{
 
 id:number
 title:string

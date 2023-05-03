@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ThreadEntity } from '../Entity/Thread';
+import { Thread } from '../Entity/Thread';
+import { Comment } from '../Entity/Comment';
+import { SlideOutComponent } from '../pages/e-commerce/slide-out/slide-out.component';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,7 @@ export class ThreadService {
   getAllthreads(){
 
 
-    return this.http.get<ThreadEntity[]>(`http://localhost:8081/CUMULUS/api/thread/getAllThreads`);
+    return this.http.get<Thread[]>(`http://localhost:8081/CUMULUS/api/thread/getAllThreads`);
 
     // axios.get('http://localhost:8081/CUMULUS/api/thread/getAllThreads')
     // .then(response => {
@@ -43,9 +45,18 @@ export class ThreadService {
   }
   
   getThreadByName(name: string){
-    return this.http.get<ThreadEntity[]>(`http://localhost:8081/CUMULUS/api/threadtag/getThreadByName/${name}`);
+    return this.http.get<Thread[]>(`http://localhost:8081/CUMULUS/api/threadtag/getThreadByName/${name}`);
   }
   getThreadByUser(userId: number){
     return this.http.get(`${this.baseUrl}/user/${userId}`);
+  }
+  postComment(threadid: number,comment:Comment){
+    console.log("postclicked Service");
+    console.log(comment);
+    
+    return this.http.post(`http://localhost:8081/CUMULUS/api/thread/addComment/${threadid}`,comment)  .subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
   }
 }

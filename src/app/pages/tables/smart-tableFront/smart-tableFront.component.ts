@@ -4,7 +4,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { NbTagComponent } from '@nebular/theme';
-import { ThreadEntity } from '../../../Entity/Thread';
+import { Thread } from '../../../Entity/Thread';
 import { ThreadTagEntity } from '../../../Entity/ThreadTag';
 import { NavigationExtras, Router } from '@angular/router';
 import { SharedDataService } from '../../../Service/SharedDataService ';
@@ -83,7 +83,7 @@ TagClick(t:ThreadTagEntity){
 
 
 }
-ReadMore(d:ThreadEntity){
+ReadMore(d:Thread){
   this.sharedDataService.setThreadData(d);
   this.router.navigate(['/pages/viewThreadDetail']);
 
