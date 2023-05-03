@@ -21,7 +21,7 @@ export class UserService {
     })
   };
   getAll() {
-    //console.log('itsme')
+    console.log('itsme')
     return this.httpClient.get<User[]>(this.baseUrl + "user/retrieveAllUsers",this.httpOptions)
   }
 

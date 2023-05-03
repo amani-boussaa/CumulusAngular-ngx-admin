@@ -5,6 +5,7 @@ import { Chat } from '../models/chat';
 import { Message } from '../models/message';
 import { ChatService } from '../services/chat.service';
 import { UserService } from '../services/user.service';
+import { UseramaniService } from '../../../services/amani/useramani.service';
 
 @Component({
   selector: 'ngx-chat',
@@ -12,7 +13,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  
+
   chatForm: FormGroup;
   chatObj: Chat = new Chat();
   messageObj: Message = new Message();
@@ -24,7 +25,8 @@ export class ChatComponent implements OnInit {
   msg = "Good work";
   chatId: any = sessionStorage.getItem('chatId');
   color = "";
-  alluser: any[] = [];
+  // alluser: any[] = [];
+  alluser:any;
   filteredUsers: any[] = [];
   secondUserName = "";
   errorMessage: string = '';
@@ -39,22 +41,22 @@ export class ChatComponent implements OnInit {
   emojis: string[] = ["😀", "😂", "😍", "👍", "👎"];
 
 
-  constructor(private chatService: ChatService, private router: Router, private userService: UserService, private cdr: ChangeDetectorRef) {
+  constructor(private us: UseramaniService ,private chatService: ChatService, private router: Router, private userService: UserService, private cdr: ChangeDetectorRef) {
     this.chatForm = new FormGroup({
       replymessage: new FormControl()
     });
 
   }
-  
+
 
   ngOnInit(): void {
-    sessionStorage.setItem('id', '1');
-    sessionStorage.setItem('username', 'alicesmith');
-    sessionStorage.setItem('email', 'alice@example.com');
+    // sessionStorage.setItem('id', '1');
+    // sessionStorage.setItem('username', 'alicesmith');
+    // sessionStorage.setItem('email', 'alice@example.com');
 
     this.chatService.getChatByFirstUserNameOrSecondUserName(this.firstUserName).subscribe(data => {
       this.chatList = data;
-  
+
       // Sort the chats by last message sent
       this.chatList.sort((a, b) => {
         const aLastMessage = a.messageList[a.messageList.length - 1];
@@ -72,7 +74,7 @@ export class ChatComponent implements OnInit {
       });
     },
      1000);
-     
+
 
       let getByname = setInterval(() => {
         // For getting all the chat list whose ever is logged in.
@@ -89,7 +91,7 @@ export class ChatComponent implements OnInit {
     }, 1000);
 
       let all = setInterval(() => {
-       this.userService.getAll().subscribe((data) => {
+       this.us.getAllusers().subscribe((data) => {
           //  console.log(data);
           this.alluser = data;
           this.filteredUsers = this.alluser.filter(user => user.username !== this.check);
@@ -139,7 +141,7 @@ export class ChatComponent implements OnInit {
   }
   sendMessage() {
     const message = this.chatForm.value.replymessage;
-    
+    console.log("messagelllll"+message);
     // Retrieve list of bad words from backend
     this.chatService.getBadWords().subscribe((badWords) => {
       if (this.checkForBadWords(message, badWords)) {
@@ -158,22 +160,22 @@ export class ChatComponent implements OnInit {
         this.chatService.updateChat(messageObj, this.chatId).subscribe((data) => {
           console.log(data);
           this.chatForm.reset();
-  
+
           // for displaying the messageList by the chatId
           this.chatService.getChatById(this.chatId).subscribe((data) => {
-            this.chatData = data;   
+            this.chatData = data;
             this.secondUserName = this.chatData.secondUserName;
             this.firstUserName = this.chatData.firstUserName;
-  
+
             // sort the message list by timestamp in ascending order
             this.messageList = this.chatData.messageList.sort((a, b) => a.timestamp - b.timestamp);
           });
-  
+
         });
       }
     });
   }
-  
+
   // Helper function to check if message contains any bad words
   checkForBadWords(message: string, badWords: any[]): boolean {
     for (let i = 0; i < badWords.length; i++) {
@@ -183,21 +185,21 @@ export class ChatComponent implements OnInit {
     }
     return false;
   }
-  
-  
+
+
 
   handleAttachment(event: any) {
     const file = event.target.files[0];
     // do something with the file, such as upload it to a server or display its preview
   }
-  
-  
-  
+
+
+
 
   routeHome() {
     this.router.navigateByUrl('');
   }
-  
+
 
 //remove johndoe after setting up the amani part (user modul)
   goToChat(username: any) {

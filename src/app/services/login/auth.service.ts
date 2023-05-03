@@ -71,6 +71,7 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem(this.ACCESS_TOKEN);
+    sessionStorage.clear();
     this.router.navigate(["/auth/login"]);
   }
   getLoggedInID() {
@@ -82,6 +83,14 @@ export class AuthService {
     } else {
       return null;
     }
+
+  }
+  saveUserData(data:any){
+    console.log(data)
+    sessionStorage.setItem("id",data.id );
+    sessionStorage.setItem("username",data.username );
+    sessionStorage.setItem("email",data.email );
+
   }
   // getLoggedUser(id:any){
   //   if (user_id != null) {

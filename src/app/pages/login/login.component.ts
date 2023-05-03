@@ -21,6 +21,7 @@ export class LoginComponent  {
       data => {
         this.datatoken=data;
         this.aus.saveToken(this.datatoken.accessToken);
+        this.aus.saveUserData(this.datatoken.user);
         this.route.navigate(['/pages/dashboard']);
         Swal.fire({
           title: 'Success',
