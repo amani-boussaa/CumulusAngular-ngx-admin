@@ -1,4 +1,4 @@
-export class ThreadEntity{
+export class User{
 
      id:Number;
      name:String;

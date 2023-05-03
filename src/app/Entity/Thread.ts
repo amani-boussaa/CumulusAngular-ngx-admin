@@ -1,9 +1,12 @@
-import { User } from "../@core/data/users"
+
+import { Comment } from "./Comment"
+import { User } from "./User"
 
 export class ThreadEntity{
 
 id:number
 title:string
 contents:string
-threadCreator:User['name']
+threadCreator:User
+comments:Comment
 }

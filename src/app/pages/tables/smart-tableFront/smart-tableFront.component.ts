@@ -7,6 +7,7 @@ import { NbTagComponent } from '@nebular/theme';
 import { ThreadEntity } from '../../../Entity/Thread';
 import { ThreadTagEntity } from '../../../Entity/ThreadTag';
 import { NavigationExtras, Router } from '@angular/router';
+import { SharedDataService } from '../../../Service/SharedDataService ';
 
 
 @Component({
@@ -62,7 +63,7 @@ data :any ;
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData,private th:ThreadService ,private router:Router) {
+  constructor(private service: SmartTableData,private th:ThreadService ,private router:Router,private sharedDataService: SharedDataService) {
 
     this.th.getAllthreads().subscribe((data) => { 
       console.log(data);
@@ -82,7 +83,12 @@ TagClick(t:ThreadTagEntity){
 
 
 }
+ReadMore(d:ThreadEntity){
+  this.sharedDataService.setThreadData(d);
+  this.router.navigate(['/pages/viewThreadDetail']);
 
+
+}
 
 
   onDeleteConfirm(event): void {

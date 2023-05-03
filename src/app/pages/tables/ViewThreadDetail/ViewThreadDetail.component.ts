@@ -8,12 +8,23 @@ import { ThreadTagEntity } from '../../../Entity/ThreadTag';
 import { ThreadEntity } from '../../../Entity/Thread';
 import { SharedDataService } from '../../../Service/SharedDataService ';
 
+
+
+
+
+
+
+
+
+
+
+
 @Component({
-  selector: 'ngx-ViewThreadTag',
-  templateUrl: './ViewThreadTag.component.html',
-  styleUrls: ['./ViewThreadTag.component.scss'],
+  selector: 'ngx-ViewThreadDetail',
+  templateUrl: './ViewThreadDetail.component.html',
+  styleUrls: ['./ViewThreadDetail.component.scss'],
 })
-export class ViewThreadTagComponent  {
+export class ViewThreadDetailComponent  {
 name:any;
 data:any;
 
@@ -21,34 +32,16 @@ data:any;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableData,private route: ActivatedRoute,private th:ThreadService,private router:Router,private sharedDataService: SharedDataService) {
+    this.data=sharedDataService.getThreadData();
 
-    this.name=JSON.parse(this.route.snapshot.queryParamMap.get('data'))
-    this.th.getThreadByName(this.name.name).subscribe((data) => { 
-      this.data=data;
-      console.log(data);
-
-      
-    
-      
-    });
+console.log((sharedDataService.getThreadData()));
   }
   ngOnInit(): void {
+    
    
   }
 
 
-  TagClick(t:ThreadTagEntity){
-
  
-
-    this.router.navigate(['/pages/viewThreadTag'],{ queryParams: { data: JSON.stringify(t) } });
-  
-  
-  }ReadMore(d:ThreadEntity){
-    this.sharedDataService.setThreadData(d);
-    this.router.navigate(['/pages/viewThreadDetail']);
-  
-  
-  }
 
 }

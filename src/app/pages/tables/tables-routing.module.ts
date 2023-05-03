@@ -7,6 +7,7 @@ import { TreeGridComponent } from './tree-grid/tree-grid.component';
 import { SmartTablebComponent } from './smart-tableb/smart-tableb.component';
 import { SmartTableFrontComponent } from './smart-tableFront/smart-tableFront.component';
 import { ViewThreadTagComponent } from './ViewThreadTag/ViewThreadTag.component';
+import { ViewThreadDetailComponent } from './ViewThreadDetail/ViewThreadDetail.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,9 +30,9 @@ const routes: Routes = [{
     },{
       path: 'viewThreadTag',
       component:   ViewThreadTagComponent,
-    }
+    },{path:'viewThreadDetail',component:ViewThreadDetailComponent}
 
-  
+    
   ],
 }];
 
@@ -47,5 +48,6 @@ export const routedComponents = [
   TreeGridComponent,
   SmartTablebComponent,
   SmartTableFrontComponent,
-  ViewThreadTagComponent
+  ViewThreadTagComponent,ViewThreadDetailComponent,
+
 ];

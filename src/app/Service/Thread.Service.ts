@@ -41,7 +41,10 @@ export class ThreadService {
     // return {};
    
   }
-
+  
+  getThreadByName(name: string){
+    return this.http.get<ThreadEntity[]>(`http://localhost:8081/CUMULUS/api/threadtag/getThreadByName/${name}`);
+  }
   getThreadByUser(userId: number){
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }

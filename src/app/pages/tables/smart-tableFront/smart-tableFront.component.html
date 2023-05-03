@@ -1,7 +1,15 @@
 <div *ngFor="let d of data">
   <nb-card>
     <nb-card-header
-      ><h3>{{ d.title }}</h3>
+      >
+      <div style="text-align: right;">
+        <nb-tag
+       
+        status="success" appearance="filled" 
+        text='Read More'
+        (click)="ReadMore(d)"></nb-tag
+      >
+    </div><h3>{{ d.title }}</h3>
       <nb-tag-list>
         <nb-tag
           *ngFor="let t of d.threadTags"

@@ -1,0 +1,31 @@
+
+  <nb-card>
+    <nb-card-header
+      >
+      <h3>{{ data.title }}</h3>
+      <nb-tag-list>
+        <nb-tag
+          *ngFor="let t of data.threadTags"
+          status="info" appearance="outline" 
+          text='{{ t.name }}'
+          (click)="TagClick(t)"></nb-tag
+        >
+      </nb-tag-list>
+    </nb-card-header>
+    <nb-card-body>
+      A nebula is an interstellar cloud of dust, hydrogen, helium and other
+      ionized gases. Originally, nebula was a name for any diffuse astronomical
+      object, including galaxies beyond the Milky Way. {{ data.content }}
+    </nb-card-body>
+    <nb-card-footer>By {{ data.threadCreator.nom }}</nb-card-footer>
+  </nb-card>
+  <nb-list>
+    <nb-list-item *ngFor="let comment of data.comments">
+      <nb-user
+        size="medium"
+        [name]="dasdas"
+      >
+      </nb-user>
+      <div class="comment-content">{{ comment.content }}</div>
+    </nb-list-item>
+  </nb-list>
