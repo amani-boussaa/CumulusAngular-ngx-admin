@@ -38,7 +38,7 @@ export class ChatComponent implements OnInit {
   firstUserName = sessionStorage.getItem('username');
   senderEmail = sessionStorage.getItem('email');
   senderCheck = sessionStorage.getItem('username');
-  emojis: string[] = ["😀", "😂", "😍", "👍", "👎"];
+  emojis: any[] = ["😀", "😂", "😍", "👍", "👎"];
 
 
   constructor(private us: UseramaniService ,private chatService: ChatService, private router: Router, private userService: UserService, private cdr: ChangeDetectorRef) {
@@ -92,7 +92,7 @@ export class ChatComponent implements OnInit {
 
       let all = setInterval(() => {
        this.us.getAllusers().subscribe((data) => {
-          //  console.log(data);
+            console.log(data);
           this.alluser = data;
           this.filteredUsers = this.alluser.filter(user => user.username !== this.check);
        })
