@@ -28,7 +28,6 @@ export class AuthService {
   }
 
   login(body: any) {
-    console.log("kkkkkk")
     return this.http.post(
       this.url2+"api/v1/auth/login",
       body
@@ -36,6 +35,8 @@ export class AuthService {
   }
 
   saveToken(token: any) {
+    localStorage.removeItem(this.ACCESS_TOKEN);
+    sessionStorage.clear();
     localStorage.setItem(this.ACCESS_TOKEN, token);
   }
 
@@ -86,7 +87,8 @@ export class AuthService {
 
   }
   saveUserData(data:any){
-    console.log(data)
+    localStorage.removeItem(this.ACCESS_TOKEN);
+    sessionStorage.clear();
     sessionStorage.setItem("id",data.id );
     sessionStorage.setItem("username",data.username );
     sessionStorage.setItem("email",data.email );
