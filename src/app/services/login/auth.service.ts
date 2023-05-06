@@ -87,7 +87,6 @@ export class AuthService {
 
   }
   saveUserData(data:any){
-    localStorage.removeItem(this.ACCESS_TOKEN);
     sessionStorage.clear();
     sessionStorage.setItem("id",data.id );
     sessionStorage.setItem("username",data.username );
