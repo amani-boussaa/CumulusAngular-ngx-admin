@@ -8,6 +8,16 @@ export class Thread {
   private threadCreator: User;
   private comments: Comment;
 
+
+  constructor(id?: number, title?: string, content?: string, threadCreator?: User) {
+    this.id = id;
+    this.title = title;
+    this.content = content;
+    this.threadCreator = threadCreator;
+
+  }
+  
+
   getid(): number {
     return this.id;
   }

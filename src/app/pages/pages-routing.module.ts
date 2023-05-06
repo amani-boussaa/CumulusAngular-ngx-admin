@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ViewThreadTagComponent } from './tables/ViewThreadTag/ViewThreadTag.component';
 import { ViewThreadDetailComponent } from './tables/ViewThreadDetail/ViewThreadDetail.component';
+import { CreateThreadComponent } from './tables/CreateThread/createThread.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,7 +21,7 @@ const routes: Routes = [{
       path: 'iot-dashboard',
       component: DashboardComponent,
     },
-    
+
     {path:'viewThreadTag',component:ViewThreadTagComponent},
     {path:'viewThreadDetail',component:ViewThreadDetailComponent},
     {

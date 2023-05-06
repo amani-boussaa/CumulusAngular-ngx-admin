@@ -14,7 +14,9 @@ export class ThreadService {
   constructor(private http: HttpClient) { }
 
   createThread(thread: any){
-    return this.http.post(`${this.baseUrl}`, thread);
+    console.log("CREATE THREAD METHODE");
+    console.log(thread);
+    return this.http.post<Thread>(`http://localhost:8081/CUMULUS/api/thread/createThread`, thread);
   }
   createThreadWithTags(thread: any,tags:string){
     console.log(thread);
@@ -52,7 +54,7 @@ export class ThreadService {
     return this.http.get<Thread[]>(`http://localhost:8081/CUMULUS/api/threadtag/getThreadByName/${name}`);
   }
   getThreadByUser(userId: number){
-    return this.http.get(`${this.baseUrl}/user/${userId}`);
+    return this.http.get(`http://localhost:8081/CUMULUS/api/thread/getThreadByUser/${userId}`);
   }
   postComment(threadid: number,comment:Comment){
     console.log("postclicked Service");

@@ -88,7 +88,7 @@ export class SmartTablebComponent {
   onCreate(event): void {
 
  
-    
+    this.createThread.setid(null)
     this.createThread.settitle(event.newData.title)
    this.createThread.setcontent(event.newData.content)
    this.createThread.setthreadCreator(new User(event.newData.threadCreator));
@@ -104,12 +104,12 @@ export class SmartTablebComponent {
 }else{
 this.th.createThreadWithTags(this.createThread,this.createTags).subscribe((data) => {
      
-  console.log(data);
+  console.log(data); 
   
   
 });;
 
-console.log("sent");
+
 
 
 
@@ -122,7 +122,30 @@ console.log("sent");
     }
 
     onUpdate(event): void {
-      console.log("Edit Butoon clicked");
+    
+      this.createThread.setid(event.newData.id)
+      this.createThread.settitle(event.newData.title)
+      this.createThread.setcontent(event.newData.content)
+      this.createThread.setthreadCreator(new User(event.newData.threadCreator));
+     this.createTags = this.removeLastSpaces(event.newData.threadTags);
+   
+     
+     if (!this.createThread.gettitle() || !this.createThread.getcontent() || !this.createThread.getthreadCreator() || !this.createTags) {
+       this.toastrService.danger('Verify Fields ' ,"Empty", { icon: 'alert-triangle-outline', preventDuplicates: true, limit: 3 });
+       
+     }else if (isNaN(Number( this.createThread.getthreadCreator().id))) {
+       this.toastrService.danger('Id creator must be a number ' ,"ID", { icon: 'alert-triangle-outline', preventDuplicates: true, limit: 3 });
+     
+   }else{
+   this.th.createThreadWithTags(this.createThread,this.createTags).subscribe((data) => {
+        
+     console.log(data);
+     
+     
+   });;
+   
+   console.log("senUpdate");
+  }   
     }
 
   onDeleteConfirm(event): void {
