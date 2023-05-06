@@ -1,0 +1,32 @@
+@import 'bootstrap/scss/mixins/breakpoints';
+@import '@nebular/theme/styles/global/breakpoints';
+
+@import '../../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  
+
+  @include media-breakpoint-down(xxl) {
+    nb-card-body {
+      display: flex;
+    }
+
+  }
+
+  @include media-breakpoint-down(is) {
+    nb-card-body {
+      display: block;
+    }
+
+    
+  }
+}
+
+
+.badge-lg {
+    font-size: 0.9rem;
+  }
+  .alert-card {
+    max-width: 500px; /* adjust to your desired width */
+    margin: 0 auto; /* to center the card */
+  }

@@ -1,0 +1,472 @@
+
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+<link href='' rel='stylesheet'>
+<style>body {
+background: #B1EA86;
+padding: 30px 0
+}
+
+a {
+text-decoration: none;
+}
+
+.pricingTable {
+text-align: center;
+background: #fff;
+margin: 0 -15px;
+box-shadow: 0 0 10px #ababab;
+padding-bottom: 40px;
+border-radius: 10px;
+color: #cad0de;
+transform: scale(1);
+transition: all .5s ease 0s
+}
+
+.pricingTable:hover {
+transform: scale(1.05);
+z-index: 1
+}
+
+.pricingTable .pricingTable-header {
+padding: 40px 0;
+background: #f5f6f9;
+border-radius: 10px 10px 50% 50%;
+transition: all .5s ease 0s
+}
+
+.pricingTable:hover .pricingTable-header {
+background: #ff9624
+}
+
+.pricingTable .pricingTable-header i {
+font-size: 50px;
+color: #858c9a;
+margin-bottom: 10px;
+transition: all .5s ease 0s
+}
+
+.pricingTable .price-value {
+font-size: 35px;
+color: #ff9624;
+transition: all .5s ease 0s
+}
+
+.pricingTable .month {
+display: block;
+font-size: 14px;
+color: #cad0de
+}
+
+.pricingTable:hover .month,
+.pricingTable:hover .price-value,
+.pricingTable:hover .pricingTable-header i {
+color: #fff
+}
+
+.pricingTable .heading {
+font-size: 24px;
+color: #ff9624;
+margin-bottom: 20px;
+text-transform: uppercase
+}
+
+.pricingTable .pricing-content ul {
+list-style: none;
+padding: 0;
+margin-bottom: 30px
+}
+
+.pricingTable .pricing-content ul li {
+line-height: 30px;
+color: #a7a8aa
+}
+
+.pricingTable .pricingTable-signup a {
+display: inline-block;
+font-size: 15px;
+color: #fff;
+padding: 10px 35px;
+border-radius: 20px;
+background: #ffa442;
+text-transform: uppercase;
+transition: all .3s ease 0s
+}
+
+.pricingTable .pricingTable-signup a:hover {
+box-shadow: 0 0 10px #ffa442
+}
+
+.pricingTable.blue .heading,
+.pricingTable.blue .price-value {
+color: #4b64ff
+}
+
+.pricingTable.blue .pricingTable-signup a,
+.pricingTable.blue:hover .pricingTable-header {
+background: #4b64ff
+}
+
+.pricingTable.blue .pricingTable-signup a:hover {
+box-shadow: 0 0 10px #4b64ff
+}
+
+.pricingTable.red .heading,
+.pricingTable.red .price-value {
+color: #ff4b4b
+}
+
+.pricingTable.red .pricingTable-signup a,
+.pricingTable.red:hover .pricingTable-header {
+background: #ff4b4b
+}
+
+.pricingTable.red .pricingTable-signup a:hover {
+box-shadow: 0 0 10px #ff4b4b
+}
+
+.pricingTable.green .heading,
+.pricingTable.green .price-value {
+color: #40c952
+}
+
+.pricingTable.green .pricingTable-signup a,
+.pricingTable.green:hover .pricingTable-header {
+background: #40c952
+}
+
+.pricingTable.green .pricingTable-signup a:hover {
+box-shadow: 0 0 10px #40c952
+}
+
+.pricingTable.blue:hover .price-value,
+.pricingTable.green:hover .price-value,
+.pricingTable.red:hover .price-value {
+color: #fff
+}
+
+@media screen and (max-width:990px) {
+.pricingTable {
+margin: 0 0 20px
+}
+}</style>
+<script type='text/javascript' src=''></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+<script type='text/javascript'></script> 
+<div class="demo">
+<div class="container">
+<div class="row">
+<div class="col-md-3 col-sm-6">
+<div class="pricingTable">
+<div class="pricingTable-header">
+<i class="fa fa-adjust"></i>
+<div class="price-value"> $16.00 <span class="month">per month</span> </div>
+</div>
+<h3 class="heading">Silver</h3>
+<div class="pricing-content">
+<ul>
+<li><b>50GB</b> Disk Space</li>
+<li><b>50</b> Email Accounts</li>
+<li><b>50GB</b> Monthly Bandwidth</li>
+<li><b>10</b> subdomains</li>
+<li><b>15</b> Domains</li>
+</ul>
+</div>
+<div class="pricingTable-signup">
+<a href="#">sign up</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 col-sm-6">
+<div class="pricingTable green">
+<div class="pricingTable-header">
+<i class="fa fa-briefcase"></i>
+<div class="price-value"> $36.00 <span class="month">per month</span> </div>
+</div>
+<h3 class="heading">Gold</h3>
+<div class="pricing-content">
+<ul>
+<li><b>60GB</b> Disk Space</li>
+<li><b>60</b> Email Accounts</li>
+<li><b>60GB</b> Monthly Bandwidth</li>
+<li><b>15</b> subdomains</li>
+<li><b>20</b> Domains</li>
+</ul>
+</div>
+<div class="pricingTable-signup">
+<a href="#">sign up</a>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="pricingTable blue">
+<div class="pricingTable-header">
+<i class="fa fa-diamond"></i>
+<div class="price-value"> $68.00 <span class="month">per month</span> </div>
+</div>
+<h3 class="heading">Platinum</h3>
+<div class="pricing-content">
+<ul>
+<li><b>70GB</b> Disk Space</li>
+<li><b>70</b> Email Accounts</li>
+<li><b>70GB</b> Monthly Bandwidth</li>
+<li><b>20</b> subdomains</li>
+<li><b>25</b> Domains</li>
+</ul>
+</div>
+<div class="pricingTable-signup">
+<a href="#">sign up</a>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="pricingTable red">
+<div class="pricingTable-header">
+<i class="fa fa-cube"></i>
+<div class="price-value"> $490.00 <span class="month">per Year</span> </div>
+</div>
+<h3 class="heading">Yearly</h3>
+<div class="pricing-content">
+<ul>
+<li><b>80GB</b> Disk Space</li>
+<li><b>80</b> Email Accounts</li>
+<li><b>80GB</b> Monthly Bandwidth</li>
+<li><b>25</b> subdomains</li>
+<li><b>30</b> Domains</li>
+</ul>
+</div>
+<div class="pricingTable-signup">
+<a href="#">sign up</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+
+<!-- Exam Vouchers -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    
+<div class="mt-5">
+    <style>
+        h2 {
+          text-align: center;
+        }
+      </style>
+    <h2>Exam Vouchers</h2>
+      <div class="d-style btn btn-brc-tp border-2 bgc-white btn-outline-blue btn-h-outline-blue btn-a-outline-blue w-100 my-2 py-3 shadow-sm">
+        <!-- Basic Plan -->
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4">
+            <h4 class="pt-3 text-170 text-600 text-primary-d1 letter-spacing">
+              Certified Azure Specialist
+            </h4>
+
+            <div class="text-secondary-d1 text-120">
+              <span class="ml-n15 align-text-bottom">$</span><span class="text-180">220</span>
+            </div>
+          </div>
+
+          <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+            <li>
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span>
+                <span class="text-110">Donec id elit.</span>
+              Fusce dapibus...
+              </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+                Placerat duis
+            </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-times text-danger-m3 text-110 mr-25 mt-1"></i>
+              <span class="text-110">
+                Tortor mauris
+            </span>
+            </li>
+          </ul>
+
+          <div class="col-12 col-md-4 text-center">
+            <a href="#" class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600">Buy Voucher</a>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="d-style bgc-white btn btn-brc-tp btn-outline-green btn-h-outline-green btn-a-outline-green w-100 my-2 py-3 shadow-sm border-2">
+        <!-- Pro Plan -->
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4">
+            <h4 class="pt-3 text-170 text-600 text-green-d1 letter-spacing">
+              Certified Bug Bounty Hunter
+            </h4>
+
+            <div class="text-secondary-d2 text-120">
+              <div class="text-danger-m3 text-90 mr-1 ml-n4 pos-rel d-inline-block">
+                $<span class="text-150 deleted-text">220</span>
+                <span>
+                    <span class="d-block rotate-45 position-l mt-n475 ml-35 fa-2x text-400 border-l-2 h-5 brc-dark-m1"></span>
+                </span>
+              </div>
+              <span class="align-text-bottom">$</span><span class="text-180">200</span>
+            </div>
+          </div>
+
+          <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+            <li>
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span>
+                <span class="text-110">Everything in Basic...</span>
+              </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+                Non diam phasellus
+            </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+                Tortor mauris
+            </span>
+            </li>
+          </ul>
+
+          <div class="col-12 col-md-4 text-center">
+            <a href="#" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">Buy Voucher</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>
+<!-- Buy Coins -->
+<a class="card2">
+
+       
+    <div class="d-flex flex-column text-left mr-2">
+        <p class="fa fa-shopping-cart"> Purchase Coins</p>
+    </div>
+    <span>If you need a few more coins, you can use the buttons below.</span>
+    <br>
+    <br>
+    <div class="a-container">
+        <a href="/pages/payment/AddPaymentMethod">
+     <button type="submit" nbButton status="success">
+        50  <i class="fas fa-coins"></i> for $5.00  
+      </button> 
+       </a>
+        
+       <a href="/pages/payment/AddPaymentMethod">
+        <button type="submit" nbButton status="success">
+           100  <i class="fas fa-coins"></i> for $10.00
+         </button> 
+          </a> 
+        
+          <a href="/pages/payment/AddPaymentMethod">
+            <button type="submit" nbButton status="success">
+               200  <i class="fas fa-coins"></i> for $20.00
+             </button> 
+              </a>          
+     </div>
+     <br>
+     <div class="a-container">
+        <a href="/pages/payment/AddPaymentMethod">
+     <button type="submit" nbButton status="success">
+        500  <i class="fas fa-coins"></i> for $50.00
+      </button> 
+       </a>
+        
+       <a href="/pages/payment/AddPaymentMethod">
+        <button type="submit" nbButton status="success">
+           1000  <i class="fas fa-coins"></i> for $100.00
+         </button> 
+          </a> 
+        
+          <a href="/pages/payment/AddPaymentMethod">
+            <button type="submit" nbButton status="success">
+               5000  <i class="fas fa-coins"></i> for $500.00
+             </button> 
+              </a>          
+     </div>
+
+</a>
+
+<!-- Other -->
+<div class="container">
+
+    <!-- Owned Coins -->
+    <a class="card2">
+
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+            <div class="dollar-div px-3">
+                
+                <div class="round-div"><i class="fas fa-coins"></i></div>
+
+            </div>
+            <div class="d-flex flex-column text-right mr-2">
+                <span class="current-balance"> Owned Coins</span>
+                <span class="amount"><span class="dollar-sign"></span>100</span>
+            </div>
+
+    </div>
+</a>
+
+<!-- Balance -->
+<a class="card2">
+
+    <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+        <div class="dollar-div px-3">
+            
+            <div class="round-div"><i class="fas fa-coins"></i></div>
+
+        </div>
+        <div class="d-flex flex-column text-right mr-2">
+            <span class="current-balance">Account Balance</span>
+            <span class="amount"><span class="dollar-sign">$</span>100</span>
+        </div>
+
+</div>
+</a>
+<!-- Billing Actions -->
+<a class="card2">
+
+       
+        <div class="d-flex flex-column text-left mr-2">
+            <span class="fa fa-shopping-cart"> Billing Actions</span>
+        </div>
+        <br>
+        <div class="a-container">
+            <a href="/pages/payment/AddPaymentMethod">
+         <button type="submit" nbButton appearance="outline" status="info">
+            <i class="fa fa-credit-card"></i> Add a Payment Method
+          </button> 
+           </a>
+            
+          <button type="submit" nbButton appearance="outline" status="info">
+            <i class="fa fa-gift"></i> Redeem a Gift Card
+          </button> 
+            
+        <button type="submit" nbButton appearance="outline" status="info">
+            <i class="fas fa-ticket-alt"></i> Redeem a Voucher
+          </button>          
+    </div>
+
+</a>
+	
+</div>

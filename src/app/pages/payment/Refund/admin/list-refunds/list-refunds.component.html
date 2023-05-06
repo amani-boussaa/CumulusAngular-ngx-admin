@@ -1,0 +1,98 @@
+<div *ngIf="successMessage">
+  <div class="alert-card">
+        <nb-alert status="success">{{ successMessage }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="errorMessage">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ errorMessage }}</nb-alert>
+  </div>
+</div>
+<div class="panel panel-default">  
+    <div class="panel-heading">  
+        <h1 style="text-align: center">Refunds</h1><br>  
+        <div class="row" [hidden]="!deleteMessage">  
+               
+                  <div class="col-sm-4"></div>  
+                  <div class="col-sm-4">  
+                          <div class="alert alert-info alert-dismissible">  
+                                  <button type="button" class="close" data-dismiss="alert">×</button>  
+                                  <strong>Refund Data Deleted</strong>  
+                          </div>  
+                  </div>  
+                  <div class="col-sm-4"></div>  
+          </div>             
+      </div> 
+    
+      
+    <div class="panel-body">  
+        <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"  
+        [dtTrigger]="dtTrigger"  >  
+            <thead class="thead-light">  
+                <tr>  
+                    <th>reason</th>  
+                    <th>status</th>  
+                    <th>order Amount</th>
+                    <th>order Type</th>
+                    <th>Actions</th>
+                      
+                </tr>  
+            </thead>  
+            <tbody>  
+                 <tr *ngFor="let refund of refunds ">  
+                    <td>{{refund.reason}}</td>  
+                    <td>
+                        <span [ngSwitch]="refund.status">
+                          <span *ngSwitchCase="'pending'" class="badge badge-warning badge-lg text-white">{{refund.status}}</span>
+                          <span *ngSwitchCase="'accepted'" class="badge badge-success badge-lg text-white">{{refund.status}}</span>
+                          <span *ngSwitchCase="'refused'" class="badge badge-danger badge-lg text-white">{{refund.status}}</span>
+                          <span *ngSwitchDefault class="badge badge-info badge-lg text-white">{{refund.status}}</span>
+                        </span>
+                      </td>  
+                      <td>
+                        {{refund.order.amount}}
+                      </td>    
+                      <td>
+                        {{refund.order.type}}
+                      </td>                 
+                    <td><button (click)="deleteRefund(refund.refund_id)" class='btn btn-danger' style="margin-right: 10px;"><i class="fa fa-futboll-0">Delete</i></button>   
+                      <button (click)="showUpdateForm(refund,contentTemplate)" class='btn btn-info'  
+                      >Update</button>  
+                    </td>  
+                  </tr>   
+            </tbody><br>  
+        </table>  
+    </div>  
+  </div>   
+    
+  <ng-template #contentTemplate let-data>
+  
+  <div *ngIf="isUpdateFormVisible">
+    <form>
+      <div class="form-group">
+        <input type="hidden" class="form-control" id="refund_id [(ngModel)]="refundToUpdate.refund_id name="refund_id">
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <!-- <input type="text" class="form-control" id="status" [(ngModel)]="refundToUpdate.status" name="status"> -->
+        <select class="form-control" id="status" [(ngModel)]="refundToUpdate.status" name="status">
+          <option [ngValue]="'accepted'">Accepted</option>
+          <option [ngValue]="'refused'">Refused</option>
+          <option [ngValue]="'pending'">Pending</option>
+        </select>              
+      </div>
+      <button (click)="updateRefund()" type="submit" class="btn btn-success">Submit</button>
+      <!-- <button (click)="hideUpdateForm()" type="button" class="btn btn-default">Cancel</button> -->
+    </form>
+  </div>
+
+</ng-template>
+
+<!-- <div class="form-group">  
+  
+    <select class="form-control" >                                     
+      <option value="accepted" [selected]="'accepted' == refundToUpdate.status">accepted</option>  
+      <option value="refused" [selected]="'refused' == refundToUpdate.status">refused</option>  
+      <option value="pending" [selected]="'pending' == refundToUpdate.status" >pending</option>  
+    </select>                                 
+</div>        -->

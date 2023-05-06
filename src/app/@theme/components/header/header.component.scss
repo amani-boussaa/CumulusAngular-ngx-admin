@@ -67,4 +67,33 @@
       display: none;
     }
   }
+  .image-container {
+    position: relative;
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    perspective: 100px;
+  }
+  
+  .front-image,
+  .back-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease-out;
+  }
+  
+  .back-image {
+    transform: rotateY(180deg);
+  }
+  
+  .image-container:hover .front-image {
+    transform: rotateY(-180deg);
+  }
+  
+  .image-container:hover .back-image {
+    transform: rotateY(0);
+  }
 }
