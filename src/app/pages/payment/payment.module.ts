@@ -3,6 +3,8 @@ import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule,NbButtonMod
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {DataTablesModule} from 'angular-datatables';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { NbWindowFormComponent, NbWindowFormComponentGiftCard, NbWindowFormComponentVoucher } from './Wallet/client/billing/billing.component';
+
 
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -32,6 +34,10 @@ import { ThemeModule } from '../../@theme/theme.module';
   ],
   declarations: [
      ...routedComponents,
+     NbWindowFormComponent,
+     NbWindowFormComponentGiftCard,
+     NbWindowFormComponentVoucher,
+
     // FsIconComponent,
   ],
 })

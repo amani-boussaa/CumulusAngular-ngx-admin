@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Order } from '../model/order';
 
 @Injectable({
     providedIn: 'root'
@@ -13,8 +14,9 @@ import { Observable } from 'rxjs';
         return this.http.get(`${this.baseUrl}`+'getAllOrders');  
       }  
       
-      createOrder(Order: object): Observable<object> {  
-        return this.http.post(`${this.baseUrl}`+'addOrder', Order);  
+      createOrder(order: Order, coinsBuy: number): Observable<Order> {
+        const url = `${this.baseUrl}addOrder?CoinsBuy=${coinsBuy}`;
+        return this.http.post<Order>(url, order);
       }  
       
       deleteOrder(order_id: String): Observable<any> {  
@@ -28,6 +30,16 @@ import { Observable } from 'rxjs';
       updateOrder(order_id: String, value: any): Observable<Object> {  
         return this.http.put(`${this.baseUrl}updateOrder/${order_id}`, value);  
       }   
+
+      redeemGiftCard(code: string): Observable<any> {
+        return this.http.put(`${this.baseUrl}RedeemGiftCard?code=${code}`, null);
+      }
+      redeemVoucher(code: string): Observable<any> {
+        return this.http.put(`${this.baseUrl}RedeemVoucher?code=${code}`, null);
+      }
+      BuyVoucher(name: string) {
+        return this.http.post(`${this.baseUrl}createVoucher?name=${name}`,null);
+      }
 
 }
 

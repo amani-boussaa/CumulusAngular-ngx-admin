@@ -69,7 +69,10 @@ export class ListOrdersComponent implements OnInit{
         valuePrepareFunction: (cell, row) => {
           if (cell === 'Coins') {
             return '<i class="fas fa-coins"></i> ' + cell;
-          } else {
+          } if (cell === 'Voucher') {
+            return '<i class="fas fa-ticket-alt"></i> ' + cell;
+          }
+          else {
             return cell;
           }
   },
@@ -163,12 +166,12 @@ onCreateConfirm(event): void {
   user: event.newData.user
   };
 
-  this.ordersService.createOrder(order).subscribe((data) => {
-    event.confirm.resolve(data);
-  }, (error) => {
-    console.log(error);
-    event.confirm.reject();
-  });
+  // this.ordersService.createOrder(order).subscribe((data) => {
+  //   event.confirm.resolve(data);
+  // }, (error) => {
+  //   console.log(error);
+  //   event.confirm.reject();
+  // });
 }
 
 }

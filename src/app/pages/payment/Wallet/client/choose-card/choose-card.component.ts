@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'ngx-choose-card',
@@ -10,8 +12,10 @@ export class ChooseCardComponent implements OnInit {
 
   last4: string;
   brand: string;
+  exp_month: String;
+  exp_year: String;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit(): void {
     this.getPaymentInfo();
@@ -22,9 +26,13 @@ export class ChooseCardComponent implements OnInit {
       response => {
         this.last4 = response.last4;
         this.brand = response.brand;
-        if (this.brand === 'Visa') {
-          // Do something
-      }
+        this.exp_month = response.exp_month;
+        this.exp_year = response.exp_year;
+
+        if (this.brand == null) {
+          // Redirect to another page
+          this.router.navigateByUrl('/pages/payment/AddPaymentMethod');
+        }
       },
       error => {
         console.log(error);

@@ -165,11 +165,9 @@ margin: 0 0 20px
 <h3 class="heading">Silver</h3>
 <div class="pricing-content">
 <ul>
-<li><b>50GB</b> Disk Space</li>
-<li><b>50</b> Email Accounts</li>
-<li><b>50GB</b> Monthly Bandwidth</li>
-<li><b>10</b> subdomains</li>
-<li><b>15</b> Domains</li>
+<li><b>✅ +200</b> each month</li>
+<li><b>✅ 11%</b> discount</li>
+<li><b>✅ +</b> Unlimited Instance usage</li>
 </ul>
 </div>
 <div class="pricingTable-signup">
@@ -187,11 +185,9 @@ margin: 0 0 20px
 <h3 class="heading">Gold</h3>
 <div class="pricing-content">
 <ul>
-<li><b>60GB</b> Disk Space</li>
-<li><b>60</b> Email Accounts</li>
-<li><b>60GB</b> Monthly Bandwidth</li>
-<li><b>15</b> subdomains</li>
-<li><b>20</b> Domains</li>
+  <li><b>✅ +500</b> each month</li>
+  <li><b>✅ 27%</b> discount</li>
+  <li><b>✅ +</b> Unlimited Instance usage</li>
 </ul>
 </div>
 <div class="pricingTable-signup">
@@ -208,11 +204,12 @@ margin: 0 0 20px
 <h3 class="heading">Platinum</h3>
 <div class="pricing-content">
 <ul>
-<li><b>70GB</b> Disk Space</li>
-<li><b>70</b> Email Accounts</li>
-<li><b>70GB</b> Monthly Bandwidth</li>
-<li><b>20</b> subdomains</li>
-<li><b>25</b> Domains</li>
+  <li><b>✅ +1000</b> each month</li>
+  <li><b>✅ 36%</b> discount</li>
+  <li><b>✅ +</b> Unlimited Instance usage</li>
+  <li><b>✅</b> Free Video Chat</li>
+  <li><b>✅</b> No Daily Posts Limits</li>
+
 </ul>
 </div>
 <div class="pricingTable-signup">
@@ -229,12 +226,12 @@ margin: 0 0 20px
 <h3 class="heading">Yearly</h3>
 <div class="pricing-content">
 <ul>
-<li><b>80GB</b> Disk Space</li>
-<li><b>80</b> Email Accounts</li>
-<li><b>80GB</b> Monthly Bandwidth</li>
-<li><b>25</b> subdomains</li>
-<li><b>30</b> Domains</li>
-</ul>
+  <li><b>✅</b> Direct Access to all Courses</li>
+  <li><b>✅</b> One exam voucher per year(limited time offer)</li>
+  <li><b>✅</b> Pay less than buying through cubes</li>
+  <li><b>✅ +</b> Unlimited Instance usage</li>
+  <li><b>✅</b> Free Video Chat</li>
+  <li><b>✅</b> No Daily Posts Limits</li></ul>
 </div>
 <div class="pricingTable-signup">
 <a href="#">sign up</a>
@@ -246,6 +243,16 @@ margin: 0 0 20px
 </div>
 <br>
 
+<div *ngIf="successMessageVoucher">
+  <div class="alert-card">
+        <nb-alert status="success">{{ successMessageVoucher }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="errorMessage">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ errorMessage }}</nb-alert>
+  </div>
+</div>
 <!-- Exam Vouchers -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
@@ -296,7 +303,9 @@ margin: 0 0 20px
           </ul>
 
           <div class="col-12 col-md-4 text-center">
-            <a href="#" class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600">Buy Voucher</a>
+            <button class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600" type="submit" (click)="BuyVoucher('Certified Azure Specialist')" >
+              Buy Voucher
+            </button>
           </div>
         </div>
 
@@ -347,7 +356,9 @@ margin: 0 0 20px
           </ul>
 
           <div class="col-12 col-md-4 text-center">
-            <a href="#" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">Buy Voucher</a>
+            <button class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600" type="submit" (click)="openWindow(200,0,'Voucher')" >
+              Buy Voucher
+            </button>
           </div>
         </div>
 
@@ -355,42 +366,44 @@ margin: 0 0 20px
 
     </div>
 </div>
+<div *ngIf="successMessageCoins">
+  <div class="alert-card">
+        <nb-alert status="success">{{ successMessageCoins }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="errorMessage">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ errorMessage }}</nb-alert>
+  </div>
+</div>
 <!-- Buy Coins -->
 <a class="card2">
 
        
     <div class="d-flex flex-column text-left mr-2">
-        <p class="fa fa-shopping-cart"> Purchase Coins</p>
+        <p class="fa fa-bank"> Purchase Coins</p>
     </div>
     <span>If you need a few more coins, you can use the buttons below.</span>
     <br>
     <br>
-    <div class="a-container">
-        <a href="/pages/payment/AddPaymentMethod">
-     <button type="submit" nbButton status="success">
-        50  <i class="fas fa-coins"></i> for $5.00  
+    <div class="b-container">
+     <button type="submit" (click)="openWindow(5.00,50,'Coins')" nbButton status="success">
+        50  <i class="fas fa-coins"></i> for $5.00
       </button> 
-       </a>
         
-       <a href="/pages/payment/AddPaymentMethod">
-        <button type="submit" nbButton status="success">
+        <button type="submit" (click)="openWindow(10.00,100,'Coins')" nbButton status="success">
            100  <i class="fas fa-coins"></i> for $10.00
          </button> 
-          </a> 
         
-          <a href="/pages/payment/AddPaymentMethod">
-            <button type="submit" nbButton status="success">
+            <button type="submit" (click)="openWindow(20.00,200,'Coins')" nbButton status="success">
                200  <i class="fas fa-coins"></i> for $20.00
              </button> 
-              </a>          
      </div>
      <br>
-     <div class="a-container">
-        <a href="/pages/payment/AddPaymentMethod">
-     <button type="submit" nbButton status="success">
+     <div class="b-container">
+     <button type="submit" (click)="openWindow(50.00,500,'Coins')" nbButton status="success">
         500  <i class="fas fa-coins"></i> for $50.00
       </button> 
-       </a>
         
        <a href="/pages/payment/AddPaymentMethod">
         <button type="submit" nbButton status="success">
@@ -433,40 +446,51 @@ margin: 0 0 20px
     <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
         <div class="dollar-div px-3">
             
-            <div class="round-div"><i class="fas fa-coins"></i></div>
+            <div class="round-div"><i class="fas fa-dollar"></i></div>
 
         </div>
         <div class="d-flex flex-column text-right mr-2">
-            <span class="current-balance">Account Balance</span>
+            <span class="current-balance"> Account Balance</span>
             <span class="amount"><span class="dollar-sign">$</span>100</span>
         </div>
 
 </div>
 </a>
 <!-- Billing Actions -->
+<!-- <div *ngIf="successMessageOfGiftCard">
+  <div class="alert-card">
+        <nb-alert status="success">{{ successMessageOfGiftCard }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="errorMessageOfGiftCard">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ errorMessageOfGiftCard }}</nb-alert>
+  </div>
+</div> -->
 <a class="card2">
 
        
         <div class="d-flex flex-column text-left mr-2">
-            <span class="fa fa-shopping-cart"> Billing Actions</span>
+          
+            <span style="font-size: 1.3em;">
+            <nb-icon icon="shopping-cart-outline" status="primary" [options]="{ animation: { type: 'pulse' },fontSize: '30px' }">
+            </nb-icon> Billing Actions
+            </span>
         </div>
         <br>
         <div class="a-container">
-            <a href="/pages/payment/AddPaymentMethod">
-         <button type="submit" nbButton appearance="outline" status="info">
+         <button type="submit" nbButton (click)="openWindowChooseCard()" appearance="outline" status="info">
             <i class="fa fa-credit-card"></i> Add a Payment Method
           </button> 
-           </a>
             
-          <button type="submit" nbButton appearance="outline" status="info">
+          <button type="submit" nbButton (click)="openWindowGiftCard()" appearance="outline" status="info">
             <i class="fa fa-gift"></i> Redeem a Gift Card
           </button> 
             
-        <button type="submit" nbButton appearance="outline" status="info">
+        <button type="submit" nbButton (click)="openWindowVoucher()"  appearance="outline" status="info">
             <i class="fas fa-ticket-alt"></i> Redeem a Voucher
           </button>          
     </div>
-
 </a>
 	
 </div>
