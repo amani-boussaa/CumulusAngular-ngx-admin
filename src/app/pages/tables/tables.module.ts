@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbTreeGridModule, NbUserModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbToastrModule, NbTreeGridModule, NbUserModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     NbInputModule,
     ThemeModule,
     TablesRoutingModule,
-    Ng2SmartTableModule, NbTagModule,NbListModule,NbUserModule,NbButtonModule,FormsModule
+    Ng2SmartTableModule, NbTagModule,NbListModule,NbUserModule,NbButtonModule,FormsModule ,NbToastrModule
     
   ],
   declarations: [

@@ -46,7 +46,7 @@ console.log((sharedDataService.getThreadData()));
 
 Post(input:string){
  this.comment.content=input;
-this.thread.id=this.data.id;
+this.thread.setid(this.data.id);
  this.comment.setCommentedThread(this.thread);
 
   console.log(this.comment);

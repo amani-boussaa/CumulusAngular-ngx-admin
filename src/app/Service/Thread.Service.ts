@@ -17,7 +17,8 @@ export class ThreadService {
     return this.http.post(`${this.baseUrl}`, thread);
   }
   createThreadWithTags(thread: any,tags:string){
-    return this.http.post(`http://localhost:8081/CUMULUS/api/thread/createThreadWithTags?tags=${tags}`, thread);
+    console.log(thread);
+    return this.http.post<Thread>(`http://localhost:8081/CUMULUS/api/thread/createThreadWithTags?tags=${tags}`, thread);
   }
 
   updateThread(id: number, thread: any) {
