@@ -93,7 +93,11 @@ ReadMore(d:Thread){
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.th.deleteThread(event.data.id).subscribe(() => {
+        event.confirm.resolve();
+      }, () => {
+        event.confirm.reject();
+      });
     } else {
       event.confirm.reject();
     }

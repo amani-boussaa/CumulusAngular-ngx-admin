@@ -12,19 +12,28 @@ import { ThreadService } from '../../../Service/Thread.Service';
 export class SmartTablebComponent {
   data: any[];
   settings = {
+    actions: {
+      add: true,
+      edit: true,
+      delete: true,
+    
+    },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+      
     },
     columns: {
       id: {
@@ -38,27 +47,17 @@ export class SmartTablebComponent {
       content: {
         title: 'content',
         type: 'string',
-      },   
-         threadCreator: {
-          title: 'Creator',
-          type: 'string',}
-      // },
-      // lastName: {
-      //   title: 'Last Name',
-      //   type: 'string',
-      // },
-      // username: {
-      //   title: 'Username',
-      //   type: 'string',
-      // },
-      // email: {
-      //   title: 'E-mail',
-      //   type: 'string',
-      // },
-      // age: {
-      //   title: 'Age',
-      //   type: 'number',
-      // },
+      }, threadCreator: {
+        title: 'Thread Creator',
+        type: 'html',
+        valuePrepareFunction: (cell: any) => ` ${cell.nom} | id : ${cell.id} `
+      }, threadTags: {
+        title: 'Tags',
+        type: 'html',
+        valuePrepareFunction: (cell: any) => {
+          return cell.map((tag: any) => tag.name).join(', ');
+        }},
+     
     },
   };
 
@@ -76,9 +75,21 @@ export class SmartTablebComponent {
   
   }
 
+
+  onCreate(event): void {
+    console.log(event);}
+
+    onUpdate(event): void {
+      console.log("Edit Butoon clicked");
+    }
+
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.th.deleteThread(event.data.id).subscribe(() => {
+        event.confirm.resolve();
+      }, () => {
+        event.confirm.reject();
+      });
     } else {
       event.confirm.reject();
     }

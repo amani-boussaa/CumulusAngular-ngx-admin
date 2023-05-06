@@ -16,6 +16,9 @@ export class ThreadService {
   createThread(thread: any){
     return this.http.post(`${this.baseUrl}`, thread);
   }
+  createThreadWithTags(thread: any,tags:string){
+    return this.http.post(`http://localhost:8081/CUMULUS/api/thread/createThreadWithTags?tags=${tags}`, thread);
+  }
 
   updateThread(id: number, thread: any) {
     return this.http.put(`${this.baseUrl}/${id}`, thread);
@@ -59,4 +62,10 @@ export class ThreadService {
       error => console.log(error)
     );
   }
+  deleteThread(id: number) {
+    return this.http.delete(`http://localhost:8081/CUMULUS/api/thread/delete/${id}`);
+  }
+
+
+
 }
