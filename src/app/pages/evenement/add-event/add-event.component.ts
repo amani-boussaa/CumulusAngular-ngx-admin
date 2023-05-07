@@ -10,6 +10,10 @@ export class AddEventComponent implements OnInit {
 
   constructor(private eventService:EventService) { }
 
+  
+
+  
+
   ngOnInit(): void {
   }
 

@@ -1,11 +1,11 @@
 export class EventModel {
 
-    description!: any
-    duree!:any
-    end_date!: any
-    id_event!: any
-    name_event!: any
-    nb_participant!: any
-    nb_restant!: any
-    start_date!: any
+    description!: string
+    duree!:number
+    end_date!: Date
+    id_event!: number
+    name_event!: string
+    nb_participant!: number
+    nb_restant!: number
+    start_date!: Date
 }

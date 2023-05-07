@@ -17,8 +17,8 @@ export class EventService {
     return this.http.get<Event[]>(`${this.baseUrl}`);
   }
 
-  addEvent(event: any){
-    return this.http.post(`${this.baseUrl}`, event);
+  addEvent(event: Event):Observable<Event>{
+    return this.http.post<Event>(`${this.baseUrl}`, event);
   }
 
   updateEvent(id_event: number, event: any) {
@@ -29,7 +29,7 @@ export class EventService {
     return this.http.get(`${this.baseUrl}/${id_event}`);
   }
 
-  deleteEvent(id_event: number){
-    return this.http.delete(`${this.baseUrl}/${id_event}`);
+  deleteEvent(id_event: number):Observable<String>{
+    return this.http.delete<String>(`${this.baseUrl}/${id_event}`);
   }
 }
