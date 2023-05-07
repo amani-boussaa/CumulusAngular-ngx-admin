@@ -9,6 +9,7 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import { EvenementRoutingModule } from './pages/evenement/evenement-routing.modules';
+import { RegistrationModule } from './pages/registration/registration.module';
 
 export const routes: Routes = [
   {
@@ -44,7 +45,8 @@ export const routes: Routes = [
         path: 'reset-password',
         component: NbResetPasswordComponent,
       },
-      {path: "events", loadChildren:()=>EvenementRoutingModule}
+      {path: "events", loadChildren:()=>EvenementRoutingModule},
+      {path :"registrations", loadChildren:()=>RegistrationModule}
     ],
   },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },

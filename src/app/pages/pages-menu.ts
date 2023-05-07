@@ -30,6 +30,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       // },
       {
         title: 'Registrations',
+        icon: 'edit-2-outline',
         link: '/pages/evenement/registration',
       },
      
