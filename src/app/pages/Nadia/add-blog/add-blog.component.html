@@ -1,0 +1,33 @@
+<div class="mb-3">
+    <label for="formFile" class="form-label">Upload your image</label>
+    <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelect($event)">
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input type="text" class="form-control" [(ngModel)]="blog.title" id="title">
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampouleFormControlInput1" class="form-label">Author Name</label>
+    <input type="text" class="form-control" [(ngModel)]="blog.author" id="author">
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Description</label>
+    <input type="text" class="form-control" [(ngModel)]="blog.description" id="description">
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Keywords</label>
+    <input type="text" class="form-control" [(ngModel)]="blog.keywords" id="keywords">
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+    <textarea class="form-control" [(ngModel)]="blog.content" id="content" rows="3"></textarea>
+  </div>
+  
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" (click)="addBlog()">Post</button>
+  </div>
