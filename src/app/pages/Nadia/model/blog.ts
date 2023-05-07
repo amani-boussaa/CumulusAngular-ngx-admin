@@ -1,11 +1,10 @@
 export class Blog {
-    
     blog_id:number;
-    title:String;
-    author:String;
+    title:string;
+    author:string;
     date_created:Date;
-    description:String;
-    keywords:String;
-    content:String;
-    imagePath:String;
+    description:string;
+    keywords:string;
+    content:string;
+    imagePath:File;
 }

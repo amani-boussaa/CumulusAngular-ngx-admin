@@ -1,10 +1,8 @@
-
-
 <header>
     <h1>Cool Articles</h1>
   </header>
 
-  <button nbButton hero status="primary" routerLink="/pages/addblog">Add</button>
+  <button nbButton hero status="primary" routerLink="/pages/addblog" class="add-blog-button">Add</button>
 
 
   <div class="band" >  <!-- fonctionavancee -->
@@ -20,14 +18,14 @@
     
     
     <div class="item-2" *ngFor="let blog of Blogs">
-      <a href="{{ blog.url }}" class="card">
+      <a href="{{ blog.url }}" class="card" routerLink="/pages/theblog" [queryParams]="{ data: blog.blog_id }">
         <div class="thumb" style="background-image: url(../../../../assets/images/{{blog.imagePath}});"></div>
-        <article>
+        <article >
           <h1>{{ blog.title }}</h1>
           <p>{{ blog.description }}</p>
           <span>{{ blog.author }}</span>
           
-        </article>
+        </article >
       </a>
     </div>
     

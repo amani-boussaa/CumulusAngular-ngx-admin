@@ -7,6 +7,8 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { BlogComponent } from './Nadia/blog/blog.component';
 import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
+import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
+import { BOComponent } from './tables/BO/BO.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +25,14 @@ const routes: Routes = [{
     {
       path: 'addblog',
       component: AddBlogComponent,
+    },
+    {
+      path: 'theblog',
+      component: TheBlogComponent,
+    },
+    {
+      path: 'BO',
+      component: BOComponent,
     },
     {
       path: 'iot-dashboard',

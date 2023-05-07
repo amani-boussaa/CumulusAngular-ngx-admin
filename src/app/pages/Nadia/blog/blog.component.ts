@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../service/blog.service';
 import { get } from 'http';
+import { Blog } from '../model/blog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-blog',
@@ -13,7 +15,7 @@ export class BlogComponent implements OnInit {
   public Blogs : any[] = [];
   
 
-  constructor(private blogservice: BlogService) {}
+  constructor(private blogservice: BlogService, private router : Router) {}
 
   ngOnInit() {
     this.getBlogs();
@@ -29,6 +31,10 @@ export class BlogComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  blogclicked(blog:Blog){
+    this.router.navigate(['/pages/theblog'])
   }
 
 }
