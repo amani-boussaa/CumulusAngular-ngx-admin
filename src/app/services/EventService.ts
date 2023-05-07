@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios from "axios";
+import { Observable } from 'rxjs-compat';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
+  public getEvents():Observable<Event[]>{
+    return this.http.get<Event[]>(`${this.baseUrl}`);
+  }
+
   addEvent(event: any){
     return this.http.post(`${this.baseUrl}`, event);
   }
@@ -22,22 +27,6 @@ export class EventService {
 
   retrieveEvent(id_event: number) {
     return this.http.get(`${this.baseUrl}/${id_event}`);
-  }
-
-  retrieveAllEvent(){
-
-    axios.get('http://localhost:8081/CUMULUS/api/event/retrieveAllEvent')
-    .then(response => {
-     
-      console.log(response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-
-    return {};
-   
   }
 
   deleteEvent(id_event: number){

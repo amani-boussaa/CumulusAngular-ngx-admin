@@ -72,7 +72,7 @@
         <tr>
           <th scope="col">Nom évènement</th>
           <th scope="col">Date deb</th>
-          <th scope="col">Date fub</th>
+          <th scope="col">Date fin</th>
           <th scope="col">Durée</th>
           <th scope="col">Nb participants</th>
           <th scope="col">Nb restant</th>
@@ -81,15 +81,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td> <i class="fa-solid fa-trash text-danger table-action-btn"></i> &nbsp; <a [routerLink]="['edit-event']"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
+        <tr *ngFor="let event of events">
+          <td>{{event.name_event}}</td>
+          <td>{{event.start_date}}</td>
+          <td>{{event.end_date}}</td>
+          <td>{{event.duree}}</td>
+          <td>{{event.nb_participant}}</td>
+          <td>{{event.nb_restant}}</td>
+          <td>{{event.description}}</td>
+          <td> <i class="fa-solid fa-trash text-danger table-action-btn"></i> &nbsp; <a ><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
         </tr>
       </tbody>
     </table>
