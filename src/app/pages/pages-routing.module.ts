@@ -69,6 +69,11 @@ const routes: Routes = [{
         .then(m => m.MiscellaneousModule),
     },
     {
+      path: 'evenement',
+      loadChildren: () => import('./evenement/evenement.modules')
+        .then(m => m.EvenementModule),
+    },  
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

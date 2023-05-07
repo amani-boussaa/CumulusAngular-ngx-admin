@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row d-flex flex-row-reverse">
+    <div class="col-lg-2 mb-2">
+      <button type="button" class="btn btn-primary text" data-bs-toggle="modal" data-bs-target="#exampleModal">nouveau</button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nouvelle évènement</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row mb-3">
+                <div class="col-lg-12">
+                  <label for="eventName" class="form-label">Nom évènement</label>
+                  <input type="text" class="form-control"  aria-describedby="eventName">
+                  <!-- <div id="eventName" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-6">
+                  <label for="eventStartDate" class="form-label">Date début</label>
+                  <input type="date" class="form-control"  aria-describedby="eventStartDate">
+                  <!-- <div id="eventStartDate" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="col-lg-6">
+                  <label for="eventEndDate" class="form-label">Date fin</label>
+                  <input type="date" class="form-control"  aria-describedby="eventEndDate">
+                  <!-- <div id="eventEndDate" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-6">
+                  <label for="nbParticipants" class="form-label">Nombre participants</label>
+                  <input type="number" class="form-control"  aria-describedby="nbParticipants">
+                  <!-- <div id="nbParticipants" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="col-lg-6">
+                  <label for="nbPlaceRestantes" class="form-label">Nombre participants</label>
+                  <input type="number" class="form-control"  aria-describedby="nbPlaceRestantes">
+                  <!-- <div id="nbPlaceRestantes" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-12">
+                  <label for="floatingTextarea">Description</label>
+                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                  
+                </div>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Envoyez</button>
+              </div>
+              <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+            </form>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nom évènement</th>
+          <th scope="col">Date deb</th>
+          <th scope="col">Date fub</th>
+          <th scope="col">Durée</th>
+          <th scope="col">Nb participants</th>
+          <th scope="col">Nb restant</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td> <i class="fa-solid fa-trash text-danger table-action-btn"></i> &nbsp; <a [routerLink]="['edit-event']"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

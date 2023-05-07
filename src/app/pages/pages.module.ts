@@ -7,6 +7,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { ListEventComponent } from './evenement/list-event/list-event.component';
+import { AddEventComponent } from './evenement/add-event/add-event.component';
+import { EditEventComponent } from './evenement/edit-event/edit-event.component';
 
 @NgModule({
   imports: [
@@ -19,6 +22,9 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
   ],
   declarations: [
     PagesComponent,
+    ListEventComponent,
+    AddEventComponent,
+    EditEventComponent,
   ],
 })
 export class PagesModule {
