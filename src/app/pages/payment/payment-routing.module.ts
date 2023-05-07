@@ -9,6 +9,9 @@ import { ChooseCardComponent } from './Wallet/client/choose-card/choose-card.com
 import { ListRefundsComponent } from './Refund/admin/list-refunds/list-refunds.component';
 import { WalletDetailsComponent } from './Wallet/client/wallet-details/wallet-details.component';
 import { BillingComponent } from './Wallet/client/billing/billing.component';
+import { PaymentStatisticsComponent } from './Wallet/admin/payment-statistics/payment-statistics.component';
+import { ListUserOrdersComponent } from './Order/client/UserOrders/user-orders.component';
+import { CourseOrdersComponent } from './Order/admin/course-orders/course-orders.component';
 
 
 
@@ -46,6 +49,18 @@ const routes: Routes = [{
       path: 'Billing',
       component: BillingComponent,
     },
+    {
+      path: 'PaymentStatistics',
+      component: PaymentStatisticsComponent,
+    },
+    {
+      path: 'UserOrders',
+      component: ListUserOrdersComponent,
+    },
+    {
+      path: 'CourseOrders',
+      component: CourseOrdersComponent,
+    },
   ],
 }];
 
@@ -64,4 +79,7 @@ export const routedComponents = [
     ListRefundsComponent,
     WalletDetailsComponent,
     BillingComponent,
+    PaymentStatisticsComponent,
+    ListUserOrdersComponent,
+    CourseOrdersComponent,
 ];

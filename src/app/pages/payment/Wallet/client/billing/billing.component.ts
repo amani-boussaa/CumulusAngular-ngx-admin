@@ -3,6 +3,9 @@ import { Order } from '../../../Order/model/order';
 import { OrdersService } from '../../../Order/service/orders.service';
 import { NbWindowService, NbWindowRef } from '@nebular/theme';
 import { ChooseCardComponent } from '../choose-card/choose-card.component';
+import { WalletService } from '../../service/wallet.service';
+import { Wallet } from '../../model/wallet';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-billing',
@@ -16,8 +19,32 @@ export class BillingComponent {
   errorMessage: string | null = null;
   successMessageBuyVoucher: string | null = null;
   ErrorMessageBuyVoucher: string | null = null;
+  successMessageSubscription: string | null = null;
+  ErrorMessageSubscription: string | null = null;
+  MessageInProcess: string | null = null;
+  MessageInProcessCoins: string | null = null;
+  MessageInProcessVoucher: string | null = null;
+  MessageAlreadySubscribed: string | null = null;
 
-  constructor(private ordersService: OrdersService, private windowService: NbWindowService) {}
+
+
+  wallet: Wallet;
+
+
+  constructor(private ordersService: OrdersService,private walletservice: WalletService
+     ,private windowService: NbWindowService,private http: HttpClient) {}
+
+  ngOnInit() {
+    this.walletservice.getWalletOfUser().subscribe(
+      wallet => {
+        this.wallet = wallet;
+        console.log(this.wallet);
+      },
+      error => {
+        console.log('An error occurred while retrieving wallet information.');
+      }
+    );
+  }
 
   @ViewChild('contentTemplate', { static: true }) contentTemplate: TemplateRef<any>;
   @ViewChild('childRef') childRef: NbWindowFormComponentGiftCard;
@@ -60,6 +87,7 @@ export class BillingComponent {
   
 
   BuyCoins(amount: number,Coins: number,type: string) {
+    this.MessageInProcessCoins = 'Please wait a moment';
     const neworder: Order = {
       amount: amount,
       type: type, // set the default order type to "Coins"
@@ -69,6 +97,7 @@ export class BillingComponent {
       date_created: null,
       date_updated: null,
       user: null,
+      course:null,
     };
     this.ordersService.createOrder(neworder,Coins).subscribe(
       data => {
@@ -76,29 +105,56 @@ export class BillingComponent {
         if (type=='Coins'){
           this.successMessageCoins = Coins + ' Coins have been added to your Account successfully!';
           this.errorMessage = null;
-        }
-        else if (type=='Voucher'){
-          this.successMessageVoucher = 'Exam Voucher added successfully!';
-          this.errorMessage = null;
-        }
-        else if (type=='Subscription'){
-          this.successMessageCoins = 'Exam Voucher added successfully!';
-          this.errorMessage = null;
+          this.MessageInProcessCoins = null;
         }
       },
       error => console.log('Error:', error)
     );
   }
 
+ addMessageAlreadySubbed(){
+  this.MessageAlreadySubscribed = 'You are already subscribed !';
+ }
+
+  addSubscriptionOrder(subscriptionType: string, price: number) {
+    this.MessageInProcess = 'Please wait a moment';
+    const url = 'http://localhost:8081/cumulus/order/addSubscriptionOrder';
+    const order = {}; // Empty object since the body is okay to be empty
+
+    this.http.post(url + `?subscription_type=${subscriptionType}&price=${price}`, order).subscribe(
+      () => {
+        console.log('Subscription order added successfully.');
+        this.successMessageSubscription = 'Thank you for subscribing!';
+        this.ErrorMessageSubscription = null;
+        this.MessageInProcess = null;
+        // Add any additional logic or notifications here
+      },
+      (error) => {
+        console.error('Error adding subscription order:', error);
+        this.successMessageSubscription = null;
+        this.ErrorMessageSubscription = 'Something went wrong !';
+        this.MessageInProcess = null;
+        // Handle the error as needed
+      }
+    );
+  }
+
   // Buying Exam Voucher function
   BuyVoucher(voucher_code: string) {
+    this.MessageInProcessVoucher = 'Please wait a moment';
     this.ordersService.BuyVoucher(voucher_code).subscribe(
       () => {
         console.log('Voucher created successfully');
+          this.successMessageBuyVoucher = 'Exam Voucher purchased successfully!';
+          this.ErrorMessageBuyVoucher = null;
+          this.MessageInProcessVoucher = null;
         // Perform any additional actions or show success message
       },
       (error) => {
         console.log('Failed to create voucher:', error);
+          this.successMessageBuyVoucher = null;
+          this.ErrorMessageBuyVoucher = 'Something went wrong';
+          this.MessageInProcessVoucher = null;
         // Handle error scenario and show error message
       }
     );
@@ -192,6 +248,7 @@ export class NbWindowFormComponentGiftCard {
         console.log(response);
           this.successMessageGiftCard = 'Gift Card Redeemed successfully!';
           this.ErrorMessageGiftCard = null;
+          alert("Gift Card Redeemed successfully!");
       },
       (error) => {
         if (error.status === 404) {
@@ -280,6 +337,7 @@ export class NbWindowFormComponentVoucher {
         console.log(response);
           this.successMessageVoucher = 'Exam Voucher Redeemed successfully!';
           this.ErrorMessageVoucher = null;
+          alert("Exam Voucher Redeemed successfully !");
       },
       (error) => {
         if (error.status === 404) {
@@ -297,6 +355,7 @@ export class NbWindowFormComponentVoucher {
         } else {
           // Other error occurred
           console.log("Something went wrong");
+          alert("Something went wrong !!");
         }
       }
     );

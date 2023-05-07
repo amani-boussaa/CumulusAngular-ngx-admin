@@ -107,6 +107,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/payment/list-refunds',
         icon: 'swap-outline'
       },
+      {
+        title: 'Statistics',
+        link: '/pages/payment/PaymentStatistics',
+        icon: 'pie-chart-outline'
+      },
     ],
   },
   {

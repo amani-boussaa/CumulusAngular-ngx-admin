@@ -153,6 +153,26 @@ margin: 0 0 20px
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
 <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
 <script type='text/javascript'></script> 
+<div *ngIf="MessageInProcess">
+  <div class="alert-card">
+        <nb-alert status="info">{{ MessageInProcess }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="MessageAlreadySubscribed">
+  <div class="alert-card">
+        <nb-alert status="info">{{ MessageAlreadySubscribed }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="successMessageSubscription">
+  <div class="alert-card">
+        <nb-alert status="success">{{ successMessageSubscription }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="ErrorMessageSubscription">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ ErrorMessageSubscription }}</nb-alert>
+  </div>
+</div>
 <div class="demo">
 <div class="container">
 <div class="row">
@@ -165,13 +185,16 @@ margin: 0 0 20px
 <h3 class="heading">Silver</h3>
 <div class="pricing-content">
 <ul>
-<li><b>✅ +200</b> each month</li>
+<li><b>✅ +200 <i class="fas fa-coins"></i></b> each month</li>
 <li><b>✅ 11%</b> discount</li>
 <li><b>✅ +</b> Unlimited Instance usage</li>
 </ul>
 </div>
 <div class="pricingTable-signup">
-<a href="#">sign up</a>
+  <a href="javascript:void(0)" *ngIf="wallet.subscription === 'None'" (click)="addSubscriptionOrder('silver', 16)">Subscribe</a>
+  <a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' && wallet.subscription !== null"
+  (click)="addMessageAlreadySubbed()" [disabled]="true">Subscribe</a>
+
 </div>
 </div>
 </div>
@@ -185,13 +208,16 @@ margin: 0 0 20px
 <h3 class="heading">Gold</h3>
 <div class="pricing-content">
 <ul>
-  <li><b>✅ +500</b> each month</li>
+  <li><b>✅ +500 <i class="fas fa-coins"></i></b> each month</li>
   <li><b>✅ 27%</b> discount</li>
   <li><b>✅ +</b> Unlimited Instance usage</li>
 </ul>
 </div>
 <div class="pricingTable-signup">
-<a href="#">sign up</a>
+  <a href="javascript:void(0)" *ngIf="wallet.subscription === 'None'" (click)="addSubscriptionOrder('gold', 36)"
+    >Subscribe</a>
+  <a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' && wallet.subscription !== null"
+  (click)="addMessageAlreadySubbed()">Subscribe</a>
 </div>
 </div>
 </div>
@@ -204,7 +230,7 @@ margin: 0 0 20px
 <h3 class="heading">Platinum</h3>
 <div class="pricing-content">
 <ul>
-  <li><b>✅ +1000</b> each month</li>
+  <li><b>✅ +1000 <i class="fas fa-coins"></i></b> each month</li>
   <li><b>✅ 36%</b> discount</li>
   <li><b>✅ +</b> Unlimited Instance usage</li>
   <li><b>✅</b> Free Video Chat</li>
@@ -213,7 +239,10 @@ margin: 0 0 20px
 </ul>
 </div>
 <div class="pricingTable-signup">
-<a href="#">sign up</a>
+<a href="javascript:void(0)" *ngIf="wallet.subscription === 'None'" (click)="addSubscriptionOrder('platinum', 68)"
+>Subscribe</a>
+<a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' && wallet.subscription !== null"
+  (click)="addMessageAlreadySubbed()">Subscribe</a>
 </div>
 </div>
 </div>
@@ -221,7 +250,7 @@ margin: 0 0 20px
 <div class="pricingTable red">
 <div class="pricingTable-header">
 <i class="fa fa-cube"></i>
-<div class="price-value"> $490.00 <span class="month">per Year</span> </div>
+<div class="price-value"> $450.00 <span class="month">per Year</span> </div>
 </div>
 <h3 class="heading">Yearly</h3>
 <div class="pricing-content">
@@ -234,7 +263,10 @@ margin: 0 0 20px
   <li><b>✅</b> No Daily Posts Limits</li></ul>
 </div>
 <div class="pricingTable-signup">
-<a href="#">sign up</a>
+<a href="javascript:void(0)" *ngIf="wallet.subscription === 'None'" (click)="addSubscriptionOrder('yearly', 450)">
+  Subscribe</a>
+  <a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' && wallet.subscription !== null"
+  (click)="addMessageAlreadySubbed()">Subscribe</a>
 </div>
 </div>
 </div>
@@ -243,14 +275,19 @@ margin: 0 0 20px
 </div>
 <br>
 
-<div *ngIf="successMessageVoucher">
+<div *ngIf="MessageInProcessVoucher">
   <div class="alert-card">
-        <nb-alert status="success">{{ successMessageVoucher }}</nb-alert>
+        <nb-alert status="info">{{ MessageInProcessVoucher }}</nb-alert>
   </div>
 </div>
-<div *ngIf="errorMessage">
+<div *ngIf="successMessageBuyVoucher">
   <div class="alert-card">
-        <nb-alert status="danger">{{ errorMessage }}</nb-alert>
+        <nb-alert status="success">{{ successMessageBuyVoucher }}</nb-alert>
+  </div>
+</div>
+<div *ngIf="ErrorMessageBuyVoucher">
+  <div class="alert-card">
+        <nb-alert status="danger">{{ ErrorMessageBuyVoucher }}</nb-alert>
   </div>
 </div>
 <!-- Exam Vouchers -->
@@ -314,7 +351,6 @@ margin: 0 0 20px
 
 
       <div class="d-style bgc-white btn btn-brc-tp btn-outline-green btn-h-outline-green btn-a-outline-green w-100 my-2 py-3 shadow-sm border-2">
-        <!-- Pro Plan -->
         <div class="row align-items-center">
           <div class="col-12 col-md-4">
             <h4 class="pt-3 text-170 text-600 text-green-d1 letter-spacing">
@@ -366,6 +402,11 @@ margin: 0 0 20px
 
     </div>
 </div>
+<div *ngIf="MessageInProcessCoins">
+  <div class="alert-card">
+        <nb-alert status="info">{{ MessageInProcessCoins }}</nb-alert>
+  </div>
+</div>
 <div *ngIf="successMessageCoins">
   <div class="alert-card">
         <nb-alert status="success">{{ successMessageCoins }}</nb-alert>
@@ -379,7 +420,6 @@ margin: 0 0 20px
 <!-- Buy Coins -->
 <a class="card2">
 
-       
     <div class="d-flex flex-column text-left mr-2">
         <p class="fa fa-bank"> Purchase Coins</p>
     </div>
@@ -434,7 +474,7 @@ margin: 0 0 20px
             </div>
             <div class="d-flex flex-column text-right mr-2">
                 <span class="current-balance"> Owned Coins</span>
-                <span class="amount"><span class="dollar-sign"></span>100</span>
+                <span class="amount"><span class="dollar-sign"></span>{{ wallet.coins }}</span>
             </div>
 
     </div>
@@ -451,25 +491,14 @@ margin: 0 0 20px
         </div>
         <div class="d-flex flex-column text-right mr-2">
             <span class="current-balance"> Account Balance</span>
-            <span class="amount"><span class="dollar-sign">$</span>100</span>
+            <span class="amount"><span class="dollar-sign">$</span>{{ wallet.balance }}</span>
         </div>
 
 </div>
 </a>
-<!-- Billing Actions -->
-<!-- <div *ngIf="successMessageOfGiftCard">
-  <div class="alert-card">
-        <nb-alert status="success">{{ successMessageOfGiftCard }}</nb-alert>
-  </div>
-</div>
-<div *ngIf="errorMessageOfGiftCard">
-  <div class="alert-card">
-        <nb-alert status="danger">{{ errorMessageOfGiftCard }}</nb-alert>
-  </div>
-</div> -->
+
 <a class="card2">
 
-       
         <div class="d-flex flex-column text-left mr-2">
           
             <span style="font-size: 1.3em;">

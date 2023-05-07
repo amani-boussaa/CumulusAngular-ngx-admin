@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NbWindowRef } from '@nebular/theme';
 
 
 @Component({
@@ -15,10 +16,21 @@ export class ChooseCardComponent implements OnInit {
   exp_month: String;
   exp_year: String;
 
-  constructor(private http: HttpClient,private router: Router) { }
+  selectedOption: string;
+
+
+  constructor(private http: HttpClient,private router: Router,public windowRef: NbWindowRef) { }
 
   ngOnInit(): void {
     this.getPaymentInfo();
+  }
+
+  navigateToLink(link: string) {
+    this.router.navigateByUrl(link);
+  }
+  submitForm() {
+    this.windowRef.close();
+  this.navigateToLink('/pages/payment/AddPaymentMethod');
   }
 
   getPaymentInfo() {

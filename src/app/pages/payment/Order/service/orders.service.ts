@@ -13,6 +13,14 @@ import { Order } from '../model/order';
     getOrderList(): Observable<any> {  
         return this.http.get(`${this.baseUrl}`+'getAllOrders');  
       }  
+
+      getUserOrderList(user_id: number): Observable<any> {  
+        return this.http.get(`${this.baseUrl}getAllOrdersOfUser/${user_id}`);  
+      }
+
+      getAllOrdersWithCourse(): Observable<any> {  
+        return this.http.get(`${this.baseUrl}`+'getAllOrdersWithCourse');  
+      }  
       
       createOrder(order: Order, coinsBuy: number): Observable<Order> {
         const url = `${this.baseUrl}addOrder?CoinsBuy=${coinsBuy}`;

@@ -77,7 +77,7 @@ hideUpdateForm() {
   this.isUpdateFormVisible = false;
 }
 
-updateRefund() {
+RequestRefund() {
   this.refundservice.updateRefund(this.refundToUpdate.refund_id, this.refundToUpdate)
     .subscribe(
       data => {

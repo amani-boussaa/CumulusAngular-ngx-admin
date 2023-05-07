@@ -1,4 +1,6 @@
+import { Course } from "../../../Course/course";
 import { User } from "../../../User/model/user";
+import { Refund } from "../../Refund/model/refund";
 
 export class Order {
     order_id:String;
@@ -9,4 +11,5 @@ export class Order {
     date_created:Date;
     date_updated:Date;
     user: User;
+    course: Course;
 }

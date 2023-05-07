@@ -39,9 +39,11 @@
                     <td>{{wallet.payment_method}}</td>
                     <td>{{wallet.subscription}}</td>
                     <td>{{wallet.user.username}}</td>
-                    <td><button (click)="deleteWallet(wallet.wallet_id)" class='btn btn-danger' style="margin-right: 10px;"><i class="fa fa-futboll-0">Delete</i></button>   
+                    <td><button (click)="deleteWallet(wallet.wallet_id)" class='btn btn-danger' style="margin-right: 10px;">
+                      Delete <nb-icon icon="trash-2-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button>   
                       <button (click)="updateWallet(wallet.wallet_id)" class='btn btn-info'  
-                      data-toggle="modal" data-target="#myModal">Update</button>  
+                      data-toggle="modal" data-target="#myModal">Update 
+                      <nb-icon icon="edit-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button>  
                     </td>  
                   </tr>   
             </tbody><br>  

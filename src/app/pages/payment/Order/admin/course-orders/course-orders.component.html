@@ -1,0 +1,25 @@
+<div class="panel panel-default">  
+    <div class="panel-heading">  
+        <h1 style="text-align: center">Course Purchases</h1><br>           
+      </div>  
+    
+    <div class="panel-body">  
+        <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"  
+        [dtTrigger]="dtTrigger"  >  
+            <thead class="thead-light">  
+                <tr>  
+                    <th>Price</th>  
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>  
+            </thead>  
+            <tbody>  
+                 <tr *ngFor="let order of orders ">  
+                    <td>{{order.course.price}}</td>  
+                    <td>{{order.course.name}}</td>
+                    <td>{{order.status}}</td>
+                  </tr>   
+            </tbody><br>  
+        </table>  
+    </div>  
+  </div>  

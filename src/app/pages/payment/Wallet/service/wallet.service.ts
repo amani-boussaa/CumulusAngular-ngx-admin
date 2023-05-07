@@ -36,6 +36,10 @@ import { Observable } from 'rxjs';
         return this.http.post(`${this.baseUrl}`+'AddPaymentMethod', Wallet);  
       } 
 
+      getSubscriptionStatistics(): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}`+'subscription/statistics');
+      }
+      
 }
 
   

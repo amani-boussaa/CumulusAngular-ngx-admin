@@ -145,7 +145,8 @@ onDeleteConfirm(event): void {
   status: event.newData.status,
   date_created : event.newData.date_created,
   date_updated : event.newData.date_updated,
-  user: event.newData.user
+  user: event.newData.user,
+  course: event.newData.course
   };
   this.ordersService.updateOrder(event.newData.order_id, order).subscribe((data) => {
     event.confirm.resolve(data);
@@ -163,7 +164,8 @@ onCreateConfirm(event): void {
   status: event.newData.status,
   date_created : event.newData.date_created,
   date_updated : event.newData.date_updated,
-  user: event.newData.user
+  user: event.newData.user,
+  course: event.newData.course
   };
 
   // this.ordersService.createOrder(order).subscribe((data) => {

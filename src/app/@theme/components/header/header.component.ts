@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { WalletService } from '../../../pages/payment/Wallet/service/wallet.service';
+import { Wallet } from '../../../pages/payment/Wallet/model/wallet';
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
@@ -40,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     { title: 'Profile', link: '/profile' },
-    { title: 'Wallet', link: '/pages/payment/Wallet-Details' },
+    { title: 'My Purchases', link: '/pages/payment/UserOrders' },
     { title: 'Billing', link: '/pages/payment/Billing' },
     { title: 'Log out', link: '/logout' }
   ];
@@ -51,11 +53,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private walletservice: WalletService) {
   }
+
+  wallet: Wallet;
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+
+    this.walletservice.getWalletOfUser().subscribe(
+      wallet => {
+        this.wallet = wallet;
+        console.log(this.wallet);
+      },
+      error => {
+        console.log('An error occurred while retrieving wallet information.');
+      }
+    );
 
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))

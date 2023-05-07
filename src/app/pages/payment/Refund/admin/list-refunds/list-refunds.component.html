@@ -55,9 +55,10 @@
                       <td>
                         {{refund.order.type}}
                       </td>                 
-                    <td><button (click)="deleteRefund(refund.refund_id)" class='btn btn-danger' style="margin-right: 10px;"><i class="fa fa-futboll-0">Delete</i></button>   
+                    <td><button (click)="deleteRefund(refund.refund_id)" class='btn btn-danger' style="margin-right: 10px;">
+                      Delete <nb-icon icon="trash-2-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button>   
                       <button (click)="showUpdateForm(refund,contentTemplate)" class='btn btn-info'  
-                      >Update</button>  
+                      >Update <nb-icon icon="edit-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button>  
                     </td>  
                   </tr>   
             </tbody><br>  
@@ -66,7 +67,6 @@
   </div>   
     
   <ng-template #contentTemplate let-data>
-  
   <div *ngIf="isUpdateFormVisible">
     <form>
       <div class="form-group">
@@ -81,18 +81,8 @@
           <option [ngValue]="'pending'">Pending</option>
         </select>              
       </div>
-      <button (click)="updateRefund()" type="submit" class="btn btn-success">Submit</button>
+      <button (click)="RequestRefund()" type="submit" class="btn btn-success">Submit</button>
       <!-- <button (click)="hideUpdateForm()" type="button" class="btn btn-default">Cancel</button> -->
     </form>
   </div>
-
 </ng-template>
-
-<!-- <div class="form-group">  
-  
-    <select class="form-control" >                                     
-      <option value="accepted" [selected]="'accepted' == refundToUpdate.status">accepted</option>  
-      <option value="refused" [selected]="'refused' == refundToUpdate.status">refused</option>  
-      <option value="pending" [selected]="'pending' == refundToUpdate.status" >pending</option>  
-    </select>                                 
-</div>        -->

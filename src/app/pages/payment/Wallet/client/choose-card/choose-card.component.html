@@ -1,7 +1,5 @@
 <div class="d-flex flex-row pb-3" *ngIf="brand === 'Visa'">
     <div class="d-flex align-items-center pe-2">
-      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
-        value="" aria-label="..." checked />
     </div>
     <div class="rounded border d-flex w-100 p-3 align-items-center">
       <p class="mb-0" *ngIf="brand === 'Visa'">
@@ -59,8 +57,6 @@
   <!-- Master card option -->
   <div class="d-flex flex-row" *ngIf="brand === 'MasterCard'">
     <div class="d-flex align-items-center pe-2">
-      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-        value="" aria-label="..." />
     </div>
     <div class="rounded border d-flex w-100 p-3 align-items-center">
       <p class="mb-0">
@@ -88,21 +84,13 @@
       </div>
     </div>
   </div>
+  <div *ngIf="brand === null || brand === ''">
+   <h4>You don't have any form of payment at the moment.</h4>
+  </div>
 
   <br>
-  <!-- Choose another card -->
-  <div class="d-flex flex-row">
-    <div class="d-flex align-items-center pe-2">
-      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-        value="" aria-label="..." />
-    </div>
-    <div class="rounded border d-flex w-100 p-3 align-items-center">
-      <p class="mb-0">
-        <i class="fab fa-cc-card fa-lg text-dark pe-2"></i>Choose another card
-      </p>
-    </div>
-  </div>
 <br>
 <br>
-  <button type="submit" nbButton status="success" style="display: block; margin: auto;">Submit
+  <button type="submit" nbButton status="success" style="display: block; margin: auto;"
+  (click)="submitForm()">Add a new one
   </button> 
