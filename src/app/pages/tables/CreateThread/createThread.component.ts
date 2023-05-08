@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'ngx-createThread',
+  selector: 'ngx-create-thread',
   templateUrl: './createThread.component.html',
   styleUrls: ['./createThread.component.scss'],
 })
 export class CreateThreadComponent  {
   threadForm: FormGroup;
-  thread: Thread; 
+  thread: Thread;
   users: User[] = []; // populate this with actual data
   comments: Comment[] = []; // populate this with actual data
 
@@ -30,9 +30,9 @@ export class CreateThreadComponent  {
     this.threadForm = this.fb.group({
       title: [this.thread.gettitle(), Validators.required],
       content: [this.thread.getcontent(), Validators.required],
-      
-     
- 
+
+
+
     });
   }
 
@@ -40,16 +40,16 @@ export class CreateThreadComponent  {
     if (this.threadForm.valid) {
       this.thread.settitle(this.threadForm.value.title);
       this.thread.setcontent(this.threadForm.value.content);
-      
+
        let user:User = new User(1); //userID
 this.thread.setthreadCreator(user);
 this.th.createThread(this.thread).subscribe((data) => {
-     
+
   this.router.navigate(['/pages/viewThreadDetail']);
-  
-  
+
+
 });;;
-      
+
       // and handle success/error
       this.toastrService.success('Thread submitted successfully', 'Success');
     } else {
@@ -57,4 +57,3 @@ this.th.createThread(this.thread).subscribe((data) => {
     }
   }
 }
- 

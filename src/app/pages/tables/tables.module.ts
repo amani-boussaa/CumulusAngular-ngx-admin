@@ -49,7 +49,8 @@ import { BOComponent } from './BO/BO.component';
     TableamanicomplaintComponent,
     ShowdetailsbuttontcomplaintComponent,
     CommentSectionComponent,
-    ThreadStatsComponent
+    ThreadStatsComponent,
+    BOComponent
   ],
 
 })

@@ -11,14 +11,14 @@ import { SharedDataService } from '../../../Service/SharedDataService ';
 
 
 @Component({
-  selector: 'ngx-ThreadStats',
+  selector: 'ngx-threadstats',
   templateUrl: './ThreadStats.component.html',
   styleUrls: ['./ThreadStats.component.scss'],
 })
 export class ThreadStatsComponent {
   public userID:any;
 data :any ;
- 
+
 
   source: LocalDataSource = new LocalDataSource();
 
@@ -26,22 +26,22 @@ data :any ;
 
 //userID
 
-    this.th.getStats(this.userID).subscribe((data) => { 
-      console.log(data);
+    // this.th.getStats(this.userID).subscribe((data) => {
+    //   console.log(data);
 
-      this.data = data; 
-    
-      
-    });
+    //   this.data = data;
 
- 
+
+    // });
+
+
   }
 
 
   options: any = {};
   themeSubscription: any;
 
-  
+
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {

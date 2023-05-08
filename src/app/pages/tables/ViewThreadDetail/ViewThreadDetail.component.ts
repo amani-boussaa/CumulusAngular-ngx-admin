@@ -21,7 +21,7 @@ import { Comment } from '../../../Entity/Comment';
 
 
 @Component({
-  selector: 'ngx-ViewThreadDetail',
+  selector: 'ngx-viewthreaddetail',
   templateUrl: './ViewThreadDetail.component.html',
   styleUrls: ['./ViewThreadDetail.component.scss'],
 })
@@ -35,22 +35,22 @@ input:string;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableData,private route: ActivatedRoute,private th:ThreadService,private router:Router,private sharedDataService: SharedDataService) {
-   
+
 this.id= JSON.parse(this.route.snapshot.queryParamMap.get('data'))
 
-th.getThreadById(this.id).subscribe((data) => { 
+th.getThreadById(this.id).subscribe((data) => {
   this.data=data;
   this.thread=data;
 
-  
 
-  
+
+
 });;
 
   }
   ngOnInit(): void {
-    
-   
+
+
   }
 
 Post(input:string){
@@ -60,8 +60,8 @@ Post(input:string){
 
 
 console.log( this.th.postComment(this.data.id,this.comment));
-  
+
 }
- 
+
 
 }
