@@ -7,6 +7,7 @@ import { WalletService } from '../../service/wallet.service';
 import { Wallet } from '../../model/wallet';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment';
+import { AuthService } from '../../../../../services/login/auth.service';
 
 @Component({
   selector: 'ngx-billing',
@@ -30,10 +31,10 @@ export class BillingComponent {
 
 
   wallet: Wallet;
-
+ id:any
 
   constructor(private ordersService: OrdersService,private walletservice: WalletService
-     ,private windowService: NbWindowService,private http: HttpClient) {}
+     ,private windowService: NbWindowService,private http: HttpClient,private authservice : AuthService) {}
 
   ngOnInit() {
     this.walletservice.getWalletOfUser().subscribe(
@@ -85,7 +86,7 @@ export class BillingComponent {
       title: 'Choose a form of Payment',
     });
   }
-  
+
 
   BuyCoins(amount: number,Coins: number,type: string) {
     this.MessageInProcessCoins = 'Please wait a moment';
@@ -273,16 +274,16 @@ export class NbWindowFormComponentGiftCard {
   }
 
   submit() {
-    
+
     // Handle form submission here
     // if (this.giftCardCode === '123') {
-      
+
     //   console.log('Gift card code is valid');
     // } else {
     //   console.log('Gift card code is invalid');
     // }
     this.RedeemGiftCard();
-    
+
     this.windowRef.close();
   }
 
@@ -363,16 +364,16 @@ export class NbWindowFormComponentVoucher {
   }
 
   submit() {
-    
+
     // Handle form submission here
     // if (this.giftCardCode === '123') {
-      
+
     //   console.log('Gift card code is valid');
     // } else {
     //   console.log('Gift card code is invalid');
     // }
     this.RedeemVoucher();
-    
+
     this.windowRef.close();
   }
 

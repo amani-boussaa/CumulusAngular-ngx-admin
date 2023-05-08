@@ -13,7 +13,7 @@ export class SmartTablemalikmailComponent {
   toEmail: string;
   subject: string;
   body: string;
-  attachment: string = '../../../assets/data/cumulus.pdf'; // Set the attachment to a static file
+  attachment: string = "../../../assets/images/cumulus.png"; // Set the attachment to a static file
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableData,  private certifService: CertifService) {
