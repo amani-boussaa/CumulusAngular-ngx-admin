@@ -17,8 +17,10 @@ export class UseramaniService {
   };
 
 
+  constructor(private http: HttpClient) {
 
-  constructor(private http: HttpClient) { }
+
+   }
 
 
 
