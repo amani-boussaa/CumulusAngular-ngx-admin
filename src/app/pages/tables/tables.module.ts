@@ -16,6 +16,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ThreadStatsComponent } from './ThreadStats/ThreadStats.component';
+import { BOComponent } from './BO/BO.component';
 
 @NgModule({
   imports: [

@@ -66,7 +66,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     link: '/pages/tables/smart-tablemalikmail',
   },
-
+  {
+    title: 'Blog',
+    icon: 'browser-outline',
+    link: '/pages/blog',
+  },
 
   {
     title: 'FEATURES',
@@ -84,7 +88,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       title: 'View All Threads',
       link: '/pages/tables/smart-tableFront',
     },
-     
+
     ],
   },
   {

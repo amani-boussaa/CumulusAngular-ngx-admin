@@ -4,11 +4,11 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 
 @Component({
-  selector: 'ngx-smart-table',
-  templateUrl: './smart-table.component.html',
-  styleUrls: ['./smart-table.component.scss'],
+  selector: 'ngx-BO',
+  templateUrl: './BO.component.html',
+  styleUrls: ['./BO.component.scss'],
 })
-export class SmartTableComponent {
+export class BOComponent {
 
   settings = {
     add: {
@@ -25,30 +25,39 @@ export class SmartTableComponent {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
     },
+    
     columns: {
-      id: {
+      blog_id: {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
+      title: {
+        title: 'Title',
         type: 'string',
       },
-      lastName: {
-        title: 'Last Name',
+      author: {
+        title: 'Author',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      date_created: {
+        title: 'Date Created',
+        type: 'Date',
+      },
+      description: {
+        title: 'Description',
         type: 'string',
       },
-      email: {
-        title: 'E-mail',
+      keywords: {
+        title: 'Keywords',
         type: 'string',
       },
-      age: {
-        title: 'Age',
-        type: 'number',
+      content: {
+        title: 'Content',
+        type: 'string',
+      },
+      imagePath: {
+        title: 'Image',
+        type: 'File',
       },
     },
   };

@@ -18,6 +18,7 @@ import { ViewThreadDetailComponent } from './ViewThreadDetail/ViewThreadDetail.c
 import { CreateThreadComponent } from './CreateThread/createThread.component';
 import { MyThreads } from './myThreads/myThreads.component';
 import { ThreadStatsComponent } from './ThreadStats/ThreadStats.component';
+import { BOComponent } from './BO/BO.component';
 
 const routes: Routes = [{
   path: '',
@@ -60,7 +61,7 @@ const routes: Routes = [{
     },{
       path: 'viewThreadTag',
       component:   ViewThreadTagComponent,
-    },
+     },
     {
       path: 'users',
       component: TableAmaniComponent,
@@ -74,7 +75,7 @@ const routes: Routes = [{
     {
       path: 'createThread',
       component:   CreateThreadComponent,
-    },   
+    },
      {
       path: 'myThreads',
       component:   MyThreads,
@@ -82,8 +83,8 @@ const routes: Routes = [{
       path: 'threadStats',
       component:   ThreadStatsComponent,
     },
-    
-    
+
+
   ],
 }];
 

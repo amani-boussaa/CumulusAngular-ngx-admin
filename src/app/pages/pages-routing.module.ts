@@ -12,6 +12,10 @@ import { ZoomComponent } from './oubaid/zoom/zoom.component';
 import { ViewThreadTagComponent } from './tables/ViewThreadTag/ViewThreadTag.component';
 import { ViewThreadDetailComponent } from './tables/ViewThreadDetail/ViewThreadDetail.component';
 import { CreateThreadComponent } from './tables/CreateThread/createThread.component';
+import { BlogComponent } from './Nadia/blog/blog.component';
+import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
+import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
+import { BOComponent } from './tables/BO/BO.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,6 +25,22 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: ECommerceComponent,
+    },
+    {
+      path: 'blog',
+      component: BlogComponent,
+    },
+    {
+      path: 'addblog',
+      component: AddBlogComponent,
+    },
+    {
+      path: 'theblog',
+      component: TheBlogComponent,
+    },
+    {
+      path: 'BO',
+      component: BOComponent,
     },
     {
       path: 'iot-dashboard',

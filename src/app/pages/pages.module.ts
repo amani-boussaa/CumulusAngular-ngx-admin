@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule } from '@nebular/theme';
+import { NbMenuModule} from '@nebular/theme';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -29,10 +31,10 @@ import {
 } from '@nebular/theme';
 import { StatsComponent } from './oubaid/stats/stats.component';
 import { ZoomComponent } from './oubaid/zoom/zoom.component';
-
-
-
 import { LogoutComponent } from './logout/logout.component';
+import { BlogComponent } from './Nadia/blog/blog.component';
+import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
+import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,6 @@ import { LogoutComponent } from './logout/logout.component';
     ThemeModule,
     NbMenuModule,
     DashboardModule,
-    
     ECommerceModule,
     MiscellaneousModule,
     ReactiveFormsModule,
@@ -65,7 +66,11 @@ import { LogoutComponent } from './logout/logout.component';
     ChatbotComponent,
     StatsComponent,
     ZoomComponent,
+    BlogComponent,
+    AddBlogComponent,
+    TheBlogComponent
   ],
+
 })
 export class PagesModule {
 }
