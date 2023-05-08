@@ -168,10 +168,10 @@ export class BillingComponent {
 @Component({
   template: `
     <div>
-      <div *ngIf="Coins != 0">
+      <div *ngIf="Coins !== 0">
       <p>Are you sure you want to buy {{ Coins }} Coins?</p>
       </div>
-      <div *ngIf="Coins == 0">
+      <div *ngIf="Coins === 0">
       <p>Are you sure you want to buy this Voucher?</p>
       </div>
                             <button nbButton (click)="submit()" status="success">Yes</button>

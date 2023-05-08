@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit {
   firstUserName = sessionStorage.getItem('username');
   senderEmail = sessionStorage.getItem('username');
   senderCheck = sessionStorage.getItem('username');
-  emojis: any[] = ["😀", "😂", "😍", "👍", "👎"];
+  emojis: any = ["😀", "😂", "😍", "👍", "👎"];
 
 
   constructor(private us: UseramaniService ,private chatService: ChatService, private router: Router) {
@@ -63,14 +63,14 @@ export class ChatComponent implements OnInit {
         this.firstUserName = this.chatData.firstUserName;
       });
     }, 1000);
-  
+
     // Fetch chat list
     setInterval(() => {
       this.chatService.getChatByFirstUserNameOrSecondUserName(sessionStorage.getItem('username')).subscribe(data => {
         this.chatList = data;
       });
     }, 1000);
-  
+
     let all = setInterval(() => {
       this.us.getAllusers().subscribe((data) => {
         this.alluser = data;
@@ -82,7 +82,7 @@ export class ChatComponent implements OnInit {
       }
     }, 1000);
   }
-  
+
   ngOnDestroy() {
     if (this.chatSubscription) {
       this.chatSubscription.unsubscribe();
