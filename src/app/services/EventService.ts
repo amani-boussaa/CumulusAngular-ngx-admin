@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios from "axios";
 import { Observable } from 'rxjs-compat';
+import { EventModel } from '../entity/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class EventService {
     return this.http.put(`${this.baseUrl}/${id_event}`, event);
   }
 
-  retrieveEvent(id_event: number) {
-    return this.http.get(`${this.baseUrl}/${id_event}`);
+  retrieveEvent(id_event: number):Observable<EventModel>{
+    return this.http.get<EventModel>(`${this.baseUrl}/${id_event}`);
   }
 
   deleteEvent(id_event: number):Observable<String>{

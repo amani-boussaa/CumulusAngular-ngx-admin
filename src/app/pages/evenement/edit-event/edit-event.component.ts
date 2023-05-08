@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../services/EventService';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventModel } from '../../../entity/event.model';
 
 @Component({
   selector: 'ngx-edit-event',
@@ -9,9 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-event.component.scss']
 })
 export class EditEventComponent implements OnInit {
-
+  event!:EventModel;
   editEventForm = new FormGroup({
-    ame_event: new FormControl(),
+    name_event: new FormControl(),
     start_date: new FormControl(),
     end_date: new FormControl(),
     duree: new FormControl(),
@@ -19,7 +20,7 @@ export class EditEventComponent implements OnInit {
     nb_restant: new FormControl(),
     description: new FormControl(),
   })
-
+  idEvent!:number;
   constructor(
     private eventService: EventService,
     private router: Router,
@@ -29,18 +30,24 @@ export class EditEventComponent implements OnInit {
    }
 
    public editEvent():void{
-    const idEvent:any = this.route.snapshot.paramMap.get('idEvent')!;
-    this.eventService.updateEvent(idEvent, 
+     let idEvent = this.route.snapshot.paramMap.get('idEvent');
+    this.eventService.updateEvent(parseInt(idEvent), 
       this.editEventForm.value as Event)
       .subscribe(
         (res)=>{
-           this.router.navigateByUrl("/pages/evenement/event");
+           this.router.navigateByUrl("/pages/evenement/event"); //mauvaise rédirection
         }
       )
    }
-
+   
   ngOnInit(): void {
+    let idEvent = this.route.snapshot.paramMap.get('idEvent');
+    this.eventService.retrieveEvent(parseInt(idEvent)).subscribe(res=>{
+      this.event = res;
+      console.log(this.event);
+      this.editEventForm.patchValue;
     
+    })
   }
 
 }

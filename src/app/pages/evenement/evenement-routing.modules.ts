@@ -5,6 +5,7 @@ import { EvenementComponent } from './evenement.component';
 import { ListEventComponent } from './list-event/list-event.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { RegisterToEventComponent } from '../registration/register-to-event/register-to-event.component';
 //import { EventTableComponent } from './event/event-table.component';
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [{
  children: [
     {path: 'event', component: ListEventComponent},
     {path: "add-event", component: AddEventComponent},
-    {path : "edit-event/:idEvent", component: EditEventComponent}
+    {path : "edit-event/:idEvent", component: EditEventComponent},
+    {path: "register-to-event", component:RegisterToEventComponent}
 
    
  ],

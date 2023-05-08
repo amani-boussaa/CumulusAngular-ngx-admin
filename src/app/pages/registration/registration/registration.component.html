@@ -1,5 +1,11 @@
 <div class="container">
-    <div class="row">
+    <div class="row d-flex flex-row-reverse mb-3">
+        <div class="col-lg-3">
+            <i class="fa-solid fa-file-pdf fs-3 text-danger mr-2 export-btn" (click)="generatePdf()"></i>
+            <i class="fa-solid fa-file-csv fs-3 text-success export-btn" (click)="exportCSV()"></i>
+        </div>
+    </div>
+    <div class="row" #dataToExport>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -12,7 +18,7 @@
             <tr *ngFor="let registration of registrations">
               <td>{{registration.event.name_event}}</td>
               <td>{{registration.registration_date}}</td>
-              <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteRegistration(registration.id_registration)" ></i> &nbsp; <a routerLink="/pages/evenement/edit-event"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
+              <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteRegistration(registration.id_registration)" ></i> &nbsp; <a routerLink="/pages/registration/edit-event"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
             </tr>
           </tbody>
         </table>
