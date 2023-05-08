@@ -82,8 +82,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         // picture: response.imagePath,
         // imagePath: undefined,
       };
- console.log("uuuuuuuuu")
- console.log(updatedUser)
+
 
 
       this.user = updatedUser;

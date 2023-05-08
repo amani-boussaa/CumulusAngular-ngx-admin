@@ -36,7 +36,6 @@ export class AuthService {
 
   saveToken(token: any) {
     localStorage.removeItem(this.ACCESS_TOKEN);
-    sessionStorage.clear();
     localStorage.setItem(this.ACCESS_TOKEN, token);
   }
 
