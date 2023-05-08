@@ -1,1 +1,61 @@
-<p>edit-event works!</p>
+<div class="container">
+    <form [formGroup]="editEventForm" (ngSubmit)="editEvent()">
+        <div class="row mb-3">
+          <div class="col-lg-12">
+            <label for="eventName" class="form-label">Nom évènement</label>
+            <input type="text" class="form-control"  aria-describedby="eventName" 
+            name="name_event"
+            formControlName="name_event"
+            >
+            <!-- <div id="eventName" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6">
+            <label for="eventStartDate" class="form-label">Date début</label>
+            <input type="date" class="form-control"  aria-describedby="eventStartDate"
+            name="start_date"
+            formControlName="start_date"
+            >
+            <!-- <div id="eventStartDate" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="col-lg-6">
+            <label for="eventEndDate" class="form-label">Date fin</label>
+            <input type="date" class="form-control"  aria-describedby="eventEndDate"
+            name="end_date"
+            formControlName="end_date"
+            >
+            <!-- <div id="eventEndDate" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6">
+            <label for="nbParticipants" class="form-label">Nombre participants</label>
+            <input type="number" class="form-control"  aria-describedby="nbParticipants" 
+            name="nb_participant"
+            formControlName="nb_participant"
+            >
+            <!-- <div id="nbParticipants" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="col-lg-6">
+            <label for="nbPlaceRestantes" class="form-label">Nombre restant</label>
+            <input type="number" class="form-control"  aria-describedby="nbPlaceRestantes"
+            name="nb_restant"
+            formControlName="nb_restant"
+            >
+            <!-- <div id="nbPlaceRestantes" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-12">
+            <label for="floatingTextarea">Description</label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" 
+            name="description"
+            formControlName="description"
+            ></textarea>
+            
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+</div>

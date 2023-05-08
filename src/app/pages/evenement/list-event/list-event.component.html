@@ -107,7 +107,7 @@
           <td>{{event.nb_participant}}</td>
           <td>{{event.nb_restant}}</td>
           <td>{{event.description}}</td>
-          <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteEvent(event.id_event)"></i> &nbsp; <a ><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
+          <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteEvent(event.id_event)"></i> &nbsp; <a routerLink="/pages/evenement/edit-event/{{event.id_event}}"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
         </tr>
       </tbody>
     </table>

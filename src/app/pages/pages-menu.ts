@@ -17,6 +17,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Registrations',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'resgistration',
+        link: '/pages/registration/register',
+      },
+      // {
+      //   title: 'Ajouter',
+      //   link: '/pages/evenement/add',
+      // },
+    ],
+  },
+  {
     title: 'Evenements',
     icon: 'edit-2-outline',
     children: [
@@ -28,12 +42,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       //   title: 'Ajouter',
       //   link: '/pages/evenement/add',
       // },
-      {
-        title: 'Registrations',
-        icon: 'edit-2-outline',
-        link: '/pages/evenement/registration',
-      },
-     
     ],
   },
   {
