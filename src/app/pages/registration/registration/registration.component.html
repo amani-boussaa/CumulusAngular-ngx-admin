@@ -18,7 +18,7 @@
             <tr *ngFor="let registration of registrations">
               <td>{{registration.event.name_event}}</td>
               <td>{{registration.registration_date}}</td>
-              <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteRegistration(registration.id_registration)" ></i> &nbsp; <a routerLink="/pages/registration/edit-event"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
+              <td> <i class="fa-solid fa-trash text-danger table-action-btn" (click)="deleteRegistration(registration.id_registration)" ></i> &nbsp; <a routerLink="/pages/registration/editRegistration"><i class="fa-solid fa-pen-to-square text-info table-action-btn"></i></a></td>
             </tr>
           </tbody>
         </table>

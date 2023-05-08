@@ -20,8 +20,12 @@ export class RegistrationService {
     return this.http.delete<RegistrationModel>(`${this.baseUrl}/deleteRegistration/${idRegistration}`);
   }
 
-  public addRegistration( registration:RegistrationModel):Observable<RegistrationModel>{
-    return this.http.post<RegistrationModel>(`${this.baseUrl}`, registration);
+  public addRegistration( registration:RegistrationModel, idEvent:number, userId:Number):Observable<RegistrationModel>{
+    console.log(registration)
+    //http://localhost:8081/CUMULUS/addRegistration/11/3
+    const route = `${this.baseUrl}/addRegistration/${idEvent}/${userId}`;
+    console.log(route);
+    return this.http.post<RegistrationModel>(`${this.baseUrl}/addRegistration/${idEvent}/${userId}`, registration);
   }
 
   public updateRegistration(idRegistration:number, registration:RegistrationModel):Observable<RegistrationModel>{
