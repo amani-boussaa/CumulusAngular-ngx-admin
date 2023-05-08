@@ -32,17 +32,27 @@
                               <div class="form-group"> <label for="cardNumber">
                                       <h6>Card number</h6>
                                   </label>
-                                  <div class="input-group"> <input type="number" formControlName="card_number"
+                                  <div class="input-group"> <input type="text" formControlName="card_number"
                                      placeholder="0000 0000 0000 0000" class="form-control"
                                      [ngClass]="{ 'is-invalid': submitted && f['card_number'].errors }" required>
-                                      <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
-                                  </div>
+                                      <div class="input-group-append">
+                                        <span class="input-group-text text-muted">
+                                          <img *ngIf="cardType !== 'unknown'" [src]="'https://cdn.flnf.hu/assets/' + cardType + '.svg'"
+                                           alt="{{ cardType }}" width="24"
+                                           height="24" />
+                                        </span>
+                                      </div>
+                                    </div>
+                                  
                                   <div *ngIf="submitted && f['card_number'].errors" class="invalid-input">
                                     <div *ngIf="f['card_number'].errors['required']">
                                       Card Number is required
                                     </div>
                                     <div *ngIf="f['card_number'].errors['length']">
                                       Invalid Length
+                                    </div>
+                                    <div *ngIf="f['card_number'].errors['luhn']">
+                                      Invalid Card Number
                                     </div>
                                   </div>
                               </div>
