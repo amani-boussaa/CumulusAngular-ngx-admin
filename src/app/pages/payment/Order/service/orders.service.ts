@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../model/order';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
   })
   export class OrdersService {
-    private baseUrl = 'http://localhost:8081/cumulus/order/';  
+    private baseUrl = `${environment.urlBackend}` + 'order/';  
     constructor(private http: HttpClient) { }
 
     getOrderList(): Observable<any> {  

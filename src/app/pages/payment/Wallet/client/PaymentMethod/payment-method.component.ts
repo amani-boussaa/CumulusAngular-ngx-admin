@@ -5,6 +5,7 @@ import { Wallet } from '../../model/wallet';
 
 import { lengthValidator } from './length.validator';
 import { luhnValidator } from './luhn.validator';
+import { environment } from '../../../../../../environments/environment';
 
 
 @Component({
@@ -57,7 +58,7 @@ export class PaymentMethodComponent implements OnInit{
     const exp_year = encodeURIComponent(this.paymentForm.value.exp_year);
     const cvc = encodeURIComponent(this.paymentForm.value.cvc);
 
-    const url = `http://localhost:8081/cumulus/wallet/AddPaymentMethod?card_number=${card_number}&exp_month=${exp_month}&exp_year=${exp_year}&cvc=${cvc}`;
+    const url = `${environment.urlBackend}` +`wallet/AddPaymentMethod?card_number=${card_number}&exp_month=${exp_month}&exp_year=${exp_year}&cvc=${cvc}`;
     
     const body = {
       "wallet_id": "cus_NaAEGV2s1PY0fL" // replace with your chosen wallet ID

@@ -3,6 +3,7 @@ import { WalletService } from '../../service/wallet.service';
 import { ChartDataSets, ChartOptions, ChartType, ChartData } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { NbThemeService } from '@nebular/theme';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'ngx-payment-statistics',
@@ -22,13 +23,13 @@ export class PaymentStatisticsComponent implements OnDestroy {
 
 
   constructor(private theme: NbThemeService, private http: HttpClient) {
-    this.http.get<number>('http://localhost:8081/cumulus/order/count').subscribe(count => {
+    this.http.get<number>(`${environment.urlBackend}` +'order/count').subscribe(count => {
       this.orderCount = count;
     });
-    this.http.get<number>('http://localhost:8081/cumulus/order/totalAmount').subscribe(t_amount => {
+    this.http.get<number>(`${environment.urlBackend}` +'order/totalAmount').subscribe(t_amount => {
       this.totalAmount = t_amount;
     });
-    this.http.get<number>('http://localhost:8081/cumulus/order/AverageOrderValue').subscribe(avg_amount => {
+    this.http.get<number>(`${environment.urlBackend}` +'order/AverageOrderValue').subscribe(avg_amount => {
       this.AverageAmount = avg_amount;
     });
 
@@ -37,7 +38,7 @@ export class PaymentStatisticsComponent implements OnDestroy {
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
-      this.http.get('http://localhost:8081/cumulus/wallet/subscription/statistics').subscribe((statistics: any) => {
+      this.http.get(`${environment.urlBackend}` +'wallet/subscription/statistics').subscribe((statistics: any) => {
         this.data = {
           labels: ['Gold', 'Platinum', 'Silver', 'Yearly'],
           datasets: [

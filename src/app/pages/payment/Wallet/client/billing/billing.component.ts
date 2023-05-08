@@ -6,6 +6,7 @@ import { ChooseCardComponent } from '../choose-card/choose-card.component';
 import { WalletService } from '../../service/wallet.service';
 import { Wallet } from '../../model/wallet';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'ngx-billing',
@@ -118,7 +119,7 @@ export class BillingComponent {
 
   addSubscriptionOrder(subscriptionType: string, price: number) {
     this.MessageInProcess = 'Please wait a moment';
-    const url = 'http://localhost:8081/cumulus/order/addSubscriptionOrder';
+    const url = `${environment.urlBackend}` +'order/addSubscriptionOrder';
     const order = {}; // Empty object since the body is okay to be empty
 
     this.http.post(url + `?subscription_type=${subscriptionType}&price=${price}`, order).subscribe(

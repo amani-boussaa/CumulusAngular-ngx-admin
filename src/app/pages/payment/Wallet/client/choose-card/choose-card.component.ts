@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NbWindowRef } from '@nebular/theme';
+import { environment } from '../../../../../../environments/environment';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class ChooseCardComponent implements OnInit {
   }
 
   getPaymentInfo() {
-    this.http.get<any>('http://localhost:8081/cumulus/order/ChooseCard').subscribe(
+    this.http.get<any>(`${environment.urlBackend}` +'order/ChooseCard').subscribe(
       response => {
         this.last4 = response.last4;
         this.brand = response.brand;

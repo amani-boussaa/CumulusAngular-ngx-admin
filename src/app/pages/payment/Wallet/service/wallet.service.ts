@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
   })
   export class WalletService {
-    private baseUrl = 'http://localhost:8081/cumulus/wallet/';  
+    private baseUrl = `${environment.urlBackend}` +'wallet/';  
     constructor(private http: HttpClient) { }
 
     getWalletList(): Observable<any> {  
