@@ -22,7 +22,7 @@ export class UserService {
   };
   getAll() {
     console.log('itsme')
-    return this.httpClient.get<User[]>(this.baseUrl + "user/retrieveAllUsers",this.httpOptions)
+    return this.httpClient.get<User[]>(this.baseUrl + "user/",this.httpOptions)
   }
 
   adduser(user: User): Observable<Object> {

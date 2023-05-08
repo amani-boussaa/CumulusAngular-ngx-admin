@@ -106,7 +106,7 @@ export class ChatService {
   }
 
   getUserHappines(): Observable<{ [key: string]: number }> {
-    return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}chats/keywords`);
+    return this.httpClient.get<{ [key: string]: number }>(`${this.baseUrl}chats/happiness`);
   }
 
 
