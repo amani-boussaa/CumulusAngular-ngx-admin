@@ -82,6 +82,11 @@ const routes: Routes = [{
         .then(m => m.FormsModule),
     },
     {
+      path: 'payment',
+      loadChildren: () => import('./payment/payment.module')
+        .then(m => m.PaymentModule),
+    },
+    {
       path: 'ui-features',
       loadChildren: () => import('./ui-features/ui-features.module')
         .then(m => m.UiFeaturesModule),

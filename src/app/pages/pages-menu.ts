@@ -164,6 +164,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Payment',
+    icon: 'shopping-cart-outline',
+    children: [
+      {
+        title: 'Orders',
+        link: '/pages/payment/list-orders',
+        icon: 'file-text-outline'
+      },
+      {
+        title: 'Wallets',
+        link: '/pages/payment/list-wallets',
+        icon: 'credit-card-outline'
+      },
+      {
+        title: 'Refunds',
+        link: '/pages/payment/list-refunds',
+        icon: 'swap-outline'
+      },
+      {
+        title: 'Statistics',
+        link: '/pages/payment/PaymentStatistics',
+        icon: 'pie-chart-outline'
+      },
+    ],
+  },
+  {
     title: 'Modal & Overlays',
     icon: 'browser-outline',
     children: [

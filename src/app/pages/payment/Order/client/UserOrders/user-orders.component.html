@@ -1,0 +1,68 @@
+
+<div class="panel panel-default">  
+  <div class="panel-heading">  
+      <h1 style="text-align: center">My Orders</h1><br>           
+    </div>  
+  
+    <div *ngIf="successMessage">
+      <div class="alert-card">
+            <nb-alert status="success">{{ successMessage }}</nb-alert>
+      </div>
+    </div>
+    <div *ngIf="errorMessage">
+      <div class="alert-card">
+            <nb-alert status="danger">{{ errorMessage }}</nb-alert>
+      </div>
+    </div>
+  <div class="panel-body">  
+      <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"  
+      [dtTrigger]="dtTrigger"  >  
+          <thead class="thead-light">  
+              <tr>  
+                  <th>Amount</th>  
+                  <th>Currency</th>
+                  <th>Type</th>  
+                  <th>Status</th>
+                  <th>Actions</th>  
+                    
+              </tr>  
+          </thead>  
+          <tbody>  
+               <tr *ngFor="let order of orders ">  
+                  <td>{{order.amount}}</td>  
+                  <td>{{order.currency}}</td>
+                  <td>{{order.type}}</td>
+                  <td>{{order.status}}</td>
+                  <td><button class='btn btn-info' (click)="showRefundForm(contentTemplate,order)">
+                  Refund <nb-icon icon="trash-2-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button></td>
+                </tr>   
+          </tbody><br>  
+      </table>  
+  </div>  
+</div>   
+
+<ng-template #contentTemplate let-data>
+  
+  <div *ngIf="isRefundFormVisible">
+        <div [hidden]="submitted" style="width: 400px;">  
+          <form [formGroup]="refundsaveform" #saverefund (ngSubmit)="saveRefund(saveRefund)">  
+              <div class="form-group">  
+                  <label for="name">Reason </label>  
+                  <input type="text" class="form-control"  formControlName="refund_reason" data-toggle="tooltip"   
+                     data-placement="right" title="Enter Student Name" >  
+                  <div class="alert alert-danger" *ngIf = "(RefundReason.touched) && (RefundReason.invalid)"   
+                    style="margin-top: 5px;">  
+                      <span *ngIf="RefundReason.errors.required">Please specify a reason</span>  
+                        <span *ngIf = "RefundReason.errors.minlength">   
+                            MinLength Error   
+                        </span>                     
+                    </div>  
+              </div>  
+        
+              <button type="submit" class="btn btn-success">Submit</button>  
+          </form>  
+      </div>  
+  </div>
+
+</ng-template>
+  

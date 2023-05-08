@@ -1,0 +1,33 @@
+
+<div class="panel panel-default">  
+    <div class="panel-heading">  
+        <h1 style="text-align: center">Wallet Details</h1><br>           
+      </div>  
+    
+      
+    <div class="panel-body">  
+        <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"  
+        [dtTrigger]="dtTrigger"  >  
+            <thead class="thead-light">  
+                <tr>  
+                    <th>Balance</th>  
+                    <th>Coins</th>  
+                    <th>Currency</th>
+                    <th>Payment Method</th>  
+                    <th>Subscription</th>
+                    <th>Username</th>                        
+                </tr>  
+            </thead>  
+            <tbody>  
+                 <tr>  
+                    <td>{{wallet.balance}}</td>  
+                    <td>{{wallet.coins}}</td>
+                    <td>{{wallet.currency}}</td>
+                    <td>{{wallet.payment_method}}</td>
+                    <td>{{wallet.subscription}}</td>
+                    <td>{{wallet.user.username}}</td>
+                  </tr>   
+            </tbody><br>  
+        </table>  
+    </div>  
+  </div>   

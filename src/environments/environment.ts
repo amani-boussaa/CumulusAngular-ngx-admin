@@ -13,5 +13,5 @@ export const environment = {
   production: false,
   secret:'amani',
   client:'123456789',
-  urlBackend:'http://localhost:8081/CUMULUS/'
+  urlBackend:'http://localhost:8080/CUMULUS/'
 };

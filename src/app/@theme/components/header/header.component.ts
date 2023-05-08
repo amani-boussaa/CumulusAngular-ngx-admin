@@ -5,6 +5,8 @@ import {
   NbSidebarService,
   NbThemeService,
 } from "@nebular/theme";
+import { WalletService } from '../../../pages/payment/Wallet/service/wallet.service';
+import { Wallet } from '../../../pages/payment/Wallet/model/wallet';
 
 import { UserData } from "../../../@core/data/users";
 import { LayoutService } from "../../../@core/utils";
@@ -47,6 +49,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     { title: "Profile", link: "/pages/forms/profile", icon: "person" },
+    { title: 'My Purchases', link: '/pages/payment/UserOrders' },
+    { title: 'Billing', link: '/pages/payment/Billing' },
     { title: "Log out", link: "/auth/logout", icon: "log-out-outline" },
   ];
 
@@ -59,7 +63,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private breakpointService: NbMediaBreakpointsService,
     private authsrv: AuthService,
     private us: UseramaniService,
+    private walletservice: WalletService
   ) {}
+
+  wallet: Wallet;
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
@@ -79,7 +86,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
       this.user = updatedUser;
     });
-
+    this.walletservice.getWalletOfUser().subscribe(
+      wallet => {
+        this.wallet = wallet;
+        console.log(this.wallet);
+      },
+      error => {
+        console.log('An error occurred while retrieving wallet information.');
+      }
+    );
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService
       .onMediaQueryChange()
