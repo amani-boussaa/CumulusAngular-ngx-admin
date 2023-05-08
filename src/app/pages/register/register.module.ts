@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { FormsModule } from '@angular/forms';
-import { IntlInputPhoneModule } from 'intl-input-phone';
 
 
 @NgModule({
@@ -13,7 +12,6 @@ import { IntlInputPhoneModule } from 'intl-input-phone';
     CommonModule,
     RegisterRoutingModule,
     FormsModule,
-    IntlInputPhoneModule
   ]
 })
 export class RegisterModule { }

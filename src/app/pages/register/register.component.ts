@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   messageError: string;
   role: any;
   selectedRole: string = Role.ROLE_STUDENT;
-  SelectedCountryISOCode: string = "TN";
+  // SelectedCountryISOCode: string = "TN";
   constructor(private aus:AuthService,private router:Router) {
 
    }
@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
 
   register(f:any){
     let data=f.value
-    data.phonenumber = data.phonenumber.Number
+    // data.phonenumber = data.phonenumber.Number
+
     this.aus.register(data).subscribe(
       data => {
         this.router.navigate(['/auth/login']);
