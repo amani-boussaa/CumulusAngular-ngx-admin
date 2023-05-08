@@ -1,7 +1,5 @@
 .add-blog-button {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+position: relative;
   border-radius: 0;
   padding: 10px 20px;
   font-size: 16px;
@@ -11,8 +9,14 @@
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 9999;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
-
+.b-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .add-blog-button:hover {
   background-color: #304ffe;
   cursor: pointer;
