@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule } from '@nebular/theme';
+import { NbActionsModule, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbSelectModule, NbToastrModule, NbTreeGridModule, NbUserModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { FormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
 import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
@@ -10,6 +9,13 @@ import { TableAmaniComponent } from './table-amani/table-amani.component';
 import { ShowDetailsButtonComponentComponent } from './show-details-button-component/show-details-button-component.component';
 import { TableamanicomplaintComponent } from './tableamanicomplaint/tableamanicomplaint.component';
 import { ShowdetailsbuttontcomplaintComponent } from './showdetailsbuttontcomplaint/showdetailsbuttontcomplaint.component';
+import { NbTagModule } from '@nebular/theme';
+import { CommentSectionComponent } from './commentSection/commentSection.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ThreadStatsComponent } from './ThreadStats/ThreadStats.component';
 
 @NgModule({
   imports: [
@@ -22,8 +28,17 @@ import { ShowdetailsbuttontcomplaintComponent } from './showdetailsbuttontcompla
     TablesRoutingModule,
     Ng2SmartTableModule,
     PdfViewerModule,
-    NbButtonModule
-
+    NbButtonModule,
+     NbTagModule,
+     NbListModule,
+     NbUserModule ,
+     NbToastrModule,
+     NbEvaIconsModule ,
+     NbSelectModule,
+     ReactiveFormsModule,
+     NbActionsModule,
+     NgxEchartsModule,
+     NgxChartsModule
   ],
   declarations: [
     ...routedComponents,
@@ -32,6 +47,9 @@ import { ShowdetailsbuttontcomplaintComponent } from './showdetailsbuttontcompla
     ShowDetailsButtonComponentComponent,
     TableamanicomplaintComponent,
     ShowdetailsbuttontcomplaintComponent,
+    CommentSectionComponent,
+    ThreadStatsComponent
   ],
+
 })
 export class TablesModule { }

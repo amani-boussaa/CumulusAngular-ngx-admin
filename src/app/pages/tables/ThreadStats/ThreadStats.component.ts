@@ -1,18 +1,47 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { Component } from '@angular/core';
+import { LocalDataSource } from 'ng2-smart-table';
+
+import { SmartTableData } from '../../../@core/data/smart-table';
+import { ThreadService } from '../../../Service/Thread.Service';
+import { NbTagComponent, NbThemeService } from '@nebular/theme';
+import { Thread } from '../../../Entity/Thread';
+import { ThreadTagEntity } from '../../../Entity/ThreadTag';
+import { NavigationExtras, Router } from '@angular/router';
+import { SharedDataService } from '../../../Service/SharedDataService ';
+
 
 @Component({
-  selector: 'ngx-echarts-bar',
-  template: `
-    <div echarts [options]="options" class="echart"></div>
-  `,
+  selector: 'ngx-ThreadStats',
+  templateUrl: './ThreadStats.component.html',
+  styleUrls: ['./ThreadStats.component.scss'],
 })
-export class EchartsBarComponent implements AfterViewInit, OnDestroy {
+export class ThreadStatsComponent {
+  public userID:any;
+data :any ;
+ 
+
+  source: LocalDataSource = new LocalDataSource();
+
+  constructor(private service: SmartTableData,private th:ThreadService ,private router:Router,private sharedDataService: SharedDataService,private theme: NbThemeService) {
+
+//userID
+
+    this.th.getStats(this.userID).subscribe((data) => { 
+      console.log(data);
+
+      this.data = data; 
+    
+      
+    });
+
+ 
+  }
+
+
   options: any = {};
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
-  }
+  
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
@@ -89,4 +118,7 @@ export class EchartsBarComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
+
+
+
 }

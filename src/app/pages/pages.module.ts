@@ -57,9 +57,7 @@ import { LogoutComponent } from './logout/logout.component';
     NbSelectModule,
     NbSpinnerModule,
     NbTabsetModule,
-    FormsModule,
-        
-    
+    FormsModule
   ],
   declarations: [
     PagesComponent,

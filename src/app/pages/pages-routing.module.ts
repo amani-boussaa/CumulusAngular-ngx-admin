@@ -9,6 +9,10 @@ import { ChatComponent} from './oubaid/chat/chat.component'
 import { ChatbotComponent } from './oubaid/chatbot/chatbot.component';
 import { StatsComponent } from './oubaid/stats/stats.component';
 import { ZoomComponent } from './oubaid/zoom/zoom.component';
+import { ViewThreadTagComponent } from './tables/ViewThreadTag/ViewThreadTag.component';
+import { ViewThreadDetailComponent } from './tables/ViewThreadDetail/ViewThreadDetail.component';
+import { CreateThreadComponent } from './tables/CreateThread/createThread.component';
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -22,6 +26,9 @@ const routes: Routes = [{
       path: 'iot-dashboard',
       component: DashboardComponent,
     },
+
+    {path:'viewThreadTag',component:ViewThreadTagComponent},
+    {path:'viewThreadDetail',component:ViewThreadDetailComponent},
     {
       path: 'message',
       component: ChatComponent,

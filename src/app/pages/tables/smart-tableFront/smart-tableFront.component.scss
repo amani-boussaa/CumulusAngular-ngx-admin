@@ -1,0 +1,21 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .left-button {
+    margin-right: auto;
+  }
+  
+  .middle-button {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,41 @@
+
+
+
+
+<div  class="button-container">
+      <button nbButton hero (click)="CreateThread()" disabled="true" status="primary">Create new Thread
+        <nb-icon icon="plus-outline"></nb-icon>
+      </button>
+    </div>
+
+
+
+<div *ngFor="let d of data">
+  <nb-card>
+    <nb-card-header
+      >
+      <div style="text-align: right;">
+        <nb-tag
+       
+        status="success" appearance="filled" 
+        text='Read More'
+        (click)="ReadMore(d)"></nb-tag
+      >
+    </div><h3>{{ d.title }}</h3>
+      <nb-tag-list>
+        <nb-tag
+          *ngFor="let t of d.threadTags"
+          status="info" appearance="outline" 
+          text='{{ t.name }}'
+          (click)="TagClick(t)"></nb-tag
+        >
+      </nb-tag-list>
+    </nb-card-header>
+    <nb-card-body>
+      A nebula is an interstellar cloud of dust, hydrogen, helium and other
+      ionized gases. Originally, nebula was a name for any diffuse astronomical
+      object, including galaxies beyond the Milky Way. {{ d.content }}
+    </nb-card-body>
+    <nb-card-footer>By {{ d.threadCreator.nom }}</nb-card-footer>
+  </nb-card>
+</div>
