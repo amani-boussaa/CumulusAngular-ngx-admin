@@ -54,8 +54,6 @@ export class ChatComponent implements OnInit {
     // sessionStorage.setItem('username', 'alicesmith');
     // sessionStorage.setItem('email', 'alice@example.com');
 
-    this.chatService.getChatByFirstUserNameOrSecondUserName(this.firstUserName).subscribe(data => {
-      this.chatList = data;
 
       // Sort the chats by last message sent
       this.chatList.sort((a, b) => {
