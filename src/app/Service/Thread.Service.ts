@@ -28,7 +28,7 @@ export class ThreadService {
   }
 
   getThreadById(id: number) {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get<Thread>(`http://localhost:8081/CUMULUS/api/thread/getThreadById/${id}`);
   }
 
   getAllthreads(){
@@ -70,5 +70,8 @@ export class ThreadService {
   }
 
 
+  getStats(id:number){
+    
+  }
 
 }

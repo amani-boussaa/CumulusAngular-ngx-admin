@@ -18,48 +18,7 @@ import { SharedDataService } from '../../../Service/SharedDataService ';
 export class SmartTableFrontComponent {
   public tagid:any;
 data :any ;
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
-    },
-  };
+ 
 
   source: LocalDataSource = new LocalDataSource();
 
@@ -84,10 +43,10 @@ TagClick(t:ThreadTagEntity){
 
 }
 ReadMore(d:Thread){
-  this.sharedDataService.setThreadData(d);
-  this.router.navigate(['/pages/viewThreadDetail']);
-
-
+  this.router.navigate(['/pages/viewThreadDetail'],{ queryParams: { data: JSON.stringify(d.id) }});
+}
+ViewMyThreads(){
+  this.router.navigate(['/pages/tables/myThreads'],{ queryParams: { data: JSON.stringify(2) } });
 }
 
 
@@ -105,4 +64,9 @@ ReadMore(d:Thread){
   CreateThread(){
     this.router.navigate(['/pages/tables/createThread']);
   }
+
+  ViewMyStats(){
+    this.router.navigate(['/pages/tables/threadStats'] );
+  }
+  
 }

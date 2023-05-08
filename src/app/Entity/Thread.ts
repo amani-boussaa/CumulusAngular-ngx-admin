@@ -2,7 +2,7 @@ import { Comment } from "./Comment"
 import { User } from "./User"
 
 export class Thread {
-  private id: number;
+ id: number;
   private title: string;
   private content: string;
   private threadCreator: User;
@@ -17,7 +17,7 @@ export class Thread {
 
   }
   
-
+  
   getid(): number {
     return this.id;
   }

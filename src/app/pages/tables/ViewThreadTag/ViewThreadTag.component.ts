@@ -25,7 +25,7 @@ data:any;
     this.name=JSON.parse(this.route.snapshot.queryParamMap.get('data'))
     this.th.getThreadByName(this.name.name).subscribe((data) => { 
       this.data=data;
-      console.log(data);
+      
 
       
     
@@ -45,8 +45,8 @@ data:any;
   
   
   }ReadMore(d:Thread){
-    this.sharedDataService.setThreadData(d);
-    this.router.navigate(['/pages/viewThreadDetail']);
+ 
+    this.router.navigate(['/pages/viewThreadDetail'],{ queryParams: { data: JSON.stringify(d.id) }});
   
   
   }

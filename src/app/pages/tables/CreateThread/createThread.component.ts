@@ -41,7 +41,7 @@ export class CreateThreadComponent  {
       this.thread.settitle(this.threadForm.value.title);
       this.thread.setcontent(this.threadForm.value.content);
       
-       let user:User = new User(1);
+       let user:User = new User(1); //userID
 this.thread.setthreadCreator(user);
 this.th.createThread(this.thread).subscribe((data) => {
      

@@ -10,6 +10,7 @@ import { ViewThreadTagComponent } from './ViewThreadTag/ViewThreadTag.component'
 import { ViewThreadDetailComponent } from './ViewThreadDetail/ViewThreadDetail.component';
 import { CreateThreadComponent } from './CreateThread/createThread.component';
 import { MyThreads } from './myThreads/myThreads.component';
+import { ThreadStatsComponent } from './ThreadStats/ThreadStats.component';
 
 const routes: Routes = [{
   path: '',
@@ -40,9 +41,11 @@ const routes: Routes = [{
     },    {
       path: 'myThreads',
       component:   MyThreads,
+    },   {
+      path: 'threadStats',
+      component:   ThreadStatsComponent,
     },
     
-
     
   ],
 }];
@@ -59,6 +62,6 @@ export const routedComponents = [
   TreeGridComponent,
   SmartTablebComponent,
   SmartTableFrontComponent,
-  ViewThreadTagComponent,ViewThreadDetailComponent,CreateThreadComponent,MyThreads
+  ViewThreadTagComponent,ViewThreadDetailComponent,CreateThreadComponent,MyThreads,ThreadStatsComponent
 
 ];

@@ -2,11 +2,19 @@
 
 
 
-<div  class="button-container">
-      <button nbButton hero (click)="CreateThread()" status="primary">Create new Thread
-        <nb-icon icon="plus-outline"></nb-icon>
-      </button>
-    </div>
+<div class="button-container">  
+  <button nbButton hero class="left-button" (click)="CreateThread()" status="primary">Create new Thread
+  <nb-icon icon="plus-outline"></nb-icon>
+</button>
+<button nbButton hero class="left-button" (click)="ViewMyThreads()"status="primary">View My Threads
+  <nb-icon icon="list-outline"></nb-icon>
+</button>
+  <button nbButton hero class="middle-button" (click)="ViewMyStats()" status="primary">Stats
+    <nb-icon icon="pie-chart-outline"></nb-icon>
+  </button> 
+  <div class="spacer"></div>
+
+</div>
 
 
 

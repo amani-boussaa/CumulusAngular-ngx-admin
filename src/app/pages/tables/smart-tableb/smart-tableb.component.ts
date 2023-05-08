@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { Thread } from '../../../Entity/Thread';
 import { User } from '../../../Entity/User';
-import { NbToastrService } from '@nebular/theme';
+import { NbThemeService, NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-smart-tableb',
@@ -72,14 +72,13 @@ export class SmartTablebComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor( private th:ThreadService ,private toastrService: NbToastrService) {
+  constructor( private th:ThreadService ,private toastrService: NbToastrService,private theme: NbThemeService) {
      this.th.getAllthreads().subscribe((data) => {
-     
-  console.log(data);
+
     this.source.load(data)
   
 });
-    console.log( );
+
 
   
   }
@@ -166,7 +165,30 @@ this.th.createThreadWithTags(this.createThread,this.createTags).subscribe((data)
       input = input.slice(0, lastCommaIndex);
     }
   
-    // Remove any trailing spaces
+   
     return input.trimEnd();
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

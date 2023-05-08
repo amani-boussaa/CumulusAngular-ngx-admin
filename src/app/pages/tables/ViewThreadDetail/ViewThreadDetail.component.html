@@ -13,27 +13,21 @@
       </nb-tag-list>
     </nb-card-header>
     <nb-card-body>
-      A nebula is an interstellar cloud of dust, hydrogen, helium and other
-      ionized gases. Originally, nebula was a name for any diffuse astronomical
-      object, including galaxies beyond the Milky Way. {{ data.content }}
+       {{ data.content }}
     </nb-card-body>
     <nb-card-footer>By {{ data.threadCreator.nom }}</nb-card-footer>
   </nb-card>
-  <ng-container *ngFor="let comment of data.comments">
-    <div class="comment">
-      <div class="comment-header">
-        <div class="comment-user">
-          <nb-user [name]="comment.authorName" [picture]="comment.authorImage"></nb-user>
-        </div>
-        <div class="comment-date">
-          {{ comment.date | date: 'dd/MM/yyyy hh:mm a'}}
-        </div>
-      </div>
-      <div class="comment-content">
-        {{ comment.content }}
-      </div>
-    </div>
-  </ng-container>
+
+  <nb-card  *ngFor="let comment of data.comments" >
+    <nb-card-header>Nebula</nb-card-header>
+    <nb-card-body>
+      A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+      Originally, nebula was a name for any diffuse astronomical object,
+      including galaxies beyond the Milky Way.
+    </nb-card-body>
+    <nb-card-footer>By Wikipedia</nb-card-footer>
+  </nb-card>
+
   <div class="comment-container">
     <textarea rows="5"  [(ngModel)]="input" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
   <button nbButton (click)="Post(input)" status="primary">Post</button>
