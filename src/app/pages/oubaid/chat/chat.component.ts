@@ -55,6 +55,7 @@ export class ChatComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    console.log("test amani....")
     setInterval(() => {
       this.chatService.getChatById(sessionStorage.getItem('chatId')).subscribe(data => {
         this.chatData = data;
