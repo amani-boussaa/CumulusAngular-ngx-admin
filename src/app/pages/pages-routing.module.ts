@@ -16,6 +16,8 @@ import { BlogComponent } from './Nadia/blog/blog.component';
 import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
 import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
 import { BOComponent } from './tables/BO/BO.component';
+import { StatsBlogComponent } from './Nadia/stats-blog/stats-blog.component';
+import { MyBlogComponent } from './Nadia/my-blog/my-blog.component';
 
 const routes: Routes = [{
   path: '',
@@ -41,6 +43,14 @@ const routes: Routes = [{
     {
       path: 'BO',
       component: BOComponent,
+    },
+    {
+      path: 'StatsBlog',
+      component: StatsBlogComponent,
+    },
+    {
+      path: 'MyBlog',
+      component: MyBlogComponent,
     },
     {
       path: 'iot-dashboard',
