@@ -8,6 +8,7 @@ import { ThreadTagEntity } from '../../../Entity/ThreadTag';
 import { Thread } from '../../../Entity/Thread';
 import { SharedDataService } from '../../../Service/SharedDataService ';
 import { Comment } from '../../../Entity/Comment';
+import { User } from '../../../Entity/User';
 
 
 
@@ -58,8 +59,8 @@ Post(input:string){
 
  this.comment.setCommentedThread(this.thread);
 
-
-console.log( this.th.postComment(this.data.id,this.comment));
+//userID
+this.th.postComment(this.data.id,this.comment,3);
 
 }
 

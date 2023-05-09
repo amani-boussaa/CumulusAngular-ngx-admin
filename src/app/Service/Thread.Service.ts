@@ -57,11 +57,11 @@ export class ThreadService {
   getThreadByUser(userId: number){
     return this.http.get(`${environment.urlBackend}api/thread/getThreadByUser/${userId}`);
   }
-  postComment(threadid: number,comment:Comment){
+  postComment(threadid: number,comment:Comment,userid:number){
     console.log("postclicked Service");
     console.log(comment);
     
-    return this.http.post(`${environment.urlBackend}api/thread/addComment/${threadid}`,comment)  .subscribe(
+    return this.http.post(`${environment.urlBackend}api/thread/addComment/${threadid}/${userid}`,comment)  .subscribe(
       response => console.log(response),
       error => console.log(error)
     );

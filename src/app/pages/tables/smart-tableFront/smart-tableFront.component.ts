@@ -43,9 +43,11 @@ TagClick(t:ThreadTagEntity){
 
 }
 ReadMore(d:Thread){
+
   this.router.navigate(['/pages/viewThreadDetail'],{ queryParams: { data: JSON.stringify(d.id) }});
 }
 ViewMyThreads(){
+  console.log("dasdas");
   this.router.navigate(['/pages/tables/myThreads'],{ queryParams: { data: JSON.stringify(2) } });
 }
 
