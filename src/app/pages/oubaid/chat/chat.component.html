@@ -61,7 +61,8 @@
                 <span *ngIf="secondUserName===senderCheck">{{firstUserName}}</span>
                 <p>Message</p>
               </div>
-              <div class="video_cam" (click)="openZoom()">
+              <div class="video_cam" *ngIf="wallet.subscription === 'platinum' || wallet.subscription === 'yearly'"
+               (click)="openZoom()">
                 <span><i class="fas fa-video"></i></span>
               </div>
             </div>

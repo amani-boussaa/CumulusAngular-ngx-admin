@@ -7,6 +7,8 @@ import { ChatService } from '../services/chat.service';
 import { UserService } from '../services/user.service';
 import { UseramaniService } from '../../../services/amani/useramani.service';
 import { Subscription } from 'rxjs';
+import { Wallet } from '../../payment/Wallet/model/wallet';
+import { WalletService } from '../../payment/Wallet/service/wallet.service';
 
 @Component({
   selector: 'ngx-chat',
@@ -37,6 +39,7 @@ export class ChatComponent implements OnInit {
   check = sessionStorage.getItem('username');
   timesRun = 0;
   timesRun2 = 0;
+  wallet: Wallet;
 
   private chatSubscription: Subscription;
 
@@ -48,7 +51,8 @@ export class ChatComponent implements OnInit {
   emojis: any = ["😀", "😂", "😍", "👍", "👎"];
 
 
-  constructor(private us: UseramaniService ,private chatService: ChatService, private router: Router) {
+  constructor(private us: UseramaniService ,private chatService: ChatService,
+    private walletservice: WalletService, private router: Router) {
     this.chatForm = new FormGroup({
       replymessage: new FormControl()
     });
@@ -56,6 +60,15 @@ export class ChatComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log("test amani....")
+    this.walletservice.getWalletOfUser().subscribe(
+      wallet => {
+        this.wallet = wallet;
+        console.log(this.wallet);
+      },
+      error => {
+        console.log('An error occurred while retrieving wallet information.');
+      }
+    );
     setInterval(() => {
       this.chatService.getChatById(sessionStorage.getItem('chatId')).subscribe(data => {
         this.chatData = data;

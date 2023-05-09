@@ -15,8 +15,9 @@ import { environment } from '../../../../../environments/environment';
         return this.http.get(`${this.baseUrl}`+'getAllOrders');  
       }  
 
-      getUserOrderList(user_id: number): Observable<any> {  
-        return this.http.get(`${this.baseUrl}getAllOrdersOfUser/${user_id}`);  
+      getUserOrderList(): Observable<any> {  
+        let id = sessionStorage.getItem('id')
+        return this.http.get(`${this.baseUrl}getAllOrdersOfUser/${id}`);  
       }
 
       getAllOrdersWithCourse(): Observable<any> {  
@@ -24,7 +25,8 @@ import { environment } from '../../../../../environments/environment';
       }  
       
       createOrder(order: Order, coinsBuy: number): Observable<Order> {
-        const url = `${this.baseUrl}addOrder?CoinsBuy=${coinsBuy}`;
+        let id = sessionStorage.getItem('id')
+        const url = `${this.baseUrl}addOrder/`+id+`?CoinsBuy=${coinsBuy}`;
         return this.http.post<Order>(url, order);
       }  
       
@@ -41,13 +43,16 @@ import { environment } from '../../../../../environments/environment';
       }   
 
       redeemGiftCard(code: string): Observable<any> {
-        return this.http.put(`${this.baseUrl}RedeemGiftCard?code=${code}`, null);
+        let id = sessionStorage.getItem('id')
+        return this.http.put(`${this.baseUrl}RedeemGiftCard/`+id+`?code=${code}`, null);
       }
       redeemVoucher(code: string): Observable<any> {
-        return this.http.put(`${this.baseUrl}RedeemVoucher?code=${code}`, null);
+        let id = sessionStorage.getItem('id')
+        return this.http.put(`${this.baseUrl}RedeemVoucher/`+id+`?code=${code}`, null);
       }
       BuyVoucher(name: string) {
-        return this.http.post(`${this.baseUrl}createVoucher?name=${name}`,null);
+        let id = sessionStorage.getItem('id')
+        return this.http.post(`${this.baseUrl}createVoucher/`+id+`?name=${name}`,null);
       }
 
 }

@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.walletservice.getWalletOfUser().subscribe(
       wallet => {
         this.wallet = wallet;
-        console.log("walll")
+        console.log("wallet information fel header")
         console.log(this.wallet);
       },
       error => {

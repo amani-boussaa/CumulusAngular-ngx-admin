@@ -35,7 +35,8 @@ import { environment } from '../../../../../environments/environment';
       }
 
       AddPaymentMethod(Wallet: object): Observable<object> {
-        return this.http.post(`${this.baseUrl}`+'AddPaymentMethod', Wallet);
+        let id = sessionStorage.getItem('id')
+        return this.http.post(`${this.baseUrl}`+'AddPaymentMethod/'+id, Wallet);
       }
 
       getSubscriptionStatistics(): Observable<any> {

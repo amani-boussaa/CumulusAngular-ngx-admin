@@ -120,7 +120,8 @@ export class BillingComponent {
 
   addSubscriptionOrder(subscriptionType: string, price: number) {
     this.MessageInProcess = 'Please wait a moment';
-    const url = `${environment.urlBackend}` +'order/addSubscriptionOrder';
+    let id = sessionStorage.getItem('id')
+    const url = `${environment.urlBackend}` +'order/addSubscriptionOrder/'+id;
     const order = {}; // Empty object since the body is okay to be empty
 
     this.http.post(url + `?subscription_type=${subscriptionType}&price=${price}`, order).subscribe(

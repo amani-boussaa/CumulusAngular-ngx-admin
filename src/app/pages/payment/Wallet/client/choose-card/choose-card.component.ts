@@ -35,7 +35,8 @@ export class ChooseCardComponent implements OnInit {
   }
 
   getPaymentInfo() {
-    this.http.get<any>(`${environment.urlBackend}` +'order/ChooseCard').subscribe(
+    let id = sessionStorage.getItem('id')
+    this.http.get<any>(`${environment.urlBackend}` +'order/ChooseCard/'+id).subscribe(
       response => {
         this.last4 = response.last4;
         this.brand = response.brand;
