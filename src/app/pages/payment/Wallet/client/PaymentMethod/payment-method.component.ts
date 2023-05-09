@@ -6,6 +6,7 @@ import { Wallet } from '../../model/wallet';
 import { lengthValidator } from './length.validator';
 import { luhnValidator } from './luhn.validator';
 import { environment } from '../../../../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class PaymentMethodComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastrService:ToastrService
   ) {
     
   }
@@ -69,14 +71,15 @@ export class PaymentMethodComponent implements OnInit{
     this.http.put<Wallet>(url, body).subscribe(
     (wallet) => {
       console.log(wallet);
-      this.successMessage = 'Payment method added successfully!';
+      this.toastrService.success('Payment method added successfully', 'Success');
+
       this.errorMessage = null;
     },
     (error) => {
       
       console.log(error);
       this.successMessage = null;
-      this.errorMessage = 'Error adding payment method: Card details not valid!';
+      this.toastrService.error('Error: Card details not valid!', 'Error');
     }
   );
     }

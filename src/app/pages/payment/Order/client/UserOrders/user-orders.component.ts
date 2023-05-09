@@ -8,6 +8,7 @@ import { OrdersService } from '../../service/orders.service';
 import { Order } from '../../model/order';  
 import { Refund } from '../../../Refund/model/refund';
 import { RefundService } from '../../../Refund/service/refund.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngx-list-orders',
@@ -17,7 +18,8 @@ import { RefundService } from '../../../Refund/service/refund.service';
 export class ListUserOrdersComponent implements OnInit{
  
 
-constructor(private ordersService: OrdersService,private refundservice: RefundService,private windowService: NbWindowService) { }
+constructor(private ordersService: OrdersService,private refundservice: RefundService
+  ,private windowService: NbWindowService,private toastrService:ToastrService) { }
 
 ordersArray: any[] = [];  
   dtOptions: DataTables.Settings = {};  
@@ -89,14 +91,17 @@ ordersArray: any[] = [];
         // Exam Voucher redeemed successfully
         this.windowRef.close();
         console.log(response);
-          this.successMessage = 'Request added successfully!';
-          this.errorMessage = null;
+          // this.successMessage = 'Request added successfully!';
+          // this.errorMessage = null;
+          this.toastrService.success('Refund Request added successfully', 'Success');
+
       },
       (error) => {
           // error occurred
           console.log("Something went wrong");
-          this.successMessage = null;
-          this.errorMessage = 'Something went wrong!';
+          // this.successMessage = null;
+          // this.errorMessage = 'Something went wrong!';
+          this.toastrService.error('Something went wrong', 'Error');
       }
     );
     this.refund = new Refund(); 

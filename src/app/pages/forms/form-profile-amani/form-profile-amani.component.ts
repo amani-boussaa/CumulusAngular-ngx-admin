@@ -164,6 +164,7 @@ export class FormProfileAmaniComponent implements OnInit {
       },
       (error) => {
         console.error('Error creating wallet:', error);
+        alert("You already have a Wallet");
         // Handle the error as needed
       }
     );

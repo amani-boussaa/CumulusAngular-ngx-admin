@@ -18,7 +18,9 @@
     <img class="front-image" src="https://res.cloudinary.com/gloot/image/upload/v1632768480/Marketing/202109_gloot2/Tokens_side_front.svg" alt="Front side">
     <img class="back-image" src="https://res.cloudinary.com/gloot/image/upload/v1632768480/Marketing/202109_gloot2/Tokens_side_back.svg" alt="Back side">
   </div>
-  <!-- <span class="balance" > {{ wallet.coins }}</span> -->
+  <span class="balance" *ngIf="wallet?.coins;else noCoinsOrZero" > {{ wallet.coins }}</span>
+  <ng-template #noCoinsOrZero> 0</ng-template>
+
 </div>
   <nb-actions size="small">
 

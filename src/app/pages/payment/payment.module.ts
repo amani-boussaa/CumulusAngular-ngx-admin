@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule,NbButtonModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule,NbButtonModule,NbToastrModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {DataTablesModule} from 'angular-datatables';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
@@ -36,6 +36,7 @@ import { ThemeModule } from '../../@theme/theme.module';
     NgxChartsModule,
     NgxEchartsModule,
     ChartModule,
+    NbToastrModule,
   ],
   declarations: [
      ...routedComponents,

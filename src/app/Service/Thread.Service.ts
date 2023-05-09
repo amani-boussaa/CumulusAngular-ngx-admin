@@ -17,7 +17,8 @@ export class ThreadService {
   createThread(thread: any){
     console.log("CREATE THREAD METHODE");
     console.log(thread);
-    return this.http.post<Thread>(`${environment.urlBackend}api/thread/createThread`, thread);
+    let id = sessionStorage.getItem('id')
+    return this.http.post<Thread>(`${environment.urlBackend}api/thread/createThread/`+id, thread);
   }
   createThreadWithTags(thread: any,tags:string){
     console.log(thread);

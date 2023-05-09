@@ -4,6 +4,7 @@ import { Refund } from '../../model/refund';
 import { Observable,Subject } from "rxjs";  
 import {FormControl,FormGroup,Validators} from '@angular/forms';  
 import { NbWindowService } from '@nebular/theme';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngx-list-refunds',
@@ -14,7 +15,8 @@ export class ListRefundsComponent implements OnInit {
 
   @ViewChild('contentTemplate', { static: true }) contentTemplate: TemplateRef<any>;
 
-  constructor(private refundservice:RefundService,private windowService: NbWindowService) { }  
+  constructor(private refundservice:RefundService,private windowService: NbWindowService,
+    private toastrService:ToastrService) { }  
 
   
   refundsArray: any[] = [];  
@@ -84,14 +86,18 @@ RequestRefund() {
         this.isupdated = true;
         this.refundservice.getRefundList().subscribe(data => {
           this.refunds = data;
-          this.successMessage = 'Updated successfully!';
-          this.errorMessage = null;
+          // this.successMessage = 'Updated successfully!';
+          // this.errorMessage = null;
+          this.toastrService.success('Updated successfully', 'Success');
+
         });
       },
       error => {
         console.log(error);
-        this.successMessage = null;
-        this.errorMessage = 'Error Updating!';
+        // this.successMessage = null;
+        // this.errorMessage = 'Error Updating!';
+        this.toastrService.error('Error Updating', 'Error');
+
       }
       );
 }

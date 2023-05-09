@@ -16,6 +16,6 @@
     </form>
   </nb-card-body>
   <nb-card-footer>
-    <button nbButton status="primary" (click)="submitForm()">Submit</button>
+    <button nbButton status="primary" (click)="submitForm()" [disabled]="threadLimitReached">Submit</button>
   </nb-card-footer>
 </nb-card>

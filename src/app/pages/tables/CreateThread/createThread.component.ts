@@ -18,6 +18,8 @@ export class CreateThreadComponent  {
   thread: Thread;
   users: User[] = []; // populate this with actual data
   comments: Comment[] = []; // populate this with actual data
+  threadLimitReached = false;
+
 
   constructor(private fb: FormBuilder, private toastrService: NbToastrService,private th:ThreadService,private router:Router) { }
 
@@ -46,13 +48,20 @@ export class CreateThreadComponent  {
 this.thread.setthreadCreator(user);
 this.th.createThread(this.thread).subscribe((data) => {
 
-  this.router.navigate(['/pages/viewThreadDetail']);
+  this.router.navigate(['/pages/tables/smart-tableFront']);
 
+  this.toastrService.success('Thread submitted successfully', 'Success');
+},
+   error => {
+  if (error.status === 500 && error.error.message === 'You reach the limit of posts.') {
+    this.threadLimitReached = true;
+    this.toastrService.danger('You have reached the limit : 10 Posts', 'Error');
 
-});;;
+  }
+}
+);;;
 
       // and handle success/error
-      this.toastrService.success('Thread submitted successfully', 'Success');
     } else {
       this.toastrService.danger('Please fill all required fields', 'Error');
     }
