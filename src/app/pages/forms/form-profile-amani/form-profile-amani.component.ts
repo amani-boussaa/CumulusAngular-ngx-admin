@@ -3,6 +3,9 @@ import { UseramaniService } from '../../../services/amani/useramani.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../../services/login/auth.service';
 import Swal from 'sweetalert2';
+import { WalletService } from '../../payment/Wallet/service/wallet.service';
+import { Wallet } from '../../payment/Wallet/model/wallet';
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'ngx-form-profile-amani',
   templateUrl: './form-profile-amani.component.html',
@@ -33,7 +36,8 @@ export class FormProfileAmaniComponent implements OnInit {
   ];
   selectedFile: File = null;
 
-  constructor( private us: UseramaniService,private http: HttpClient,private authservice : AuthService) {}
+  constructor( private us: UseramaniService,private http: HttpClient,private authservice : AuthService,
+    private walletservice:WalletService) {}
 
   ngOnInit(): void {
     this.id = this.authservice.getLoggedInID()
@@ -144,6 +148,26 @@ export class FormProfileAmaniComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
+  wallet : Wallet;
+// wallet aziz
+ AddWallet()
+ {
+  let id = sessionStorage.getItem('id')
+    const url = `${environment.urlBackend}` +'wallet/addWallet/'+id;
+    const wallet = {}; // Empty object since the body is okay to be empty
 
+    this.http.post(url , wallet).subscribe(
+      () => {
+        console.log('Wallet Created for current User!');
+        alert("Wallet Created. Add a Payment Method to make Purchases");
+        // Add any additional logic or notifications here
+      },
+      (error) => {
+        console.error('Error creating wallet:', error);
+        // Handle the error as needed
+      }
+    );
+ }
 
+// end wallet
 }

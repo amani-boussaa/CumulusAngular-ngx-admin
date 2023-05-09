@@ -41,7 +41,8 @@ export class CreateThreadComponent  {
       this.thread.settitle(this.threadForm.value.title);
       this.thread.setcontent(this.threadForm.value.content);
 
-       let user:User = new User(1); //userID
+      let userID = sessionStorage.getItem('id')
+       let user:User = new User(parseInt(userID)); //userID
 this.thread.setthreadCreator(user);
 this.th.createThread(this.thread).subscribe((data) => {
 

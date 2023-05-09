@@ -86,7 +86,7 @@ export class SmartTablebComponent {
 
   onCreate(event): void {
 
- 
+
     this.createThread.setid(null)
     this.createThread.settitle(event.newData.title)
    this.createThread.setcontent(event.newData.content)
@@ -121,7 +121,7 @@ this.th.createThreadWithTags(this.createThread,this.createTags).subscribe((data)
     }
 
     onUpdate(event): void {
-    
+      
       this.createThread.setid(event.newData.id)
       this.createThread.settitle(event.newData.title)
       this.createThread.setcontent(event.newData.content)

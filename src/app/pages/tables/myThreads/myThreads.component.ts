@@ -24,7 +24,9 @@ data :any ;
 
   constructor(private service: SmartTableData,private th:ThreadService ,private router:Router,private sharedDataService: SharedDataService) {
 //userID
-    this.th.getThreadByUser(2).subscribe((data) => { 
+let userID = sessionStorage.getItem('id')
+
+    this.th.getThreadByUser(userID).subscribe((data) => { 
       console.log(data);
 
       this.data = data; 

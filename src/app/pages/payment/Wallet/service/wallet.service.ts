@@ -19,7 +19,8 @@ import { environment } from '../../../../../environments/environment';
       }
 
       createWallet(Wallet: object): Observable<object> {
-        return this.http.post(`${this.baseUrl}`+'addWallet', Wallet);
+        let id = sessionStorage.getItem('id')
+        return this.http.post(`${this.baseUrl}`+'addWallet/'+id, Wallet);
       }
 
       deleteWallet(wallet_id: String): Observable<any> {

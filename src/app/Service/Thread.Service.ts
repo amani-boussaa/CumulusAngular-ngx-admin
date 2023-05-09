@@ -54,7 +54,7 @@ export class ThreadService {
   getThreadByName(name: string){
     return this.http.get<Thread[]>(`${environment.urlBackend}api/threadtag/getThreadByName/${name}`);
   }
-  getThreadByUser(userId: number){
+  getThreadByUser(userId: any){
     return this.http.get(`${environment.urlBackend}api/thread/getThreadByUser/${userId}`);
   }
   postComment(threadid: number,comment:Comment,userid:number){
