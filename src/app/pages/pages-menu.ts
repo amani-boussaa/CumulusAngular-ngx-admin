@@ -17,7 +17,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'browser-outline',
     link: '/pages/blog',
   },
-  
+  {
+    title: 'BO',
+    icon: 'archive',      
+    link: '/pages/BO',
+  },
 
   //*********************************************************************************************************
   

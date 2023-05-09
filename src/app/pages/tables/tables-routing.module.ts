@@ -8,10 +8,6 @@ const routes: Routes = [{
   path: '',
   component: TablesComponent,
   children: [
-    {
-      path: 'smart-table',
-      component: BOComponent,
-    },
   ],
 }];
 

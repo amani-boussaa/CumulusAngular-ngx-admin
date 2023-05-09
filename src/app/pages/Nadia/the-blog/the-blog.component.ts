@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import  {BlogService} from '../service/blog.service';
+import { BlogService } from '../service/blog.service';
 import { Blog } from '../model/blog';
-import { data } from 'jquery';
-
 
 @Component({
   selector: 'ngx-the-blog',
@@ -12,19 +10,20 @@ import { data } from 'jquery';
 })
 export class TheBlogComponent implements OnInit {
 
-  blog_id : any;
-  blog : Blog;
-  data : any;
+  blog_id: any;
+  blog: any =[]
 
-  constructor(private route : ActivatedRoute, private blogService : BlogService) {
-    this.blog_id= JSON.parse(this.route.snapshot.queryParamMap.get('data'))
-    this.blogService.getBlog(this.blog_id).subscribe(data=>{this.data=data})
-    console.log(this.blog);
-   }
+  constructor(
+    private route: ActivatedRoute,
+    private blogService: BlogService
+  ) {}
 
   ngOnInit(): void {
+    this.blog_id = this.route.snapshot.queryParamMap.get('data');
+    this.blogService.getBlog(this.blog_id).subscribe(blog => {
+      this.blog = blog;
+      console.log(this.blog);
+    });
   }
 
 }
-
-

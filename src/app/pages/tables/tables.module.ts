@@ -6,6 +6,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { BOComponent } from './BO/BO.component';
 
+
 @NgModule({
   imports: [
     NbCardModule,

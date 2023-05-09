@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { BlogService } from '../../Nadia/service/blog.service';
+import { Blog } from '../../Nadia/model/blog';
+
 
 @Component({
   selector: 'ngx-BO',
@@ -9,8 +12,17 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   styleUrls: ['./BO.component.scss'],
 })
 export class BOComponent {
-
+  createBlog:Blog = new Blog();
+  
+  createTags:string = "";
+  data: any[];
   settings = {
+    actions: {
+      add: true,
+      edit: true,
+      delete: true,
+    
+    },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -24,6 +36,7 @@ export class BOComponent {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+      
     },
     
     columns: {
@@ -57,23 +70,63 @@ export class BOComponent {
       },
       imagePath: {
         title: 'Image',
-        type: 'File',
+        type: 'File',  //image amani
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
+  public Blogs : any[] = []; 
 
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(private service: SmartTableData,private blogservice: BlogService, ) {
+
   }
+
+  // onDeleteConfirm(event): void {
+  //   if (window.confirm('Are you sure you want to delete?')) {
+  //     event.confirm.resolve();
+  //   } else {
+  //     event.confirm.reject();
+  //   }
+  // }
+
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.blogservice.deleteBlog(event.data.blog_id).subscribe(() => {
+        event.confirm.resolve();
+      }, () => {
+        event.confirm.reject();
+      });
     } else {
       event.confirm.reject();
     }
   }
+
+
+  ngOnInit() {
+   
+    this.getBlogs();
+    console.log(   this.Blogs);
+   
+ 
+  }
+
+  getBlogs() {
+    this.blogservice.getBlogList()
+      .subscribe(
+        (response) => {
+         
+         this.Blogs = response;
+         this.source.load(this.Blogs);
+         console.log(this.Blogs);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  } 
+  
+  
+  
 }
