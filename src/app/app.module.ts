@@ -9,24 +9,36 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
   NbMenuModule,
   NbSidebarModule,
+  NbTagModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { ToastrModule } from 'ngx-toastr';
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+import { FormsModule } from '@angular/forms';
+
+import { AuthlayoutamaniComponent } from './authlayoutamani/authlayoutamani.component';
+import { AuthlayoutamaniModule } from './authlayoutamani/authlayoutamani.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -39,6 +51,9 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    ReactiveFormsModule,
+    PdfViewerModule,
+    AuthlayoutamaniModule
   ],
   bootstrap: [AppComponent],
 })

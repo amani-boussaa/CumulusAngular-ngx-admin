@@ -1,0 +1,10 @@
+<nb-list>
+  <nb-list-item *ngFor="let comment of threadData.comments">
+    <nb-user
+      size="medium"
+      [name]="comment.content"
+    >
+    </nb-user>
+    <div class="comment-content">{{ comment.content }}</div>
+  </nb-list-item>
+</nb-list>

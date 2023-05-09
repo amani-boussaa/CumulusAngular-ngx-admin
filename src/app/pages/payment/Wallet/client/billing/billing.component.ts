@@ -7,6 +7,7 @@ import { WalletService } from '../../service/wallet.service';
 import { Wallet } from '../../model/wallet';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment';
+import { AuthService } from '../../../../../services/login/auth.service';
 
 @Component({
   selector: 'ngx-billing',
@@ -30,10 +31,10 @@ export class BillingComponent {
 
 
   wallet: Wallet;
-
+ id:any
 
   constructor(private ordersService: OrdersService,private walletservice: WalletService
-     ,private windowService: NbWindowService,private http: HttpClient) {}
+     ,private windowService: NbWindowService,private http: HttpClient,private authservice : AuthService) {}
 
   ngOnInit() {
     this.walletservice.getWalletOfUser().subscribe(
@@ -85,7 +86,7 @@ export class BillingComponent {
       title: 'Choose a form of Payment',
     });
   }
-  
+
 
   BuyCoins(amount: number,Coins: number,type: string) {
     this.MessageInProcessCoins = 'Please wait a moment';
@@ -119,7 +120,8 @@ export class BillingComponent {
 
   addSubscriptionOrder(subscriptionType: string, price: number) {
     this.MessageInProcess = 'Please wait a moment';
-    const url = `${environment.urlBackend}` +'order/addSubscriptionOrder';
+    let id = sessionStorage.getItem('id')
+    const url = `${environment.urlBackend}` +'order/addSubscriptionOrder/'+id;
     const order = {}; // Empty object since the body is okay to be empty
 
     this.http.post(url + `?subscription_type=${subscriptionType}&price=${price}`, order).subscribe(
@@ -167,10 +169,10 @@ export class BillingComponent {
 @Component({
   template: `
     <div>
-      <div *ngIf="Coins != 0">
+      <div *ngIf="Coins !== 0">
       <p>Are you sure you want to buy {{ Coins }} Coins?</p>
       </div>
-      <div *ngIf="Coins == 0">
+      <div *ngIf="Coins === 0">
       <p>Are you sure you want to buy this Voucher?</p>
       </div>
                             <button nbButton (click)="submit()" status="success">Yes</button>
@@ -273,16 +275,16 @@ export class NbWindowFormComponentGiftCard {
   }
 
   submit() {
-    
+
     // Handle form submission here
     // if (this.giftCardCode === '123') {
-      
+
     //   console.log('Gift card code is valid');
     // } else {
     //   console.log('Gift card code is invalid');
     // }
     this.RedeemGiftCard();
-    
+
     this.windowRef.close();
   }
 
@@ -363,16 +365,16 @@ export class NbWindowFormComponentVoucher {
   }
 
   submit() {
-    
+
     // Handle form submission here
     // if (this.giftCardCode === '123') {
-      
+
     //   console.log('Gift card code is valid');
     // } else {
     //   console.log('Gift card code is invalid');
     // }
     this.RedeemVoucher();
-    
+
     this.windowRef.close();
   }
 

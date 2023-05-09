@@ -47,7 +47,7 @@ ordersArray: any[] = [];
       lengthMenu:[[6, 16, 20, -1], [6, 16, 20, "All"]],  
       processing: true  
     };     
-    this.ordersService.getUserOrderList(this.connect_user_id).subscribe(data =>{  
+    this.ordersService.getUserOrderList().subscribe(data =>{  
     this.orders =data;  
     this.dtTrigger.next();  
     })  

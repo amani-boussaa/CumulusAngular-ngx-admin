@@ -70,7 +70,10 @@ export class ListOrdersComponent implements OnInit{
           if (cell === 'Coins') {
             return '<i class="fas fa-coins"></i> ' + cell;
           } if (cell === 'Voucher') {
-            return '<i class="fas fa-ticket-alt"></i> ' + cell;
+            return '<i class="fas fa-ticket"></i> ' + cell;
+          }
+          if (cell === 'Subscription') {
+            return '<i class="fa-solid fa-money-bill-1"></i> ' + cell;
           }
           else {
             return cell;

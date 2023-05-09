@@ -3,7 +3,9 @@
     <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
-    <a class="logo" href="#" (click)="navigateHome()">ngx-<span>admin</span></a>
+    <a class="logo" href="#" (click)="navigateHome()" style="margin-left: 10px; margin-top: 10px;">
+      <span class="logo-text">cumulus</span>
+    </a>
   </div>
   <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
     <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
@@ -16,7 +18,7 @@
     <img class="front-image" src="https://res.cloudinary.com/gloot/image/upload/v1632768480/Marketing/202109_gloot2/Tokens_side_front.svg" alt="Front side">
     <img class="back-image" src="https://res.cloudinary.com/gloot/image/upload/v1632768480/Marketing/202109_gloot2/Tokens_side_back.svg" alt="Back side">
   </div>
-  <span class="balance"> {{ wallet.coins }}</span> 
+  <span class="balance" > {{ wallet.coins }}</span>
 </div>
   <nb-actions size="small">
 
@@ -29,8 +31,30 @@
       <nb-user [nbContextMenu]="userMenu"
                [onlyPicture]="userPictureOnly"
                [name]="user?.name"
-               [picture]="user?.picture">
+               [picture]="user?.picture"
+               >
       </nb-user>
     </nb-action>
   </nb-actions>
+
 </div>
+
+<style>
+ .logo-text {
+  display: inline-block;
+  background-image: url("../../../../assets/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain; /* Adjust as needed */
+  text-indent: -9999px; /* Hide the text */
+  width: 270px; /* Set the width of the image */
+  height: 220px; /* Set the height of the image */
+  margin-left: -65px;
+}
+
+.logo-text span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height:150px; /* Set the line height to match the height of the image */
+}
+
+</style>

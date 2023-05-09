@@ -5,18 +5,71 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { ChatComponent} from './oubaid/chat/chat.component'
+import { ChatbotComponent } from './oubaid/chatbot/chatbot.component';
+import { StatsComponent } from './oubaid/stats/stats.component';
+import { ZoomComponent } from './oubaid/zoom/zoom.component';
+import { ViewThreadTagComponent } from './tables/ViewThreadTag/ViewThreadTag.component';
+import { ViewThreadDetailComponent } from './tables/ViewThreadDetail/ViewThreadDetail.component';
+import { CreateThreadComponent } from './tables/CreateThread/createThread.component';
+import { BlogComponent } from './Nadia/blog/blog.component';
+import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
+import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
+import { BOComponent } from './tables/BO/BO.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+
     {
       path: 'dashboard',
       component: ECommerceComponent,
     },
     {
+      path: 'blog',
+      component: BlogComponent,
+    },
+    {
+      path: 'addblog',
+      component: AddBlogComponent,
+    },
+    {
+      path: 'theblog',
+      component: TheBlogComponent,
+    },
+    {
+      path: 'BO',
+      component: BOComponent,
+    },
+    {
       path: 'iot-dashboard',
       component: DashboardComponent,
+    },
+
+    {path:'viewThreadTag',component:ViewThreadTagComponent},
+    {path:'viewThreadDetail',component:ViewThreadDetailComponent},
+    {
+      path: 'message',
+      component: ChatComponent,
+    },
+
+    {
+      path: 'meeting',
+      component: ZoomComponent,
+    },
+    {
+      path: 'chatbot',
+      component: ChatbotComponent,
+    },
+    {
+      path: 'stats',
+      component: StatsComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
     },
     {
       path: 'layout',
@@ -82,6 +135,7 @@ const routes: Routes = [{
       path: '**',
       component: NotFoundComponent,
     },
+
   ],
 }];
 

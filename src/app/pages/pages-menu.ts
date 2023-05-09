@@ -1,20 +1,95 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+
   {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
     home: true,
   },
-  {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
+  {     title: 'Message',     icon: 'message-circle-outline',     link: '/pages/message',     home: true,   },
+    {     title: 'ChatBot',     icon: 'message-circle-outline',     link: '/pages/chatbot',     home: true,   },
+   {     title: 'Stats',     icon: 'message-circle-outline',     link: '/pages/stats',     home: true,   },
+ {
+    title: 'Users',
+    icon: 'person',
+    link: '/pages/tables/users',
+    children: [
+      {
+        title: 'List users',
+        link: '/pages/tables/users',
+      },
+      {
+        title: 'Make Complaint',
+        link: '/pages/layout/complaint',
+      },
+      {
+        title: 'Complaint List',
+        link: '/pages/tables/complaints',
+      },
+      {
+        title: 'Statistics',
+        link: '/pages/charts/chartamani',
+      },
+      {
+        title: 'video',
+        link: '/pages/layout/video',
+      }
+    ]
+
   },
+  {
+    title: 'DashCourse',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikc',
+  },
+
+
+  {
+    title: 'DashCertification',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalik',
+  },
+  {
+    title: 'Courses',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemaliku',
+  },
+  {
+    title: 'Certifications',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikui',
+  },
+  {
+    title: 'SendMail',
+    icon: 'edit-2-outline',
+    link: '/pages/tables/smart-tablemalikmail',
+  },
+  {
+    title: 'Blog',
+    icon: 'browser-outline',
+    link: '/pages/blog',
+  },
+
   {
     title: 'FEATURES',
     group: true,
+  },
+  {
+    title: 'Forums',
+    icon: 'edit-2-outline',
+    children: [
+      { icon: 'home-outline',
+        title: 'Threads',
+        link: '/pages/tables/smart-tableb',
+      },
+      { icon: 'home-outline',
+      title: 'View All Threads',
+      link: '/pages/tables/smart-tableFront',
+    },
+
+    ],
   },
   {
     title: 'Layout',
@@ -143,54 +218,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Extra Components',
     icon: 'message-circle-outline',
-    children: [
-      {
-        title: 'Calendar',
-        link: '/pages/extra-components/calendar',
-      },
-      {
-        title: 'Progress Bar',
-        link: '/pages/extra-components/progress-bar',
-      },
-      {
-        title: 'Spinner',
-        link: '/pages/extra-components/spinner',
-      },
-      {
-        title: 'Alert',
-        link: '/pages/extra-components/alert',
-      },
-      {
-        title: 'Calendar Kit',
-        link: '/pages/extra-components/calendar-kit',
-      },
-      {
-        title: 'Chat',
-        link: '/pages/extra-components/chat',
-      },
-    ],
+    link: '/pages/message',
+    home: true,
   },
   {
-    title: 'Maps',
-    icon: 'map-outline',
-    children: [
-      {
-        title: 'Google Maps',
-        link: '/pages/maps/gmaps',
-      },
-      {
-        title: 'Leaflet Maps',
-        link: '/pages/maps/leaflet',
-      },
-      {
-        title: 'Bubble Maps',
-        link: '/pages/maps/bubble',
-      },
-      {
-        title: 'Search Maps',
-        link: '/pages/maps/searchmap',
-      },
-    ],
+    title: 'ChatBot',
+    icon: 'message-circle-outline',
+    link: '/pages/chatbot',
+    home: true,
   },
   {
     title: 'Charts',
@@ -228,6 +263,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Tables & Data',
     icon: 'grid-outline',
     children: [
+
       {
         title: 'Smart Table',
         link: '/pages/tables/smart-table',
@@ -248,26 +284,26 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  {
-    title: 'Auth',
-    icon: 'lock-outline',
-    children: [
-      {
-        title: 'Login',
-        link: '/auth/login',
-      },
-      {
-        title: 'Register',
-        link: '/auth/register',
-      },
-      {
-        title: 'Request Password',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
-      },
-    ],
-  },
+  // {
+  //   title: 'Auth',
+  //   icon: 'lock-outline',
+  //   children: [
+  //     {
+  //       title: 'Login',
+  //       link: 'login',
+  //     },
+  //     {
+  //       title: 'Register',
+  //       link: 'register',
+  //     },
+  //     {
+  //       title: 'Request Password',
+  //       link: 'request-password',
+  //     },
+  //     {
+  //       title: 'Reset Password',
+  //       link: 'reset-password',
+  //     },
+  //   ],
+  // },
 ];

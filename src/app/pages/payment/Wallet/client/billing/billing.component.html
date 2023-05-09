@@ -192,7 +192,7 @@ margin: 0 0 20px
 </div>
 <div class="pricingTable-signup">
   <a href="javascript:void(0)" *ngIf="wallet.subscription === 'None'" (click)="addSubscriptionOrder('silver', 16)">Subscribe</a>
-  <a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' && wallet.subscription !== null"
+  <a href="javascript:void(0)" *ngIf="wallet.subscription !== 'None' || wallet.subscription !== null"
   (click)="addMessageAlreadySubbed()" [disabled]="true">Subscribe</a>
 
 </div>
@@ -517,7 +517,7 @@ margin: 0 0 20px
           </button> 
             
         <button type="submit" nbButton (click)="openWindowVoucher()"  appearance="outline" status="info">
-            <i class="fas fa-ticket-alt"></i> Redeem a Voucher
+            <i class="fas fa-ticket"></i> Redeem a Voucher
           </button>          
     </div>
 </a>
