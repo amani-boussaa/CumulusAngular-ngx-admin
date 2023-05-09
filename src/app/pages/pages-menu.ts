@@ -92,10 +92,44 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     link: '/pages/tables/smart-tablemalikmail',
   },
+  // {
+  //   title: 'Blog',
+  //   icon: 'browser-outline',
+  //   link: '/pages/blog',
+  // },
+  // {
+  //   title: 'BO',
+  //   icon: 'archive',      
+  //   link: '/pages/BO',
+  // },
+  // {
+  //   title: 'Stats',
+  //   icon: 'bar-chart-outline',      
+  //   link: '/pages/Stats',
+  // },
+  //************************************************************************* */
+
   {
     title: 'Blog',
     icon: 'browser-outline',
-    link: '/pages/blog',
+    children: [
+      {
+        title: 'Blog Verse',
+        link: '/pages/blog',
+      },
+      {
+        title: 'My Blog',
+        link: '/pages/MyBlog',
+      },  
+      {
+        title: 'Back Office',
+        link: '/pages/BO',
+      },
+      {
+        title: 'Stats',
+        link: '/pages/Stats',
+      }, 
+    ]
   },
 
   

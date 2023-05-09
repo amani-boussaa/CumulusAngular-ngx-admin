@@ -18,6 +18,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ThreadStatsComponent } from './ThreadStats/ThreadStats.component';
 import { BOComponent } from './BO/BO.component';
 
+
 @NgModule({
   imports: [
     NbCardModule,
