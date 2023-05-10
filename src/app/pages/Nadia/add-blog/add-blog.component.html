@@ -1,7 +1,4 @@
-<div class="mb-3">
-    <label for="formFile" class="form-label">Upload your image</label>
-    <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelect($event)">
-  </div>
+
   
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Title</label>
@@ -22,12 +19,25 @@
     <label for="exampleFormControlInput1" class="form-label">Keywords</label>
     <input type="text" class="form-control" [(ngModel)]="blog.keywords" id="keywords">
   </div>
+
   
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
     <textarea class="form-control" [(ngModel)]="blog.content" id="content" rows="3"></textarea>
   </div>
-  
+
+  <!-- <div class="mb-3">
+    <label for="formFile" class="form-label">Upload your image</label>
+    <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelect($event)">
+  </div> -->
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="text" class="form-control" [(ngModel)]="blog.imagePath" id="imagePath">
+    <img [src]="blog.imagePath" class="card-img-top fixed-height"style="width: 200px; height: 200px; border: 1px solid black; padding: 10px;">
+  </div>
+
+
+
   <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3" (click)="OnClick()">Post</button>
+    <button type="submit" class="btn btn-primary mb-3" (click)="OnClick()">Submit</button>
   </div>

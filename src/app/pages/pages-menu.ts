@@ -115,20 +115,24 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Blog Verse',
+        icon: 'book-open-outline',
         link: '/pages/blog',
       },
       {
-        title: 'My Blog',
-        link: '/pages/MyBlog',
+        title: 'My Blogs',
+        icon: 'edit-2-outline',
+        link: '/pages/MyBlog/id',
       },  
       {
         title: 'Back Office',
+        icon: 'archive',
         link: '/pages/BO',
       },
-      {
-        title: 'Stats',
-        link: '/pages/Stats',
-      }, 
+      // {
+      //   title: 'Stats',
+      //   icon: 'bar-chart-outline', 
+      //   link: '/pages/StatsBlog',
+      // }, 
     ]
   },
 

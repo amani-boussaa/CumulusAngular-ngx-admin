@@ -1,1 +1,36 @@
-<p>my-blog works!</p>
+<header>
+    <div class="b-container">
+      <h1>My Blogs</h1>
+      <button nbButton hero status="primary" routerLink="/pages/addblog" class="add-blog-button">Add</button>
+  
+    </div>
+    </header>
+  
+    <div class="band" >  <!-- fonctionavancee -->
+        <div class="item-1">
+    <div class="item-2" *ngFor="let blog of listblog">
+        <a href="{{ blog.url }}" class="card" routerLink="/pages/MyBlog/:id" [queryParams]="{ data: blog.blog_id }">
+         <!-- <div class="thumb" style="background-image: url(../../../../assets/images/{{blog.imagePath}});"></div>-->
+         <article >
+        <h3>{{ blog.title }}</h3>
+        <p>{{blog.author}}</p>
+  <p> {{blog.date_created}}</p>
+  <p> {{blog.description}}</p>
+  <p> {{blog.keywords}}</p>
+  <img [src]="blog.imagePath" class="card-img-top fixed-height" style="width: 200px; height: 200px; border: 1px solid black; padding: 10px;">
+  <p>{{blog.content}}</p>
+        </article>   
+        <li><a class ="btn btn-primary" (click)="deleteblog(blog.blog_id)">Delete</a></li> 
+        <!-- <li><a class ="btn btn-primary" routerLink="/pages/updateblog/:id">Update</a></li> 
+
+ -->
+
+
+
+    </a>
+   
+    </div>
+        </div></div>
+    
+    
+    

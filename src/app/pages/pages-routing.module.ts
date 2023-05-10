@@ -18,6 +18,7 @@ import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
 import { BOComponent } from './tables/BO/BO.component';
 import { StatsBlogComponent } from './Nadia/stats-blog/stats-blog.component';
 import { MyBlogComponent } from './Nadia/my-blog/my-blog.component';
+import { UpdateblogComponent } from './Nadia/updateblog/updateblog.component';
 
 const routes: Routes = [{
   path: '',
@@ -49,7 +50,7 @@ const routes: Routes = [{
       component: StatsBlogComponent,
     },
     {
-      path: 'MyBlog',
+      path: 'MyBlog/:id',
       component: MyBlogComponent,
     },
     {
@@ -75,6 +76,10 @@ const routes: Routes = [{
     {
       path: 'stats',
       component: StatsComponent,
+    },
+    {
+      path: 'updateblog/:id',
+      component: UpdateblogComponent,
     },
     {
       path: '',
