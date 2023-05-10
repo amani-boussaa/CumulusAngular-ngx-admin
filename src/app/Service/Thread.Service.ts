@@ -25,6 +25,11 @@ export class ThreadService {
     return this.http.post<Thread>(`${environment.urlBackend}api/thread/createThreadWithTags?tags=${tags}`, thread);
   }
 
+  getStats(){
+    let id = sessionStorage.getItem('id')
+    return this.http.get(`${environment.urlBackend}api/thread/getThreadStats/`+id);
+  }
+
   updateThread(id: number, thread: any) {
     return this.http.put(`${this.baseUrl}/${id}`, thread);
   }
@@ -78,8 +83,5 @@ export class ThreadService {
   }
 
 
-  getStats(id:number){
-    
-  }
 
 }

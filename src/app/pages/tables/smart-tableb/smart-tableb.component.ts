@@ -57,7 +57,7 @@ export class SmartTablebComponent {
       }, threadCreator: {
         title: 'Thread Creator',
         type: 'html',
-        valuePrepareFunction: (cell: any) => ` ${cell.id} | id : ${cell.nom} `,
+        valuePrepareFunction: (cell: any) => ` id : ${cell.id} | name : ${cell.name} `,
         
         
       }, threadTags: {

@@ -1,7 +1,13 @@
 
 <nb-card size="tiny" class="card-container"    status="warning">
-  <nb-card-header>Number of Comments Written : <h2></h2> </nb-card-header>
+  <nb-card-header>Number of Comments Written : <h2>{{data[1]}}</h2> </nb-card-header>
 
+</nb-card>
+<nb-card size="tiny" class="card-container"    status="warning">
+  <nb-card-header>Number of Threads Created : <h2>{{data[0]}}</h2> </nb-card-header>
+</nb-card>
+<nb-card size="tiny" class="card-container"    status="warning">
+  <nb-card-header>Average Comment by thread : <h2>{{data[1]/data[0]}}</h2> </nb-card-header>
 </nb-card>
 <div class="col-lg-6">
   <nb-card>

@@ -26,13 +26,13 @@ data :any ;
 
 //userID
 
-    // this.th.getStats(this.userID).subscribe((data) => {
-    //   console.log(data);
+    this.th.getStats().subscribe((data) => {
+      console.log(data);
 
-    //   this.data = data;
+      this.data = data;
 
 
-    // });
+    });
 
 
   }

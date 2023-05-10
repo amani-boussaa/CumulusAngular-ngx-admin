@@ -45,8 +45,7 @@ TagClick(t:ThreadTagEntity){
 
 }
 ReadMore(d:Thread){
-  this.sharedDataService.setThreadData(d);
-  this.router.navigate(['/pages/viewThreadDetail']);
+  this.router.navigate(['/pages/viewThreadDetail'],{ queryParams: { data: JSON.stringify(d.id) }});
 
 
 }

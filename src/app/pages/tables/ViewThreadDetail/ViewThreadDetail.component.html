@@ -15,11 +15,11 @@
     <nb-card-body>
        {{ data.content }}
     </nb-card-body>
-    <nb-card-footer>By {{ data.threadCreator.nom }}</nb-card-footer>
+    <nb-card-footer>By {{ data.threadCreator.name }}</nb-card-footer>
   </nb-card>
 
   <nb-card  *ngFor="let comment of data.comments" >
-    <nb-card-header>Nebula</nb-card-header>
+    <nb-card-header>comment.</nb-card-header>
     <nb-card-body>
       A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
       Originally, nebula was a name for any diffuse astronomical object,
