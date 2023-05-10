@@ -37,6 +37,7 @@ import { AddBlogComponent } from './Nadia/add-blog/add-blog.component';
 import { TheBlogComponent } from './Nadia/the-blog/the-blog.component';
 import { StatsBlogComponent } from './Nadia/stats-blog/stats-blog.component';
 import { MyBlogComponent } from './Nadia/my-blog/my-blog.component';
+import { UpdateblogComponent } from './Nadia/updateblog/updateblog.component';
 
 @NgModule({
   imports: [
@@ -73,6 +74,7 @@ import { MyBlogComponent } from './Nadia/my-blog/my-blog.component';
     TheBlogComponent,
     StatsBlogComponent,
     MyBlogComponent,
+    UpdateblogComponent,
   ],
 
 })

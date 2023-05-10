@@ -4,6 +4,8 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { BlogService } from '../../Nadia/service/blog.service';
 import { Blog } from '../../Nadia/model/blog';
+import { NbToastrService } from '@nebular/theme';
+import { User } from '../../../Entity/User';
 
 
 @Component({
@@ -13,6 +15,7 @@ import { Blog } from '../../Nadia/model/blog';
 })
 export class BOComponent {
   createBlog:Blog = new Blog();
+  listblog:any;
   
   createTags:string = "";
   data: any[];
@@ -27,11 +30,14 @@ export class BOComponent {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
+
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -70,16 +76,25 @@ export class BOComponent {
       },
       imagePath: {
         title: 'Image',
-        type: 'File',  //image amani
-      },
+        type: 'any',  
+      },bloguser: {
+        title: 'bloguser',
+        type: 'html',
+        valuePrepareFunction: (cell: any) => ` ${cell.id} | id : ${cell.nom} `,
+        
+        
+      }
+      
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
   public Blogs : any[] = []; 
 
-  constructor(private service: SmartTableData,private blogservice: BlogService, ) {
-
+  constructor(private service: SmartTableData,private blogservice: BlogService,private toastrService: NbToastrService ) {
+this.blogservice.getBlogList().subscribe((data)=>{
+  this.source.load(data)
+});
   }
 
   // onDeleteConfirm(event): void {
@@ -90,6 +105,57 @@ export class BOComponent {
   //   }
   // }
 
+  onCreate(event): void {
+    //this.createBlog.setid(null)
+    this.createBlog.settitle(event.newData.title)
+    this.createBlog.setcontent(event.newData.content)
+   this.createBlog.setauthor(event.newData.author)
+   this.createBlog.setdescription(event.newData.description)
+   this.createBlog.setdate_created(event.newData.date_created)
+   this.createBlog.setimagepath(event.newData.imagePath)
+   //this.createBlog.setkeywords(event.newData.keywords)
+   this.createBlog.setbloguser( new User(event.newData.bloguser));
+console.log(this.createBlog);
+  
+//   if (!this.createBlog.gettitle()|| !this.createBlog.getcontent() || !this.createBlog.getauthor()) {
+//     this.toastrService.danger('Verify Fields ' ,"Empty", { icon: 'alert-triangle-outline', preventDuplicates: true, limit: 3 });
+    
+//   }else if (isNaN(Number( this.createBlog.getbloguser().id))) {
+//     this.toastrService.danger('Id creator must be a number ' ,"ID", { icon: 'alert-triangle-outline', preventDuplicates: true, limit: 3 });
+  
+// }else{
+this.blogservice.createBlog(this.createBlog).subscribe((data) => {
+     
+  console.log(data); 
+  
+  
+}
+);;
+
+console.log("sendUpdate");
+//}
+ }
+
+
+ onUpdateConfirm(event): void {
+  this.createBlog.settitle(event.newData.title)
+  this.createBlog.setcontent(event.newData.content)
+ this.createBlog.setauthor(event.newData.author)
+ this.createBlog.setdescription(event.newData.description)
+ this.createBlog.setdate_created(event.newData.date_created)
+ this.createBlog.setimagepath(event.newData.imagePath)
+ this.createBlog.setbloguser( new User(event.newData.bloguser));
+console.log(this.createBlog);
+
+this.blogservice.createBlog(this.createBlog).subscribe((data) => {
+   
+console.log(data); 
+
+}
+);;
+
+console.log("sendUpdate");
+}
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -102,12 +168,15 @@ export class BOComponent {
       event.confirm.reject();
     }
   }
+  // onDeleteConfirm(blogid:number):void{
+  //   this.blogservice.deleteBlog(blogid).subscribe({next:()=>this.ngOnInit()});
+  // }
 
 
   ngOnInit() {
    
     this.getBlogs();
-    console.log(   this.Blogs);
+    console.log(this.Blogs);
    
  
   }
@@ -126,7 +195,15 @@ export class BOComponent {
         }
       );
   } 
+  removeLastSpaces(input: string): string {
+    const lastCommaIndex = input.lastIndexOf(',');
+    if (lastCommaIndex === input.length - 1) {
+      input = input.slice(0, lastCommaIndex);
+    }
   
+   
+    return input.trimEnd();
+  }
   
   
 }
