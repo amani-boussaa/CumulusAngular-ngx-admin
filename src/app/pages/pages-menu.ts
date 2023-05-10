@@ -13,7 +13,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
-    title: 'FEATURES',
+    title: 'Evènement',
+    icon: 'home-outline',
+    link: '/pages/event-front/events',
+  },
+  {
+    title: 'features',
     group: true,
   },
   {
@@ -31,7 +36,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Evenements',
+    title: 'Event office',
     icon: 'edit-2-outline',
     children: [
       {

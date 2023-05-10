@@ -79,6 +79,11 @@ const routes: Routes = [{
       .then(m=>m.RegistrationModule),
     },  
     {
+      path: "event-front",
+      loadChildren:()=> import('./event-front/event-front-routing.module')
+      .then(m=>m.EventFrontRoutingModule),
+    }, 
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

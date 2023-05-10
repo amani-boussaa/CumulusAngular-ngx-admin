@@ -11,6 +11,7 @@ import { ListEventComponent } from './evenement/list-event/list-event.component'
 import { AddEventComponent } from './evenement/add-event/add-event.component';
 import { EditEventComponent } from './evenement/edit-event/edit-event.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventFrontModule } from './event-front/event-front.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EventFrontModule
   ],
   declarations: [
     PagesComponent,

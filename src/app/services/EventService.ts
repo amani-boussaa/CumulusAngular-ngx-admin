@@ -14,16 +14,16 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  public getEvents():Observable<Event[]>{
-    return this.http.get<Event[]>(`${this.baseUrl}`);
+  public getEvents():Observable<EventModel[]>{
+    return this.http.get<EventModel[]>(`${this.baseUrl}`);
   }
 
-  addEvent(event: Event):Observable<Event>{
-    return this.http.post<Event>(`${this.baseUrl}`, event);
+  addEvent(event: Event):Observable<EventModel>{
+    return this.http.post<EventModel>(`${this.baseUrl}`, event);
   }
 
-  updateEvent(id_event: number, event: any) {
-    return this.http.put(`${this.baseUrl}/${id_event}`, event);
+  updateEvent(id_event: number, event: any):Observable<EventModel> {
+    return this.http.put<EventModel>(`${this.baseUrl}/${id_event}`, event);
   }
 
   retrieveEvent(id_event: number):Observable<EventModel>{

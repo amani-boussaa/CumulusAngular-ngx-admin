@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+      <div *ngFor="let event of events" class="card col-lg-3 m-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{event.name_event}}</h5>
+          <p class="card-text">{{event.description}}</p>
+          <p class="card-text ">Places disponibles : {{event.nb_restant}}</p>
+          <p class="card-text ">date début: {{event.start_date}}</p>
+          <!-- *ngIf="event.start_date > actualDate" -->
+          <a class="card-link btn btn-success text-white"  title="register to this event" style="cursor: pointer;" (click)="registerToEvent(event.id_event)">participer</a>
+        </div>
+      </div>
+    </div>
+</div>

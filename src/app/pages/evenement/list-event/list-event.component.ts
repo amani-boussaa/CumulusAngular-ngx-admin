@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { RegistrationModel } from '../../../entity/registration.model';
 import { RegistrationService } from '../../../service/registration.service';
 import { Router } from '@angular/router';
+import { EventModel } from '../../../entity/event.model';
 
 @Component({
   selector: 'ngx-list-event',
@@ -11,8 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
-  event!: Event;
-  events : Event[] =[];
+  event!: EventModel;
+  events : EventModel[] =[];
   eventForm = new FormGroup({
     name_event: new FormControl(),
     start_date: new FormControl(),
@@ -22,12 +23,14 @@ export class ListEventComponent implements OnInit {
     nb_restant: new FormControl(),
     description: new FormControl(),
   })
+  
   constructor(private eventService:EventService,
     private registrationService: RegistrationService,
     private route:Router
     ) { }
 
   ngOnInit(): void {
+   
     this.eventService.getEvents().subscribe((event)=>this.events = event)
   }
 
