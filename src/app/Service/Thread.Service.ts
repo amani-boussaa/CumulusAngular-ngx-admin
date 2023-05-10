@@ -29,8 +29,14 @@ export class ThreadService {
     return this.http.put(`${this.baseUrl}/${id}`, thread);
   }
 
-  getThreadById(id: number) {
-    return this.http.get<Thread>(`${environment.urlBackend}api/thread/getThreadById/${id}`);
+  getThreadById(threadid: number) {
+    let userid = sessionStorage.getItem('id')
+    this.http.get(`${environment.urlBackend}api/thread/viewThread/${threadid}/${userid}`).subscribe()
+
+    return this.http.get<Thread>(`${environment.urlBackend}api/thread/getThreadById/${threadid}`);
+
+
+
   }
 
   getAllthreads(){

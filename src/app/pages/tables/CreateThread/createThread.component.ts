@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbToastrService } from '@nebular/theme';
 import { ThreadService } from '../../../Service/Thread.Service';
 import { Router } from '@angular/router';
+import { SlideOutComponent } from '../../e-commerce/slide-out/slide-out.component';
 
 
 @Component({
@@ -39,29 +40,35 @@ export class CreateThreadComponent  {
   }
 
   submitForm() {
+    console.log( "form");
     if (this.threadForm.valid) {
+     
       this.thread.settitle(this.threadForm.value.title);
       this.thread.setcontent(this.threadForm.value.content);
 
       let userID = sessionStorage.getItem('id')
-       let user:User = new User(parseInt(userID)); //userID
-this.thread.setthreadCreator(user);
+      let user:User = new User(parseInt(userID)); //userID
+      this.thread.setthreadCreator(user);
+      console.log( this.thread);
 this.th.createThread(this.thread).subscribe((data) => {
 
   this.router.navigate(['/pages/tables/smart-tableFront']);
 
   this.toastrService.success('Thread submitted successfully', 'Success');
 },
+
+
+
    error => {
+   
   if (error.status === 500 && error.error.message === 'You reach the limit of posts.') {
     this.threadLimitReached = true;
     this.toastrService.danger('You have reached the limit : 10 Posts', 'Error');
 
   }
 }
-);;;
+)
 
-      // and handle success/error
     } else {
       this.toastrService.danger('Please fill all required fields', 'Error');
     }

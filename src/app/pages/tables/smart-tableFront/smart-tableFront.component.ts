@@ -48,7 +48,8 @@ ReadMore(d:Thread){
 }
 ViewMyThreads(){
   console.log("dasdas");
-  this.router.navigate(['/pages/tables/myThreads'],{ queryParams: { data: JSON.stringify(2) } });
+  let userID = sessionStorage.getItem('id')
+  this.router.navigate(['/pages/tables/myThreads'],{ queryParams: { data: JSON.stringify(userID) } });
 }
 
 
