@@ -44,7 +44,7 @@ export class AuthService {
       return false;
     }
     let token: any = localStorage.getItem(this.ACCESS_TOKEN);
-    let decodeToken = this.helper.decodeToken(token);
+    //let decodeToken = this.helper.decodeToken(token);
 
     // if (decodeToken.role) {
     //   return false;
@@ -76,10 +76,10 @@ export class AuthService {
   }
   getLoggedInID() {
     if (this.userLoggedIn()) {
-      let token = localStorage.getItem(this.ACCESS_TOKEN);
-      let decodeToken = this.helper.decodeToken(token);
-      let user_id = decodeToken.id;
-      return user_id;
+      // let token = localStorage.getItem(this.ACCESS_TOKEN);
+      // let decodeToken = this.helper.decodeToken(token);
+      // let user_id = decodeToken.id;
+      return sessionStorage.getItem("id");
     } else {
       return null;
     }

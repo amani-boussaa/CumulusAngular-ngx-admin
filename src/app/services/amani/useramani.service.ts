@@ -25,6 +25,7 @@ export class UseramaniService {
 
 
   getAllusers() {
+
     return this.http.get(`${environment.urlBackend}` + 'api2/v1/users', this.httpOptions)
   }
 

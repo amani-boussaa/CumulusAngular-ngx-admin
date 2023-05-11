@@ -10,10 +10,11 @@ import {
 } from '@nebular/auth';
 import { AuthlayoutamaniComponent } from './authlayoutamani/authlayoutamani.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { GuarduserGuard } from './guards/guarduser.guard';
 
 export const routes: Routes = [
   {
-    path: 'pages',
+    path: 'pages',canActivate:[GuarduserGuard],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },

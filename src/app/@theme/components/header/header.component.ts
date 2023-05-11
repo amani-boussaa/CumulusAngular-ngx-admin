@@ -74,7 +74,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // this.userService.getUsers()
     //   .pipe(takeUntil(this.destroy$))
     //   .subscribe((users: any) => this.user = users.nick);
-    let user_id = this.authsrv.getLoggedInID();
+    // let user_id = this.authsrv.getLoggedInID();
+    let user_id = sessionStorage.getItem("id");
+
     this.us.getOneuser(user_id).subscribe((response: any) => {
 
       const updatedUser = {

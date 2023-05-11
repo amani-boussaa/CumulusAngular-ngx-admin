@@ -1,5 +1,5 @@
 
-  
+
     <div class="row justify-content-center h-100">
 
       <div class="col-md-0 col-xl-1 order-lg-1"></div>
@@ -15,7 +15,7 @@
               </div>
             </div>
           </div>
-      
+
           <div class="card-body contacts_body">
             <ul class="contacts chatList" *ngFor="let presentation of filteredUsers">
               <li *ngIf="presentation.username !== check">
@@ -24,7 +24,7 @@
                     <div class="rounded-circle user_img text_inside_circle">
                       {{presentation.username.substring(0,1)}}
                     </div>
-      
+
                   </div>
                   <div class="user_info" (click)="goToChat(presentation.username)">
                     <div style="margin-top: 1rem;">
@@ -38,8 +38,8 @@
           <div class="card-footer"></div>
         </div>
       </div>
-      
-      
+
+
 
       <div class="col-md-0 col-xl-0 order-lg-3"></div>
 
@@ -61,7 +61,7 @@
                 <span *ngIf="secondUserName===senderCheck">{{firstUserName}}</span>
                 <p>Message</p>
               </div>
-              <div class="video_cam" *ngIf="wallet.subscription === 'platinum' || wallet.subscription === 'yearly'"
+              <div class="video_cam"
                (click)="openZoom()">
                 <span><i class="fas fa-video"></i></span>
               </div>
@@ -79,7 +79,7 @@
                 <div class="msg_cotainer_send">
                   <span class="msg_time_send">{{msg.time | date:'hh:mm a'}}</span>
                   {{msg.replymessage}}
-                 
+
                 </div>
                 <div class="img_cont_msg">
                   <span class="rounded-circle user_img_msg text_inside_circle2">{{msg.senderEmail.substring(0,1)}}</span>
@@ -92,13 +92,13 @@
                 <div class="msg_cotainer">
                   <span class="msg_time">{{msg.time | date:'hh:mm a'}}</span>
                   {{msg.replymessage}}
-                  
+
                 </div>
               </div>
             </div>
-          
+
           </div>
-          
+
           <div class="card-footer">
             <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
               <div class="input-group">
@@ -111,7 +111,7 @@
                       {{emoji}}
                     </button>
                   </div>
-                  
+
                 </div>
                 <textarea name="" class="form-control type_msg" placeholder="Type your message..."
                   formControlName="replymessage" (keyup.enter)="sendMessage()"></textarea>
@@ -123,15 +123,15 @@
                     </label>
                   </div>
                   <button mat-raised-button class="input-group-text send_btn" type="submit">
-                    <i class="fa fa-location-arrow"></i> 
+                    <i class="fa fa-location-arrow"></i>
                   </button>
                 </div>
               </div>
             </form>
           </div>
-          
-          
-          
+
+
+
         </div>
       </div>
 
@@ -172,5 +172,5 @@
 
       <div class="col-md-0 col-xl-1 order-lg-6"></div>
     </div>
-  
+
 
